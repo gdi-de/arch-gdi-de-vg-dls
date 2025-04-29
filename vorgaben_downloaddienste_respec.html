@@ -1,0 +1,2061 @@
+<!DOCTYPE html>
+<html  lang="de-DE">
+  <head>
+    <meta charset='utf-8'>
+    <style>
+    .recommendation {
+      text-align: left;
+      padding: .5em;
+      border: .5em;
+      border-top-style: none;
+      border-right-style: none;
+      border-bottom-style: none;
+      border-left-color: rgb(211, 189, 67);
+      border-left-style: solid;
+      page-break-inside: avoid;
+      margin: 1em auto;
+      background-color: rgba(228, 187, 101, 0.1);
+    }
+    .requirement {
+      text-align: left;
+      padding: .5em;
+      border: .5em;
+      border-top-style: none;
+      border-right-style: none;
+      border-bottom-style: none;
+      border-left-color: rgb(230,90,10);
+      border-left-style: solid;
+      page-break-inside: avoid;
+      margin: 1em auto;
+      background-color: rgba(223, 114, 81, 0.1);
+    }
+    .konvention figcaption {
+      font-style: normal;
+      font-size: 100%;
+    }
+
+    table, th, td {
+      border: 1px solid;
+      border-collapse: collapse;
+    }
+    .field_mandatory {
+      background-color: lightgrey;
+    }
+    .field_conditional {
+      text-decoration: underline;
+    }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+    <script src='https://www.w3.org/Tools/respec/respec-w3c' async class='remove'></script>
+    <!--<script src='https://www.jsdelivr.com/package/npm/mermaid' async class='remove'></script>-->
+    <script class="remove" src="https://cdn.jsdelivr.net/gh/w3c/respec-mermaid@1.1.0/dist/main.js"></script>
+    <script class='remove'>
+      // All config options at https://respec.org/docs/
+      var respecConfig = {
+        // Working Groups ids at https://respec.org/w3c/groups/
+        // group: "webapps", 
+
+        license: "cc-by",
+        specStatus: "unofficial",
+        //specStatus: "ED",
+        shortName: "arch-gdi-de-vg-dls",
+        latestVersion: "https://gdi-de.github.io/arch-gdi-de-vg-dls/",
+        thisVersion: "https://gdi-de.github.io/arch-gdi-de-vg-dls/",
+
+        xref: ["vocab-dcat-3"],
+        logos: [{
+            src: "https://gdi-de.github.io/arch-gdi-de-vg-dls/media/Logo_GDI-DE.png",
+            url: "https://www.gdi-de.org",
+            alt: "GDI-DE",
+            width: 100,
+            height: 42,
+            id: "logo",
+        }],
+        editors: [{
+          name: "Armin Retterath",
+          url: "https://www.gdi-de.org/GDI-DE/Arbeitskreise/Geodienste",
+        }], 
+        preProcess: [window.respecMermaid.createFigures],   
+        //postProcess: [window.respecMermaid.createFigures],   
+        authors: [{
+            name:       "Martin Ambos",
+            company:    "Landesamt für Vermessung, Geoinformation und Landentwicklung, Saarland",
+            companyURL: "https://lvgl.saarland.de"
+        },{
+            name:       "Martin Arimont",
+            company:    "Bundesanstalt für Landwirtschaft und Ernährung",
+            companyURL: "https://ble.bund.de"
+        },{
+            name:       "Kerstin Breitlow",
+            company:    "Landesamt für Digitalisierung, Breitband und Vermessung Bayern",
+            companyURL: "https://ldbv.bayern.de/"
+        },{
+            name:       "Sven Böhme",
+            company:    "Bundesamt für Kartographie und Geodäsie",
+            companyURL: "http://www.bkg.bund.de/"
+        },{
+            name:       "Thomas Bentler",
+            company:    "Koordinierungsstelle GDI-DE",
+            companyURL: "https://www.gdi-de.org"
+        },{
+            name:       "Aljosa Cekic",
+            company:    "Landesamt für Geoinformation und Landentwicklung Baden-Württemberg",
+            companyURL: "https://www.lgl-bw.de/index.html"
+        },{
+            name:       "Ilka Enzweiler",
+            company:    "Bezirksregierung Köln - Geobasis NRW",
+            companyURL: "https://www.bezreg-koeln.nrw.de/geobasis-nrw"
+        },{
+            name:       "Angelika Ettwein",
+            company:    "Landesamt für Geoinformation und Landentwicklung Baden-Württemberg",
+            companyURL: "https://www.lgl-bw.de/index.html"
+        },{
+            name:       "Marco Hohmann",
+            company:    "Umweltbundesamt",
+            companyURL: "https://www.umweltbundesamt.de/"
+        },{
+            name:       "Michael Ialongo",
+            company:    "Landesamt für Digitalisierung, Breitband und Vermessung",
+            companyURL: "https://ldbv.bayern.de/"
+        },{
+            name:       "Antje Knorr",
+            company:    "Landesvermessung und Geobasisinformation Brandenburg",
+            companyURL: "https://geobasis-bb.de/lgb/de/"
+        },{
+            name:       "Mathias Lücker",
+            company:    "Landesbetrieb Geoinformation und Vermessung Hamburg",
+            companyURL: "https://www.hamburg.de/bsw/landesbetrieb-geoinformation-und-vermessung/"
+        },{
+            name:       "Adam Luks",
+            company:    "Eisenbahn-Bundesamt",
+            companyURL: "https://www.eba.bund.de/DE/home_node.html"
+        },{
+            name:       "Marcus Mohr",
+            company:    "Landesvermessung und Geobasisinformation Brandenburg",
+            companyURL: "https://geobasis-bb.de/lgb/de/"
+        },{
+            name:       "Steffi Müller",
+            company:    "Landesvermessung und Geobasisinformation Brandenburg",
+            companyURL: "https://geobasis-bb.de/lgb/de/"
+        },{
+            name:       "Dajana Noack",
+            company:    "Landesvermessung und Geobasisinformation Brandenburg",
+            companyURL: "https://geobasis-bb.de/lgb/de/"
+        },{
+            name:       "Peter Ohlraun",
+            company:    "Landesamt für Digitalisierung, Breitband und Vermessung",
+            companyURL: "https://ldbv.bayern.de/"
+        },{
+            name:       "Andreas Rockstroh",
+            company:    "Hessisches Landesamt für Bodenmanagement und Geoinformation",
+            companyURL: "https://hvbg.hessen.de/"
+        },{
+            name:       "Verena Sarwas",
+            company:    "Bundesamt für Naturschutz",
+            companyURL: "https://www.bfn.de/"
+        },{
+            name:       "Michael Schott",
+            company:    "Senatsverwaltung für Stadtentwicklung und Wohnen Berlin",
+            companyURL: "https://www.berlin.de/sen/sbw/"
+        },{
+            name:       "Peter Stickl",
+            company:    "Landesamt für Geobasisinformation Sachsen",
+            companyURL: "https://www.geosn.sachsen.de/"
+        },{
+            name:       "Dirk Thalheim",
+            company:    "Bundesamt für Kartographie und Geodäsie",
+            companyURL: "http://www.bkg.bund.de/"
+        },{
+            name:       "Holger Thunig",
+            company:    "Landesamt für Geoinformation und Landentwicklung Baden-Württemberg",
+            companyURL: "https://www.lgl-bw.de/index.html"
+        },{
+            name:       "Bartholomeus Tümmler",
+            company:    "Bundesamt für Naturschutz",
+            companyURL: "https://www.bfn.de/"
+        },{
+            name:       "Jakob Tworek",
+            company:    "IT NRW",
+            companyURL: "https://www.it.nrw/"
+        },{
+            name:       "Ralf Ziebarth",
+            company:    "Bundesanstalt für Geowissenschaften und Rohstoffe",
+            companyURL: "https://www.bgr.bund.de"
+        }
+      ],
+        github: {
+          branch: "main",
+          repoURL: "gdi-de/AK-Geodienste/tree/main/Vorgaben_Downloaddienste/ReSpec", 
+        },
+        localBiblio: {
+            "INSPIRE Directive":{
+                "href":"https://eur-lex.europa.eu/legal-content/DE/TXT/HTML/?uri=CELEX:32007L0002",
+                "title":"EU INSPIRE-Directive",
+                "publisher":"European Commission",
+                "date":"2007"
+            },
+            "CiteDCAT-AP": {
+                "href": "https://ec-jrc.github.io/datacite-to-dcat-ap/",
+                "title": "DataCite to DCAT-AP Mapping",
+                "authors": ["Andrea Perego","Timothy Austin"],
+                "status": "Working Draft",
+                "publisher":"European Commission, Joint Research Centre (JRC)",
+                "date": "2019"
+            },
+            "GDI-DE HE INS Downloaddienste": {
+                "href": "https://www.gdi-de.org/download/AK_Geodienste_Handlungsempfehlungen_INSPIRE_Downloadservices.pdf",
+                "title": "GDI-DE Handlungsempfehlungen zur Umsetzung von INSPIRE Downloaddiensten",
+                "authors": ["AK Geodienste"],
+                "status": "Working Draft",
+                "publisher":"AK Geodienste",
+                "date": "2016"
+            },
+            "INS Richtlinie": {
+                "href": "http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2007:108:0001:0014:DE:PDF",
+                "title": "Richtlinie 2007/2/EG des Europäischen Parlaments und des Rates vom 14. März 2007 zur Schaffung einer Geodateninfrastruktur in der Europäischen Gemeinschaft (INSPIRE)",
+                "authors": ["EU KOM"],
+                "status": "In Force",
+                "publisher":"EU",
+                "date": "2007"
+            },
+            "INS VO Netzdienste": {
+                "href": "http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2009:274:0009:0018:DE:PDF",
+                "title": "Verordnung (EG) Nr. 976/2009 der Kommission vom 19. Oktober 2009 zur Durchführung der Richtlinie 2007/2/EG des Europäischen Parlaments und des Rates hinsichtlich der Netzdienste (es existiert noch ein Amendment)",
+                "authors": ["EU KOM"],
+                "status": "In Force",
+                "publisher":"EU",
+                "date": "2009"
+            },
+            "INS VO MD": {
+                "href": "http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2008:326:0012:0030:DE:PDF",
+                "title": "Verordnung (EG) Nr. 1205/2008 der Kommission vom 3. Dezember 2008 zur Durchführung der Richtlinie 2007/2/EG des Europäischen Parlaments und des Rates hinsichtlich Metadaten Text von Bedeutung für den EWR",
+                "authors": ["EU KOM"],
+                "status": "In Force",
+                "publisher":"EU",
+                "date": "2008"
+            },
+            "INS VO IO": {
+                "href": "http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2010:323:0011:0102:DE:PDF",
+                "title": "Verordnung (EG) Nr. 1089/2010 der Kommission vom 23. November 2010 zur Durchführung der Richtlinie 2007/2/EG des Europäischen Parlaments und des Rates hinsichtlich der Interoperabilität von Geodatensätzen und -diensten (es existiert noch ein Amendment)",
+                "authors": ["EU KOM"],
+                "status": "In Force",
+                "publisher":"EU",
+                "date": "2010"
+            },
+            "ISO 19139:2007": {
+                "href": "https://www.iso.org/iso/catalogue_detail.htm?csnumber=32557",
+                "title": "ISO19139 - Geographic information - Metadata - XML schema implementation",
+                "authors": ["ISO"],
+                "status": "In Force",
+                "publisher":"ISO",
+                "date": "2007"
+            },
+            "ISO 19119:2005": {
+                "href": "https://www.iso.org/iso/catalogue_detail.htm?csnumber=39890",
+                "title": "ISO19119 - Geographic information - Services",
+                "authors": ["ISO"],
+                "status": "In Force",
+                "publisher":"ISO",
+                "date": "2005"
+            },
+            "ISO 19115:2003": {
+                "href": "https://www.iso.org/iso/catalogue_detail.htm?csnumber=26020",
+                "title": "ISO19115 - Geographic information - Metadata",
+                "authors": ["ISO"],
+                "status": "Withdrawn",
+                "publisher":"ISO",
+                "date": "2003"
+            },
+            "ISO 19115-3:2016": {
+                "href": "https://www.iso.org/iso/catalogue_detail.htm?csnumber=26020",
+                "title": "ISO19115-3 - Geographic information - Metadata - Part 3: XML schema implementation for fundamental concepts",
+                "authors": ["ISO"],
+                "status": "In Force",
+                "publisher":"ISO",
+                "date": "2016"
+            },
+            "ISO 19142:2010": {
+                "href": "https://www.iso.org/standard/42136.html",
+                "title": "ISO 19142 - Geographic information – Web Feature Service",
+                "authors": ["ISO"],
+                "status": "In Force",
+                "publisher":"ISO",
+                "date": "2016"
+            },
+            "ISO 19168:1:2020": {
+                "href": "https://www.iso.org/standard/32586.html",
+                "title": "ISO19168 - Geographic information – Geospatial API for features – Part 1: Core",
+                "authors": ["ISO"],
+                "status": "In Force",
+                "publisher":"ISO",
+                "date": "2016"
+            },
+            "OGC CAT 2.0.2": {
+                "href": "",
+                "title": "OpenGIS Catalogue Services Specification - 07-006r1",
+                "authors": ["OGC"],
+                "status": "IS",
+                "publisher":"OGC",
+                "date": "2007"
+            },
+            "OGC WFS 1.1.0": {
+                "href": "https://portal.ogc.org/files/?artifact_id=8339",
+                "title": "OpenGIS Web Feature Service (WFS) Implementation Specification - 04-094",
+                "authors": ["OGC"],
+                "status": "IS",
+                "publisher":"OGC",
+                "date": "2005"
+            },
+            "OGC WFS 2.0.0": {
+                "href": "https://portal.ogc.org/files/?artifact_id=39967",
+                "title": "OpenGIS Web Feature Service 2.0 Interface Standard (also ISO 19142) - 09-025r1",
+                "authors": ["OGC"],
+                "status": "IS",
+                "publisher":"OGC",
+                "date": "2010"
+            },
+            "OGC API-Features-Part 1": {
+                "href": "https://docs.opengeospatial.org/is/17-069r3/17-069r3.html",
+                "title": "OGC API - Features - Part 1: Core",
+                "authors": ["OGC"],
+                "status": "IS",
+                "publisher":"OGC",
+                "date": "2019"
+            },
+            "OGC API-Features-Part 2": {
+                "href": "https://docs.opengeospatial.org/is/18-058/18-058.html",
+                "title": "OGC API - Features - Part 2: Coordinate Reference Systems by Reference",
+                "authors": ["OGC"],
+                "status": "IS",
+                "publisher":"OGC",
+                "date": "2020"
+            },
+            "OGC API-Features-Part 3": {
+                "href": "https://docs.ogc.org/DRAFTS/19-079r1.html",
+                "title": "OGC API - Features - Part 3: Filtering",
+                "authors": ["OGC"],
+                "status": "Draft",
+                "publisher":"OGC",
+                "date": "2019"
+            },
+            "OGC API-Features-Part 4": {
+                "href": "https://docs.ogc.org/DRAFTS/20-002.html",
+                "title": "OGC API - Features - Part 4: Create, Replace, Update and Delete",
+                "authors": ["OGC"],
+                "status": "Draft",
+                "publisher":"OGC",
+                "date": "2020"
+            },
+            "OGC WCS 2.0.1": {
+                "href": "https://portal.ogc.org/files/09-110r4",
+                "title": "OGC WCS 2.0 Interface Standard- Core: Corrigendum",
+                "authors": ["OGC"],
+                "status": "IS",
+                "publisher":"OGC",
+                "date": "2012"
+            },
+            "OGC WCS 2.1": {
+                "href": "https://docs.ogc.org/is/17-089r1/17-089r1.html",
+                "title": "OGC Web Coverage Service (WCS) 2.1 Interface Standard - Core",
+                "authors": ["OGC"],
+                "status": "IS",
+                "publisher":"OGC",
+                "date": "2017"
+            },
+            "OGC SOS 2.0": {
+                "href": "https://portal.ogc.org/files/?artifact_id=47599",
+                "title": "OGC Sensor Observation Service Interface Standard",
+                "authors": ["OGC"],
+                "status": "IS",
+                "publisher":"OGC",
+                "date": "2012"
+            },
+            "OGC SensorThings API Part 1": {
+                "href": "https://docs.ogc.org/is/18-088/18-088.html",
+                "title": "OGC SensorThings API Part 1: Sensing Version 1.1",
+                "authors": ["OGC"],
+                "status": "IS",
+                "publisher":"OGC",
+                "date": "2021"
+            },
+            "OGC GeoPackage": {
+              "href": "http://www.geopackage.org/spec/",
+              "title": "OGC® GeoPackage Encoding Standard",
+              "authors": ["OGC"],
+              "status": "IS",
+              "publisher": "OGC",
+              "date": "2024"
+            },
+            "STAC": {
+              "href": "https://stacspec.org/en/about/stac-spec/",
+              "title": "SpatioTemporal Asset Catalogs",
+              "authors": ["STAC Community"],
+              "status": "Draft",
+              "publisher": "STAC Community",
+              "date": "2024"
+            },
+            "OGC API Records - Part 1: Core": {
+              "href": "https://docs.ogc.org/DRAFTS/20-004.html",
+              "title": "OGC API - Records - Part 1: Core",
+              "authors": ["OGC"],
+              "status": "Draft IS",
+              "publisher": "OGC",
+              "date": "2024"
+            },
+            "OGC OWS Common": {
+                "href": "https://www.ogc.org/publications/standard/common/",
+                "title": "OWS Common Specs",
+                "authors": ["OGC"],
+                "status": "IS",
+                "publisher":"OGC",
+                "date": "2011"
+            },
+            "OGC E-Learning": {
+                "href": "http://opengeospatial.github.io/e-learning/index.html",
+                "title": "OGC E-Learning platform",
+                "authors": ["OGC"],
+                "status": "Published",
+                "publisher":"OGC",
+                "date": "2024"
+            },
+            "RFC7946": {
+                "href": "https://www.rfc-editor.org/rfc/rfc7946",
+                "title": "The GeoJSON Format - rfc7946",
+                "authors": ["OGC"],
+                "status": "RFC - Proposed Standard",
+                "publisher":"OGC",
+                "date": "2016"
+            },
+            "RFC4180": {
+                "href": "https://datatracker.ietf.org/doc/html/rfc4180",
+                "title": "Common Format and MIME Type for Comma-Separated Values (CSV) Files",
+                "authors": ["Network Working Group"],
+                "status": "RFC - Informational",
+                "publisher":"Network Working Group",
+                "date": "2005"
+            },
+            "RFC4287": {
+                "href": "https://datatracker.ietf.org/doc/html/rfc4287",
+                "title": "The Atom Syndication Format - rfc4287",
+                "authors": ["Network Working Group"],
+                "status": "Proposed Standard",
+                "publisher":"Network Working Group",
+                "date": "2005"
+            },
+            "INS TG Metadata 1.3": {
+                "href": "",
+                "title": "INSPIRE Metadata Implementing Rules: Technical Guidlines based on EN ISO 19115 and EN ISO 19119 (Version 1.3 - 29.10.2013)",
+                "authors": ["INSPIRE MIG-T"],
+                "status": "Withdrawn",
+                "publisher":"EU",
+                "date": "2013"
+            },
+            "INS TG Metadata 2.0.1": {
+                "href": "",
+                "title": "INSPIRE Metadata Implementing Rules: Guidance for the implementation of INSPIRE dataset and service metadata based on ISO/TS 19139:2007 (Version 2.0.1 - 02.03.2017)",
+                "authors": ["INSPIRE MIG-T"],
+                "status": "Withdrawn",
+                "publisher":"EU",
+                "date": "2017"
+            },
+            "INS TG Metadata 2.2.0": {
+                "href": "https://github.com/INSPIRE-MIF/technical-guidelines/tree/main/metadata/metadata-iso19139",
+                "title": "INSPIRE Metadata Implementing Rules: Guidance for the implementation of INSPIRE dataset and service metadata based on ISO/TS 19139:2007 (Version 2.0.1 - 02.03.2017)",
+                "authors": ["INSPIRE MIG-T"],
+                "status": "Published",
+                "publisher":"EU",
+                "date": "2024"
+            },
+            "INS TG Download Services": {
+                "href": "https://github.com/INSPIRE-MIF/technical-guidelines/tree/main/services/download-atom-wfs",
+                "title": "Technical Guidance for the implementation of INSPIRE Download Services",
+                "authors": ["INSPIRE MIG-T"],
+                "status": "Withdrawn",
+                "publisher":"EU",
+                "date": "2013"
+            },
+            "INS TG Web Coverage Services": {
+                "href": "https://knowledge-base.inspire.ec.europa.eu/publications/technical-guidance-implementation-inspire-download-services-using-web-coverage-services-wcs_en",
+                "title": "Technical Guidance for the implementation of INSPIRE Download Services using Web Coverage Services (WCS)",
+                "authors": ["Temporary MIG subgroup for action MIWP-7b"],
+                "status": "Version 1.0",
+                "publisher":"INSPIRE Maintenance and Implementation Group (MIG)",
+                "date": "2016"
+            },
+            "INS TG View Services": {
+                "href": "https://github.com/INSPIRE-MIF/technical-guidelines/tree/2022.2/services/view-wms",
+                "title": "Technical Guidance for the implementation of INSPIRE View Services - 3.2.0",
+                "authors": ["INSPIRE MIG-T"],
+                "status": "Published",
+                "publisher":"EU",
+                "date": "2022"
+            },
+            "INS GP OGC API - Features": {
+                "href": "https://github.com/INSPIRE-MIF/gp-ogc-api-features/blob/master/spec/oapif-inspire-download.md",
+                "title": "Setting up an INSPIRE Download service based on the OGC API-Features standard (Version 1.0 - 05.02.2021)",
+                "authors": ["INSPIRE MIG-T"],
+                "status": "Best Practice",
+                "publisher":"EU",
+                "date": "2021"
+            },
+            "GDI-DE Architekturdokument / Technik 3.3.0": {
+                "href": "",
+                "title": "Architektur der GDI-DE – Technik V. 3.3.0 (08/2016)",
+                "authors": ["AK Architektur GDI-DE"],
+                "status": "Beschlossen",
+                "publisher":"LG GDI-DE",
+                "date": "2016"
+            },
+            "GDI-DE HE INS Darstellungsdienste": {
+                "href": "https://www.gdi-de.org/download/AK_Geodienste_Handlungsempfehlungen_INSPIRE_Darstellungsdienste.pdf",
+                "title": "Handlungsempfehlungen für die Bereitstellung von INSPIRE-konformen Darstellungsdiensten (INSPIRE View Services) - Version 1.0 (12/2011)",
+                "authors": ["AK Geodienste GDI-DE"],
+                "status": "Publiziert",
+                "publisher":"GDI-DE",
+                "date": "2011"
+            },
+            "GDI-DE HE INS Downloaddienste": {
+                "href": "",
+                "title": "Handlungsempfehlungen für die Bereitstellung von INSPIRE-konformen Downloadiensten (INSPIRE Download Services) - Version 1.3.0 (03/2016)",
+                "authors": ["AK Geodienste GDI-DE"],
+                "status": "Publiziert",
+                "publisher":"GDI-DE",
+                "date": "2016"
+            },
+            "GDI-DE Vorgaben Darstellungsdienste": {
+                "href": "https://www.gdi-de.org/download/AK_Geodienste_Architektur_GDI-DE_Bereitstellung_Darstellungsdienste.pdf",
+                "title": "Architektur der Geodateninfrastruktur Deutschland - Vorgaben der GDI-DE zur Bereitstellung von Darstellungsdiensten",
+                "authors": ["AK Geodienste GDI-DE"],
+                "status": "Beschlossen",
+                "publisher":"LG GDI-DE",
+                "date": "2019"
+            },
+            "GDI-DE Konventionen MD": {
+                "href": "https://www.gdi-de.org/download/AK_Metadaten_Konventionen_zu_Metadaten.pdf",
+                "title": "Architektur der GDI-DE - Konventionen zu Metadaten - Version 2.2.1 (12/2023)",
+                "authors": ["AK Metadaten GDI-DE"],
+                "status": "Beschlossen",
+                "publisher":"LG GDI-DE",
+                "date": "2023"
+            },
+	          "OGC Web API Guidelines": {
+                "href": "https://github.com/opengeospatial/OGC-Web-API-Guidelines",
+                "title": "OGC Web API Guidelines (2021)",
+                "publisher":"Matheus A., Terpstra F. and Masó J.",
+                "date": "2021"
+	    }
+        },
+
+        // See https://respec.org/docs/#xref for usage.
+        xref: "web-platform",
+      };
+    </script>
+  </head>
+  <body>
+    <h1 id="title">Architektur der Geodateninfrastruktur Deutschland - Vorgaben der GDI-DE zur Bereitstellung von Downloaddiensten</h1>
+      <section id='abstract'>
+        <p>
+            Die Geodateninfrastruktur Deutschland (<abbr title="Geodateninfrastruktur Deutschland">GDI-DE</abbr>) hat das Ziel, Geodaten
+            von Bund, Ländern und Kommunen für Wirtschaft, Wissenschaft, Verwaltung und Bürger interoperabel
+            und zukunftsfähig bereitzustellen. Dabei wird auf offene Standards und genormte
+            Schnittstellen gesetzt. Diese bilden auch die Grundvoraussetzung für die Integration von Geodaten
+            in E-Governmentprozesse und Applikationen. Innerhalb der GDI-DE erfolgt der standardisierte Zugriff auf die
+            verteilten Geodaten in der Regel über sogenannte <b>Downloaddienste</b>. Der Begriff selbst stammt aus dem
+            europäischen Kontext (<abbr title="Geodateninfrastruktur der Europäischen Union">INSPIRE</abbr> [[INSPIRE Directive]]) und hat sich
+            seit 2007 etabliert. Im internationalen Kontext wird von <b>Data Access Services</b> gesprochen.
+        </p>
+      </section>
+      <section id='sotd'class="override">
+      <!--<h2>Neuer Status</h2>
+        <p>Neue Ideen...</p>-->
+      </section>
+      <section>
+        <h2>Anwendungsbereich</h2>
+        <p>
+            Das vorliegende Dokument beinhaltet Anforderungen und Empfehlungen, die für eine interoperable
+            Bereitstellung von Downloaddiensten innerhalb Deutschlands notwendig sind bzw. eine solche verbessern.
+            Dabei wird eine größtmögliche Interoperabilität mit INSPIRE gewährleistet. Viele der hier definierten Vorgaben basieren
+            auf den im Rahmen der Umsetzung von INSPIRE gesammelten Erfahrungen der vergangenen Jahre.
+            Um eine nahtlose Integration von INSPIRE und GDI-DE zu ermöglichen, gelten die hier aufgeführten
+            Anforderungen und Empfehlungen auch für die INSPIRE-Downloaddienste. Sie bauen auf den internationalen
+            Standards und Normen des <abbr title="World Wide Web Consortium">W3C</abbr>, des <abbr title="Open Geospatial Consortium">OGC</abbr> sowie der <abbr title="International Organization for Standardization">ISO<abbr> auf. Anforderungen aus diesen 
+            Standards und Normen, die für alle Downloaddienste ohnehin verpflichtend sind, werden im vorliegenden
+            Dokument nicht wiederholt aufgeführt.
+        </p>
+        <p class="note" title="Abgrenzung zu den INSPIRE-Downloadiensten">
+          Für Downloaddienste, die unter die INSPIRE-Richtlinie fallen,
+          ergeben sich in der Regel zusätzliche Anforderungen aus INSPIRE-Durchführungsbestimmungen, die ebenfalls
+          nicht Bestandteil des vorliegenden Dokumentes sind.
+        </p>
+      </section>
+      <section>
+        <h2>Hinweise zum Dokument</h2>
+          <p>
+            Das vorliegende Dokument ist in ein Kapitel zu Anforderungen an die Bereitstellung von Downloaddiensten
+            und ein Kapitel mit Erläuterungen und Hintergrundinformationen untergliedert. Diese Aufteilung dient
+            dazu, einerseits einen prägnanten Überblick über Implementierungsanforderungen zu geben und
+            andererseits Hintergrundinformationen und Begründungen für Interessierte vorzuhalten. Bei der
+            Fortschreibung wird das Anforderungskapitel auch um Verweise auf zugehörige Testfallbeschreibungen
+            in Form von Abstract Test Suites (ATS) ergänzt. ATS dienen als Grundlage für die Entwicklung
+            automatisierter Überprüfungen von Vorgaben aus diesem Dokument.
+            <p class="ednote" title="Nicht vergessen">
+              Falls ATS nicht ins Dokument einfließen - Satz rausnehmen. 
+            </p>
+          </p>
+      </section>
+      <section>
+        <h2>Hinweise zur grundlegenden Architektur</h2>
+        <section>
+          <h2>Typen von Downloaddiensten</h2>
+          <p>
+            Liste der Dienste mit zugehörigen Normen und Spezifikationen
+            <ul>
+              <li>WFS 1.1.0 (Web Feature Service) [[OGC WFS 1.1.0]] </li>
+              <li>WFS 2.0.0 (Web Feature Service) [[ISO 19142:2010]][[OGC WFS 2.0.0]]</li>
+              <li>OAF (OGC API-Features) [[ISO 19168:1:2020]][[OGC API-Features-Part 1]] </li>
+              <li>WCS 2.0.1 (Web Coverage Service) [[OGC WCS 2.0.1]] </li>
+              <li>WCS 2.1 (Web Coverage Service) [[OGC WCS 2.1]] </li>
+              <li>INSPIRE ATOM-Feed [[INS VO Netzdienste]][[INS TG Download Services]] </li>
+              <li>OGC SensorThings API [[OGC SensorThings API Part 1]] </li>
+            </ul>
+        </p>
+        </section>
+        <section>
+          <h2>Hinweise zu den Funktionsprinzipien</h2>
+          <section>
+            <h2>WxS</h2>
+            <p>WxS steht stellvertretend für die allgemein bekannten und weit verbreiteten OGC-Spezifikationen, die einen Austausch von Geodaten ermöglichen. 
+              Die Entwicklung dieser Spezifikationen begann schon Mitte der 90er Jahre und sie bilden auch heute noch die Basis für den 
+              Betrieb der meisten Geodateninfrastrukturen. Prinzipiell handelt es sich um spezielle Webservices mit XML-Binding. Eine Verallgemeinerung
+              der maschinenlesbaren Service-Beschreibung findet sich in der OWS Common Spezifikation [[OGC OWS Common]]. 
+              Bei der Nutzung dieser Dienste wird grundsätzlich zunächst ein s.g. OGC-Capabilities-Dokument abgefragt.
+              Dieses beinhaltet u.a. Metadaten über den Dienstprovider, eine Liste der Operationen sowie Informationen über die vom Dienst
+              bereitgestellten Daten. Mithilfe der maschinenlesbaren Beschreibung lässt sich die Informationsquelle in andere
+              IT-Systeme integrieren.
+            </p>
+          </section>
+          <section>
+            <h2>INSPIRE</h2>
+            <p>Bei der Erarbeitung der EU INSPIRE-Richtlinie hat man die Standards OGC Architektur für den Aufbau von Geodateninfrastrukturen als
+              Vorbild verwendet. Die Richtlinie selbst und die zugehörigen Rechtsverordnungen referenzieren jedoch nicht direkt konkrete OGC-Spezifikationen,
+              sondern sprechen von s.g. Download- und Darstellungsdiensten. Es wird gefordert, dass Geodaten über Downloaddienste herunterladbar sein müssen.
+              Die Downloaddienste müssen dabei mindestens folgende Operationen unterstützen, um den Anforderungen der EU zu genügen:
+              <ul>
+                <li>Get Download Service Metadata</li>
+                <li>Get Spatial Dataset</li>
+                <li>Describe Spatial Dataset</li>
+                <li>Link Download Service</li>
+              </ul>
+              Grundsätzlich entsprechen diese abstrakten Operationen konkret definierten Funktionen spezieller WxS.
+              In den europaweit abgestimmten s.g. Technical Guidance Dokumenten sind Informationen publiziert, wie man INSPIRE-konforme 
+              Downloaddienste mithilfe von WxS bzw. anderer Technologien umsetzen kann.
+              In diesem Kontext haben sich europaweit in den letzten zwölf Jahren, neben den WxS, die s.g. INSPIRE ATOM-Feeds etabliert.
+            </p>
+          </section>
+          <section>
+            <h2>OGC API</h2>
+            <p>
+              Das OGC hat Ende 2019 begonnen seine Architektur neu auszurichten. Die sehr speziellen WxS mit ihrem XML-Binding waren nicht mehr zeitgemäß
+              und sollen sukzessive durch moderne REST APIs ersetzt werden. Die erste Spezifikation aus dieser neuen Reihe ist die im Jahr 2020 publizierte ISO19168:1.
+              Sie definiert ein REST-Interface für den Zugriff auf Vektordaten und bietet eine moderne Alternative zu der WFS-Schnittstelle. 
+            </p>
+            <p class="ednote" title="OGC API Commons">
+              ...Auf OGC API Common verweisen...
+          </p>
+          </section>
+        </section>
+        <section>
+          <h2>Integration in Geodateninfrastrukturen</h2>
+          <section>
+            <h2>Auffinden und Nutzen von Diensten</h2>
+            <p>
+              In einer Geodateninfrastruktur verfügen Dienste in der Regel über eine Selbstbeschreibung der möglichen Operationen, sowie
+              des zur Verfügung gestellten Contents (Daten). Um beispielsweise Downloaddienste nutzen zu können, benötigt man die URL 
+              auf die Selbstbeschreibung des jeweiligen Dienstes. 
+              Die aktuelle GDI-Architektur basiert darauf, dass sowohl die Daten als auch die Dienste jeweils mit standardisierten
+              Metadaten beschrieben sind. Diese werden in Katalogen gesammelt und bis auf die europäische Ebene aggregiert. Der
+              Zugriff auf die Kataloge der verschiedenen Verwaltungsebenen erfolgt über eine einheitliche Schnittstelle, 
+              den OGC Catalog Service [[OGC CAT 2.0.2]].   
+              Der typische Prozess, um die Zugriffsadresse eines Dienstes zu erhalten, geht in der Regel von den Datensatz-Metadaten aus.
+              Jeder Datensatz wird über eine möglichst persistente URI identifiziert (Datensatzidentifikator). Diese URI wird vom Datenanbieter festgelegt 
+              und ist Bestandteil der Metadaten zum Datensatz. 
+              <figure>
+                <pre class="diagram mermaid">
+                      sequenceDiagram
+                          participant Nutzer
+                          participant Katalog (CSW)
+                          participant Dienst
+                          Nutzer ->> Katalog (CSW): csw:GetRecords (Suche nach Datensätzen)
+                          Katalog (CSW)->>Nutzer: Liste von Datensatz-Metadaten (ISO19139)
+                          Nutzer->>Nutzer: wähle Datensatz / extrahiere Datensatzidentifikator
+                          Nutzer->>Katalog (CSW): csw:GetRecords (Suche Dienste für Datensatzidentifikator)
+                          Katalog (CSW)->>Nutzer: Liste von Dienst-Metadaten (ISO19139)
+                          Nutzer->>Nutzer: wähle Dienst / extrahiere Zugriffsadresse
+                          Nutzer->>Dienst: Aufruf Zugriffsadresse
+                          Dienst->>Nutzer: Liefert Selbstbeschreibung
+                          Nutzer->>Nutzer: Auswertung der Selbstbeschreibung
+                          Nutzer->>Dienst: Nutzung des Dienstes
+                </pre> 
+                <figcaption>Sequenzdiagramm für das Suchen nach Diensten</figcaption>
+              </figure>
+            </p>
+          </section>
+          <section>
+            <h2>Beziehung zwischen Daten, Diensten und deren Metadaten</h2>
+            <p>
+              Da ein Dienst i.d.R. den Zugriff auf mehrere Datensätze ermöglicht, ist es zusätzlich notwendig, die eindeutige Zuordnung zwischen den vom 
+              Dienst bereitgestellten Content und den jeweiligen Datensätzen in der Selbstbeschreibung (Capabilities-Dokument) des Dienstes zu hinterlegen. Die Art und Weise wie
+              dies zu erfolgen hat, wurde von den Arbeitsgruppen auf europäischer Ebene zur Umsetzung von INSPIRE festgelegt. Die Beziehungen der einzelnen 
+              Objekte untereinander ist nicht trivial und wird durch das folgende Diagramm verdeutlicht.
+              <figure>
+                <pre class="diagram mermaid">
+                  flowchart TB
+                    subgraph Daten-Dienste-Kopplung
+                        direction BT 
+                        subgraph service["fa:fa-network-wired Dienst"]
+                            subgraph service-description[fa:fa-file-code Selbstbeschreibung / Capabilities]
+                                direction LR
+                                A[Dienst-Metadaten]
+                                B[Operationen]
+                                C[Content]
+                                
+                            end
+                        end
+                        subgraph metadata["Metadaten (ISO19139)"]
+                            direction BT
+                            E[fa:fa-file-code Dienst-Metadaten] & F[fa:fa-file-code Datensatz-Metadaten]
+                        end
+                    end
+                    subgraph Daten
+                        direction LR
+                        G[(Datensatz)] & H["Datensatzidentifikator {codesspace}/{code}"]
+                    end
+                    F-- beschreibt -->G
+                    
+                    C-- "fa:fa-link href [1..n]" -->F
+                    E-- beschreibt -->service
+                    E-- fa:fa-link href -->service-description
+                    F-- beinhaltet -->H
+                    C-. "referenziert [1..n]" .->H
+                    E-. "referenziert [1..n]" .->H
+                    E-- "fa:fa-link href [1..n]" -->F
+                    service-- liest -->G
+                    H-- identifiziert -->G
+                </pre> 
+                <figcaption>Beziehungen zwischen Datensätzen, Metadaten und Diensten</figcaption>
+              </figure>
+              Bezogen auf die Dienst-Metadaten haben wir es hier mit einem Henne-Ei-Problem zu tun. Metadaten zum Dienst finden sich sowohl 
+              in den Selbstbeschreibungen der Dienste, als auch in den zugehörigen ISO19139-Dokumenten. Bei der Umsetzung von INSPIRE wird das
+              Problem derart gelöst, dass man entweder den Mindestumfang an Metadaten in den Selbstbeschreibungen ergänzt, oder dort einen Link auf
+              den jeweiligen ISO19139 Dienst-Metadatensatz angibt. 
+            </p>
+          </section>
+        </section>
+        <section>
+            <h2>Bereitstellungsalternativen für unterschiedlichen Arten von Geodaten</h2>
+            <p>
+              <figure>
+                  <pre class="diagram mermaid">
+                      %%{init: {"flowchart": {"htmlLabels": false}} }%%
+                      flowchart LR
+                          A[Rasterdaten] --> B[WCS]
+                          A --> F[ATOM-Feed]
+                          D[Vektordaten] --> F
+                          D --> E[WFS]
+                          D --> G[OGC API-Features]
+                          H[Sensordaten] --> I[OGC SensorThings API]
+                  </pre> 
+                  <figcaption>Typen von Downloaddiensten</figcaption>
+              </figure>
+            </p>
+        </section>  
+      </section>  
+      <section id="conformance">
+      <!--<section> 
+        <h2>Anforderungen</h2> - will be automatically set by class conformance-->
+        <section class="normative">
+          <h2>Allgemein</h2>
+          <section>
+            <h2>Verfügbarkeit</h2>
+            <p>
+              <p>Erläuterung</p>
+              <p>Im Rahmen der Umsetzung der INSPIRE-Richtlinie wurde eine Rechtsverordnung [INS VO Netzdienste]
+                erlassen, die eine Verfügbarkeit von 99% für die Netzdienste der europäischen Geodateninfrastruktur
+                vorgibt. Erst mit einer hohen Verfügbarkeit können die Ziele einer GDI erreicht werden. Die Nutzer
+                sollen direkt über das Internet auf die verteilten Geodaten zugreifen, womit die Notwendigkeit
+                des Vorhaltens von Sekundärdaten (offline) in den meisten Fällen entfallen kann. Die für INSPIRE
+                geltende Anforderung wird für die GDI-DE als Empfehlung übernommen.</p>
+              <h3>Empfehlung</h3>
+              <p class="recommendation">
+                Die Downloaddienste SOLLEN eine Verfügbarkeit von mindestens 99% gewährleisten.
+              </p>
+            </p>
+          </section>
+          <section>
+            <h2>Sprache</h2>
+            <p>
+              <p>Erläuterung</p>
+              <p>Die Inhalte von Rückgaben in der Antwort auf die Anfragen an die Downloaddienste werden grundsätzlich in
+                deutscher Sprache ausgegeben. Sollen weitere Sprachen bereitgestellt werden, ist der von INSPIRE vorgesehene,
+                zusätzliche Parameter LANGUAGE zu nutzen.</p>
+              <h3>Anforderung</h3>
+              <p class="requirement">Die Inhalte von Rückgaben in der Antwort auf die Anfragen an die Downloaddienste MÜSSEN in
+                deutscher Sprache ausgegeben werden.</p>
+              <h3>Empfehlung</h3>
+              <p class="recommendation">Werden weitere Sprachen angeboten, so SOLL dies analog zu
+                den Handlungsempfehlungen für INSPIRE-Downloaddienste [[?GDI-DE HE INS
+                Downloaddienste]] erfolgen.</p>
+            </p>
+          </section>
+          <section>
+            <h2>Zeichenkodierung von textbasierten Rückgabewerten</h2>
+            <p>
+              <p>Erläuterung</p>
+              <p>Bei der Verwendung unterschiedlicher Werkzeuge für die Nutzung von Downloaddiensten ist es notwendig, sich auf
+                  eine einheitliche Zeichenkodierung zu einigen.</p>
+              <h3>Anforderung</h3>
+              <p class="requirement">Textbasierte Rückgabewerte MÜSSEN UTF-8 kodiert sein.</p>
+            </p>
+          </section>
+          <section>
+            <h2>Koordinatenreferenzsysteme</h2>
+            <p>Erläuterung</p>
+            <p>
+              Geodaten lassen sich nur dann miteinander kombinieren, wenn sie in einem einheitlichen Koordinatenreferenzsystem (CRS) vorliegen. Die meisten Downloaddienste
+              bieten die Möglichkeit, Daten in verschiedenen CRS abzufragen. Die Transformation erfolgt dabei oft serverseitig und der Aufwand für den Nutzer wird reduziert.
+              Die Koordinatenreferenzsysteme selbst haben in der Regel einen spezifischen räumlichen Bezug oder Kontext.</p>
+            <table id="table-namespaces" class="simple">
+              <thead><tr><th>EPSG-Code</th><th>Bezeichnung</th><th>räumlicher Kontext</th></tr></thead>
+              <tbody>
+                <tr><td><a href="https://spatialreference.org/ref/epsg/4326/" target="_blank">4326</a></td><td><code>WGS 84 - WGS84 - World Geodetic System 1984, used in GPS</code></td><td><code>Global</code></td></tr>
+                <tr><td><a href="https://spatialreference.org/ref/epsg/3857/" target="_blank">3857</a></td><td><code>WGS 84 / Pseudo-Mercator for web mapping- WGS84 - World Geodetic System 1984</code></td><td><code>Global</code></td></tr>
+                <tr><td><a href="https://spatialreference.org/ref/epsg/25832/" target="_blank">25832</a></td><td><code>ETRS89 / UTM Zone 32N - ETRS89 - European Terrestrial Reference System 1989</code></td><td><code>Europäisch</code></td></tr>
+                <tr><td><a href="https://spatialreference.org/ref/epsg/25833/" target="_blank">25833</a></td><td><code>ETRS89 / UTM Zone 33N - ETRS89 - European Terrestrial Reference System 1989</code></td><td><code>Europäisch</code></td></tr>
+                <tr><td><a href="https://spatialreference.org/ref/epsg/3035/" target="_blank">3035</a></td><td><code>ETRS89-extended / LAEA Europe - ETRS89 LAEA - European Terrestrial Reference System 1989</code></td><td><code>Europäisch</code></td></tr>
+                <tr><td><a href="https://spatialreference.org/ref/epsg/4258/" target="_blank">4258</a></td><td><code>ETRS89 - ETRS89 - European Terrestrial Reference System 1989</code></td><td><code>Europäisch</code></td></tr>
+              </tbody>
+            </table>
+            <p>
+              Im Hinblick auf eine internationale Interoperabilität ist es eigentlich sinnvoll, ein globales CRS festzulegen, das alle Downloaddienste unterstützen müssen. 
+              Leider geht eine Transformation zwischen zwei verschiedenen CRS in einigen Fällen mit der Verschlechterung der Lagegenauigkeit einher. Unter diesen
+              Umständen kann es notwendig sein, die Daten nur in dem System anzubieten, in dem sie auch erfasst bzw. verwaltet werden. Die Verantwortung für einen Genauigkeitsverlust 
+              durch eine Transformation übernimmt in diesem Fall der Nutzer. Da es aus den genannten Gründen nicht möglich ist, ein globales CRS zu fordern, wird an dieser Stelle
+              nur eine abgestufte Liste von Empfehlungen aufgeführt.
+            </p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Zur Einhaltung internationaler Interoperabilität SOLLEN Download-Dienste Anfragen im folgenden Koordinatenreferenzsystem
+              unterstützen: EPSG:4326.</p>
+            <p class="ednote" title="GEOJSON CRS">
+                Hinweis auf umgekehrte Achsreihenfolge bei GeoJSON - epsg vs. ogc ...
+            </p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Download-Dienste, die Daten für einen deutschlandweiten Kontext bereitstellen, SOLLEN zusätzlich die
+              Koordinatenreferenzsysteme EPSG:25832 und EPSG:25833 unterstützen.</p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Download-Dienste, die Daten für einen europäischen Kontext bereitstellen, SOLLEN zusätzlich die
+              Koordinatenreferenzsysteme EPSG:4258 und EPSG:3035 unterstützen.</p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Um eine möglichst breite Nutzbarkeit zu gewährleisten, SOLLEN Anfragen auch für das folgende Koordinatenreferenzsystem
+              möglich sein: EPSG:3857.</p>
+          </section>
+          <section>
+            <h2>Datenmodelle</h2>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Bei der Bereitstellung von Daten über einen Downloaddienst SOLLEN möglichst einfache
+              Datenmodelle angeboten werden.</p>
+          </section>
+          <section>
+            <h2>Anforderungen an IT-Komponenten für die Bereitstellung von Diensten</h2>
+            <section>
+              <h2>Verwendung von CORS-Headern</h2>
+              <p>Erläuterung</p>
+              <p>Die Nutzung von standardisierten Diensten in Webapplikationen erfolgt größtenteils unter Zuhilfenahme von
+                JavaScript-Bibliotheken, wie z.B. OpenLayers oder Leaflet. Diese Bibliotheken ermöglichen eine einfache Integration
+                der Dienste in Webanwendungen. Die Datenquellen werden dabei i.d.R. direkt vom Browser des jeweiligen Nutzers
+                angefragt (verteilte Architektur auf Basis des HTTP). In manchen Fällen ist es dabei notwendig, dass die
+                Webanwendung die verteilten Server direkt anfragen muss (z. B. Abruf von Metadaten, Capabilities-Dokumenten oder geometrischen Objekten). Aufgrund der Same-Origin Policy - einer Sicherheitseinstellung von Browsern - wird das Aufrufen von
+                verteilten Ressourcen grundsätzlich verhindert. Abhilfe schafft hier die Empfehlung des W3C zum Cross-Origin
+                Resource Sharing (CORS).</p>
+              <h3>Empfehlung</h3>
+              <p class="recommendation">Der HTTP-Header (serverseitig) SOLL bei den jeweils bereitgestellten Operationen zusätzlich
+                folgenden Eintrag enthalten: Access-Control-Allow-Origin: *</p>
+              <h2>HTTP-Methoden</h2>
+              <h3>Empfehlung</h3>
+              <p class="recommendation">Aufgrund möglicher Längenbeschränkungen der URL bei der Verwendung der HTTP GET
+                Methode, SOLLEN die Serverkomponenten der betroffenen Schnittstellen auch HTTP POST unterstützen.</p>
+              <h2>Absicherung</h2>
+              <p>Erläuterung</p>
+              <p>Soll ein Downloaddienst nur einem ausgewählten Nutzerkreis zur Verfügung gestellt werden, 
+                so muss dieser, zur Übermittlung der Authentifizierungsinformationen, mindestens das 
+                Standardverfahren für HTTP unterstützen.</p>
+              <h3>Anforderung</h3>
+              <p class="requirement">Zur Absicherung von Downloaddiensten MUSS mindestens das Standardverfahren zur Authentifizierung 
+                von HTTP (RFC2617 - HTTP-Authentication) angeboten werden.</p>
+            </section>
+          </section>
+        </section>
+        <!-- special services -->
+        <section>
+          <h2>Web Feature Service (<abbr title="Web Feature Service">WFS</abbr>)</h2>
+          <p class="ednote" title="Bearbeiter">
+            Armin, ...
+          </p>
+          <section>
+            <h2>Art der Bereitstellung</h2>
+            <p>Erläuterung</p>
+            <p>Es gibt zwei häufig verwendete Versionen des WFS-Standards mit unterschiedlichem Verbreitungsgrad: WFS
+              Version 1.1.0 [[OGC WFS 1.1.0]] und WFS Version 2.0.0 [[iso-19142-2010]]. Die meisten Softwarekomponenten, die über eine WFS-Schnittstelle
+              verfügen, unterstützen auch die neuere WFS-Version 2.0.0. Ein Vorteil der neueren Version ist der native Support für Paging. Mithilfe dieser 
+              Funktion lassen sich auch sehr umfangreiche Datensätze automatisiert herunterladen. Manche Softwarekomponenten bietet diese Funktion auch
+              schon bei der WFS Version 1.1.0 an.</p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Wird ein Downloaddienst auf Basis von WFS angeboten, so SOLL dieser die Version 2.0.0, 1.1.0 oder beide Versionen
+              unterstützen.</p>
+          </section>
+          <section>
+            <h2>Persistenz / Identität</h2>
+            <p>Erläuterung</p>
+            <p>Bei einer SOA (service-oriented architecture) ist es systemrelevant, dass die Datenquellen dauerhaft referenzierbar
+              sind. Im Falle von Downloaddiensten auf Basis von WFS gibt es für jeden Service eine URL, über die weitere
+              Informationen zum Dienst in Form von Capabilities-Dokumenten verfügbar gemacht werden. Diese Capabilities-Dokumente beinhalten zum einen die Zugriffsadressen (URLs) zu den jeweiligen technischen Operationen
+              (DescribeFeatureType, GetFeature etc.), zum anderen enthalten sie Metadaten über den Inhalt, welcher über den
+              Dienst publiziert wird (Schema des FeatureTypes, Liste des FeatureTypes, etc.).</p>
+            <p>Downloaddienste können über die URL zum Capabilities-Dokument in Geschäftsprozesse und Applikationen
+              eingebunden werden. Die Anwendung kommuniziert selbständig über das Netzwerk mit der jeweiligen Datenquelle
+              und erhält als Antwort die benötigten Informationen bzw. Objekte.</p>
+            <p>Die eindeutige Referenzierung des Contents (FeatureType) erfolgt dabei durch eine Kombination der URL des
+              Servers mit dem <Name> Element des jeweiligen FeatureType. Dienst-URL und <Name> von FeatureTypes sollen
+              nach Veröffentlichung eines Dienstes nicht mehr verändert werden. Die Änderung des Wertes hätte zur Folge, dass
+              alle abhängigen Prozesse und Applikationen angepasst werden müssten. Für den Betrieb und die Funktionsfähigkeit
+              einer Geodateninfrastruktur (GDI) ist die Persistenz dieser Identifikatoren von hoher Bedeutung.</p>
+            <p>Um die Nutzer in die Lage zu versetzen, sich über Änderungen von verteilten Diensten zu informieren, sehen die
+              zugrundeliegenden Spezifikationen den optionalen Parameter UPDATESEQUENCE bei einem GetCapabilities Request
+              vor, dessen Unterstützung aus dem o. g. Grund empfohlen wird.</p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Der UPDATESEQUENCE Parameter der GetCapabilities Operation SOLL unterstützt
+              werden.</p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Der Wert des UPDATESEQUENCE Parameters SOLL als String in Form eines ISO
+              8601:2004 Zeitstempels - CCYY-MM-DDThh:mm:ss.sssZ - implementiert werden.</p>
+          </section>
+          <section>
+            <h2>Objektartennamen / Identifikatoren</h2>
+            <p>Erläuterung</p>
+            <p>Das FeatureType <Name> Element beim WFS ist ein Identifikator, der grundsätzlich von Software genutzt wird
+              (Maschine-Maschine-Kommunikation). Um Fehler beim Auslesen eines Capabilities-Dokumentes auszuschließen,
+              sollten sich diese Identifikatoren nur aus Zeichen zusammensetzen, deren Verwendung in unterschiedlichen
+              Programmiersprachen unbedenklich ist. Außerdem sollte die Zahl der verwendeten Zeichen nicht zu groß sein, da es
+              sonst bei Clients, die Datenanfragen nur über HTTP GET umsetzen, zu Fehlern bei der Übertragung der Anfragen
+              kommen kann.</p>
+            <h3>Anforderung</h3>
+            <p class="requirement">FeatureType-Namen MÜSSEN innerhalb eines Dienstes eindeutig sein und
+              folgendem regulären Ausdruck entsprechen: [0-9a-zA-Z\.\-_:+]</p>
+            <p class="ednote" title="Hinweis">
+              Der reguläre Ausdruck stimmt nicht für alle Versionen von WFS - außerdem darf der String nicht mit einer Zahl beginnen.
+            </p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Die Länge der Zeichenkette des FeatureType-Namen bzw. -Identifikators SOLL möglichst kurz sein.</p>
+            </p>
+          </section>
+          <section>
+            <h2>Einschränkung der Objektzahl</h2>
+            <h3>Anforderung</h3>
+            <p class="requirement">Werden umfangreiche Daten publiziert, die sich nicht mit einem einzelnen Request herunterladen lassen, so MUSS die WFS-Schnittstelle
+              Paging unterstützen.</p>
+            <h3>Empfehlung</h3>
+            <p>Zur Vermeidung von Überlastungen von Client und Server, soll die maximal auslieferbare Zahl von Objekten mit einem Request beschränkt werden. Die Obergrenze 
+              ist dabei abhängig von der Leistungsfähigkeit des Servers und der Komplexität der Objekte.
+            </p>
+            <p class="ednote" title="Hinweis">
+              Bei einfachen Objekten, wie z.B. Flurstücken, sind 100.0000 Objekte pro Request meist kein Problem.
+            </p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Die Information über die maximale Zahl der abfragbaren Objekte eines WFS SOLL im 
+              Capabilities-Dokument in Form eines Constraints angegeben werden.</p>
+              <aside class="example" title="Angabe des Constraints bei Beschränkung der Objektzahl">
+                <pre>
+                ...
+                &lt;ows:Constraint name="CountDefault"&gt;
+                  &lt;ows:NoValues/&gt;
+                  &lt;ows:DefaultValue&gt;1000&lt;/ows:DefaultValue&gt;
+                &lt;/ows:Constraint&gt;
+                ...
+                </pre>
+              </aside>
+          </section>
+          <section>
+            <h2>Metadaten (in Capabilities und ISO-Dokumenten)</h2>
+            <p>Bei den Metadaten des Dienstes (Capabilities-Dokument) wird zwischen Service Level und Content Level unterschieden. Die Service Level Informationen beziehen sich auf Informationen zum Dienst
+              und zum Dienstanbieter, die Content Level Informationen beschreiben die bereitgestellten FeatureTypes.
+              Zusätzlich zu den Metadaten in den Capabilities-Dokumenten des Dienstes ist ein ISO 19139
+              Dokument zu erstellen und im Internet zu publizieren. Das Mapping zwischen den Elementen des
+              Capabilities-Dokumentes und des ISO-Dokumentes wird im Folgenden dargelegt.</p>
+              <figure>
+                <pre class="diagram mermaid">
+                    
+                    flowchart LR
+                      subgraph WFS 1.1.0 / 2.0.0
+                          subgraph Capabilities
+                              A[INSPIRE Extension]
+                              B[FeatureType 1]
+                              C[FeatureType n]
+                          end
+                      end
+                      direction LR
+                      subgraph Geodaten
+                          D[Datensatz 1]
+                          E[Datensatz n]
+                      end
+                      subgraph CSW 2.0.2        
+                          F[Dienste-Metadatensatz]
+                          G[Daten-Metadatensatz 1]
+                          H[Daten-Metadatensatz n]
+                      end
+                      A-- MetadataURL -->F
+                      F-- connectPoint -->A
+                      A-- SpatialDataSetIdentifier 1  -->D
+                      A-- SpatialDataSetIdentifier 2  -->E
+                      B-- MetadataURL  -->G
+                      C-- MetadataURL  -->H
+                      G-- MD_Identifier -->D
+                      H-- MD_Identifier -->E
+                      F-- operatesOn -->G
+                      F-- operatesOn -->H
+                </pre> 
+                <figcaption>Daten-Service-Kopplung 2</figcaption>
+            </figure>
+            <section>
+              <h2>Service Level Metadaten</h2>
+              <p>Erläuterung</p>
+              <p>Die Metadaten im Service Level der Capabilities beschreiben den kompletten Dienst, nicht die
+                Datenquellen des Dienstes.</p>
+              <h3>Anforderung</h3>
+              <p class="requirement">Für die bereitzustellenden Service-Metadatenelemente in den Capabilities- und
+                jeweiligen ISO-Dokumenten gilt die nachfolgende Tabelle.</p>
+                <p>Grau unterlegte Felder sind verpflichtend.</p>
+                <table id="table-wfs-capabilities-metadata" class="simple">
+                  <thead><tr><th>WFS (1.1.0 / 2.0.0)</th><th>Erläuterung</th><th>ISO19139 XPATH</th></tr></thead>
+                  <tbody>
+                  <tr><td class="field_mandatory"><code>/wfs:WFS_Capabilities/ows:ServiceIdentification/ows:Title</code></td><td>Titel des Dienstes</td><td><code>/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:citation/gmd:CI_Citation/gmd:title/gco:CharacterString</code></td></tr>
+                  <tr><td class="field_mandatory"><code>/wfs:WFS_Capabilities/ows:ServiceIdentification/ows:Abstract</code></td><td>Beschreibung des Dienstes</td><td><code>/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:citation/gmd:CI_Citation/gmd:abstract/gco:CharacterString</code></td></tr> 
+                  <tr><td><code>/wfs:WFS_Capabilities/ows:ServiceIdentification/ows:Keywords</code></td><td>Liste der Schlüsselwörter</td><td><code>/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords</code></td></tr>
+                  <tr><td class="field_mandatory"><code>/wfs:WFS_Capabilities/ows:ServiceIdentification/ows:Fees</code></td><td>Angaben zu Nutzungseinschränkungen und Nutzungsbedingungen (Kosten, Gebühren, Lizenzen, Quellenangabe, etc.)</td><td><code>/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints[gmd:useConstraints/gmd:MD_RestrictionCode/@codeListValue="otherRestrictions"]/gmd:otherConstraints/gmx:Anchor/text()</code></td></tr>
+                  <tr><td class="field_mandatory"><code>/wfs:WFS_Capabilities/ows:ServiceIdentification/ows:AccessConstraints</code></td><td>Angaben zu Einschränkungen des öffentlichen Zugangs</td><td><code>/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints[gmd:accessConstraints/gmd:MD_RestrictionCode/@codeListValue="otherRestrictions"]/gmd:otherConstraints/gmx:Anchor/text()</code></td></tr>
+                  <tr><td class="field_mandatory"><code>/wfs:WFS_Capabilities/ows:ServiceProvider/ows:ProviderName</code></td><td>Kontaktorganisation</td><td><code>/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:pointOfContact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString</code></td></tr>
+                  <tr><td><code>/wfs:WFS_Capabilities/ows:ServiceProvider/ows:ProviderSite/@xlink:href</code></td><td>Link zur Webseite des Diensteanbieters</td><td><code>/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:pointOfContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL</code></td></tr>
+                  <tr><td><code>/wfs:WFS_Capabilities/ows:ServiceProvider/ows:ServiceContact/ows:IndividualName</code></td><td>Kontaktperson</td><td><code>/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:pointOfContact/gmd:CI_ResponsibleParty/gmd:individualName/gco:CharacterString</code></td></tr>
+                  <tr><td><code>/wfs:WFS_Capabilities/ows:ServiceProvider/ows:ServiceContact/ows:PositionName</code></td><td>Position der Kontaktperson</td><td><code>/gmd:MD_Metadata/gmd:contact/gmd:CI_ResponsibleParty/gmd:positionName/gco:CharacterString</code></td></tr>
+                  <tr><td class="field_mandatory"><code>/wfs:WFS_Capabilities/ows:ServiceProvider/ows:ServiceContact/ows:ContactInfo/ows:Address/ows:City</code></td><td>Ort</td><td><code>/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:pointOfContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:city/gco:CharacterString</code></td></tr>
+                  <tr><td><code>/wfs:WFS_Capabilities/ows:ServiceProvider/ows:ServiceContact/ows:ContactInfo/ows:Address/ows:DeliveryPoint</code></td><td>Straße und Hausnummer</td><td><code>/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:pointOfContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:deliveryPoint/gco:CharacterString</code></td></tr>
+                  <tr><td><code>/wfs:WFS_Capabilities/ows:ServiceProvider/ows:ServiceContact/ows:ContactInfo/ows:Address/ows:AdministrativeArea</code></td><td>Bundesland der postalischen Kontaktadresse. Angaben erfolgen per ISO3166-2Code (Bsp.: "DE-RP") zur Unterstützung automatischer Auswertungen.</td><td><code>/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:pointOfContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:administrativeArea/gco:CharacterString</code></td></tr>
+                  <tr><td class="field_mandatory"><code>/wfs:WFS_Capabilities/ows:ServiceProvider/ows:ServiceContact/ows:ContactInfo/ows:Address/ows:PostalCode</code></td><td>Postleitzahl</td><td><code>/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:pointOfContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:postalCode/gco:CharacterString</code></td></tr>
+                  <tr><td class="field_mandatory"><code>/wfs:WFS_Capabilities/ows:ServiceProvider/ows:ServiceContact/ows:ContactInfo/ows:Address/ows:Country</code></td><td>Staat, Angaben erfolgen per ISO3166-1 Code ("DE")</td><td><code>/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:pointOfContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:country/gco:CharacterString</code></td></tr>
+                  <tr><td class="field_mandatory"><code>/wfs:WFS_Capabilities/ows:ServiceProvider/ows:ServiceContact/ows:ContactInfo/ows:Address/ows:ElectronicMailAddress</code></td><td>E-Mailadresse der Kontaktorganisation</td><td><code>/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:pointOfContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString</code></td></tr>
+                  <tr><td><code>/wfs:WFS_Capabilities/ows:ServiceProvider/ows:ServiceContact/ows:ContactInfo/ows:OnlineResource/@xlink:href</code></td><td>Homepage des Datenbereitstellers</td><td><code></code></td></tr>
+                  <tr><td><code>/wfs:WFS_Capabilities/ows:ServiceProvider/ows:ServiceContact/ows:ContactInfo/ows:Phone/ows:Voice</code></td><td>Telefonnummer der Kontaktorganisation</td><td><code>/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:pointOfContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:voice/gco:CharacterString</code></td></tr>
+                  <tr><td><code>/wfs:WFS_Capabilities/ows:ServiceProvider/ows:ServiceContact/ows:ContactInfo/ows:Phone/ows:Facsimile</code></td><td>Faxnummer der Kontaktorganisation</td><td><code></code></td></tr>
+                  </tbody>
+                  </table>
+                <p class="ednote" title="Tabelle prüfen">
+                  ...
+                </p>
+            </section>
+            <section>
+              <h2>Verlinkung des Dienst-Metadatensatzes im Capabilities-Dokument</h2>
+              <p>Erläuterung</p>
+              <p>Die notwendige Verlinkung eines Service-Metadatensatzes im Capabilities-Dokument erfolgt auf dem zur Umsetzung von INSPIRE gewählten Weg
+                über die Nutzung einer Extension. Die Erweiterung kann über die Angabe von zusätzlichen Namensräumen oder die Verlinkung eines Schemas im 
+                Header des XML erfolgen. Da nicht sichergestellt werden kann, dass das Schema dauerhaft auf Seiten der EU gehostet wird, soll der Weg über 
+                die Angabe der notwendigen Namensräume verwendet werden.  
+              </p>
+              <h3>Empfehlung</h3>
+              <p class="recommendation">Zur Erweiterung der Capabilities-Dokumente mit den notwendigen Informationen SOLL der Header um folgende Namensräume ergänzt
+                werden: <b>xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0"</b>, <b>xmlns:inspire_dls="http://inspire.ec.europa.eu/schemas/inspire_dls/1.0"</b>
+              </p>
+              <h3>Anforderung</h3>
+              <p class="requirement">Im Capabilities-Dokument ist ein Dienst-Metadatensatz zu verlinken.
+                Die Verlinkung MUSS entsprechend den INSPIRE-Vorgaben erfolgen (siehe [[GDI-DE HE INS Downloaddienste]]). Es ist dabei freigestellt, ob der Link 
+                direkt auf einen Metadatensatz verweist, oder es sich um einen GetRecordById-Request handelt. Wichtig ist nur, dass der richtige MimeType angegeben wird.
+              </p>
+                <aside class="example" title="Die Verlinkung zum Dienst-Metadatensatz sowie die Angabe der SpatialDataSetIdentifier erfolgt im ows:ExtendedCapabilities Element">
+                  <pre>
+                    ...
+                    &lt;ows:ExtendedCapabilities&gt;
+                      &lt;inspire_dls:ExtendedCapabilities&gt;
+                        &lt;inspire_common:MetadataUrl xsi:type="inspire_common:resourceLocatorType"&gt;
+                          &lt;inspire_common:URL&gt;
+                            https://www.geoportal.rlp.de/mapbender/php/mod_featuretypeISOMetadata.php?SERVICE=WFS&outputFormat=iso19139&Id=2712
+                          &lt;/inspire_common:URL&gt;
+                          &lt;inspire_common:MediaType&gt;application/vnd.iso.19139+xml&lt;/inspire_common:MediaType&gt;
+                        &lt;/inspire_common:MetadataUrl&gt;
+                      &lt;/inspire_dls:ExtendedCapabilities&gt;
+                    &lt;/ows:ExtendedCapabilities&gt;
+                    ...
+                  </pre>
+                </aside>
+              <h3>Empfehlung</h3>
+              <p class="recommendation">Je nach Dokumententyp SOLL als MediaType entweder <b>application/vnd.ogc.csw.GetRecordByIdResponse_xml</b> oder
+                <b>application/vnd.iso.19139+xml</b> angegeben werden.</p>  
+            </section>
+            <section>
+              <h2>Content Level Metadaten im Capabilities-Dokument</h2>
+              <h3>Anforderung</h3>
+              <p class="requirement">Für die bereitzustellenden Content (FeatureType)-Metadatenelemente in den
+                Capabilities-Dokumenten gilt nachfolgende Tabelle. </p>
+                <p>Grau unterlegte Felder sind verpflichtend.</p>
+                <table id="table-wfs-capabilities-content-metadata" class="simple">
+                  <thead><tr><th>WFS (1.1.0 / 2.0.0)</th><th>Erläuterung</th></tr></thead>
+                  <tbody>
+                  <tr><td class="field_mandatory"><code>/wfs:WFS_Capabilities/FeatureTypeList/FeatureType/Title</code></td><td>Titel des Featuretypes</td></tr>
+                  <tr><td class="field_mandatory"><code>/wfs:WFS_Capabilities/FeatureTypeList/FeatureType/Abstract</code></td><td>Beschreibung des Featuretypes</td></tr> 
+                  <tr><td class="field_mandatory"><code>/wfs:WFS_Capabilities/FeatureTypeList/FeatureType/MetadataURL/@xlink:href</code></td><td>Link zu einem ISO19139-kodierten Metadatensatz der Datengrundlage dieses Featuretypes. (Hinweis: Die genaue Umsetzung der Daten-Dienste-Kopplung wird in einem eigenen Abschnitt erläutert.) </td></tr> 
+                  </tbody>
+                </table>
+            </section>
+            <section>
+              <h2>Daten-Dienste-Kopplung</h2>
+              <p>Erläuterungen</p>
+              <p>
+                  Die Daten-Dienste-Kopplung erfolgt in den Capabilities-Dokumenten über die Angabe eines oder
+                  mehrerer MetadataURL-Einträge je Featuretype. Jeder MetadataURL-Eintrag verlinkt auf die Metadaten des
+                  zugehörigen Datensatzes, der durch den jeweiligen FeatureType bereitgestellt wird.
+                  Um den Nutzern das „Information Retrieval“ aus den Katalogen der jeweiligen
+                  Geodateninfrastrukturen zu erleichtern, soll des Weiteren der von INSPIRE vorgesehene Ansatz
+                  Verwendung finden (siehe [[GDI-DE HE INS Downloaddienste]]). Dieser legt fest, dass für jeden
+                  FeatureType des WFS in den Capabilities-Dokumenten zusätzlich die
+                  Ressourcenidentifikatoren der Datensätze angegeben werden. Im Gegensatz zum WMS erfolgt die Angabe der
+                  Identifikatoren nicht am FeatureType, sondern im Extensionbereich für den Dienst. Die Angabe der Identifikatoren 
+                  erfolgt getrennt nach Namensraum (Codespace) und Code.
+                  Der gesamte Ressourcenidentifikator entspricht dem von INSPIRE geforderten Unique Resource
+                  Identifier (URI) des Geodatensatzes, der über die jeweiligen FeatureTypes bereitgestellt wird (siehe auch [[INS TG
+                  Metadata 2.0.1]]).
+              </p>
+              <p class="ednote" title="Hinweis">
+                Formulierung prüfen und Begriffe vereinheitlichen...
+              </p>
+              <h3>Anforderung</h3>
+              <p class="requirement">Stellt ein Downloaddienst Daten bereit, für die über das Internet
+                erreichbare, standardisierte Metadatensätze existieren, so MÜSSEN diese über eine
+                Daten-Dienste-Kopplung in den jeweiligen FeatureType-Metadaten des Capabilities-Dokuments referenziert werden. Die Kopplung wird über
+                das xlink:href Attribut der MetadataUR-Elemente realisiert.</p>
+                <aside class="example" title="Die Verlinkung zu Daten-Metadatensätzen">
+                  <pre>
+                    ...
+                    &lt;FeatureType&gt;
+                      &lt;Name&gt;ave:Flurstueck&lt;/Name&gt;
+                      &lt;Title&gt;Flurstueck&lt;/Title&gt;
+                      ...
+                      &lt;MetadataURL xlink:href="https://www.geoportal.rlp.de/mapbender/php/mod_dataISOMetadata.php?outputFormat=iso19139&id=30cc0a9a-cbad-66e3-68a5-7b75544814d8"/&gt;
+                      &lt;MetadataURL xlink:href="https://www.geoportal.rlp.de/mapbender/php/mod_dataISOMetadata.php?outputFormat=iso19139&id=5e410c1e-8f71-c62c-2cd4-4344e790e623"/&gt;
+                      ...
+                    &lt;/FeatureType&gt;
+                    ...
+                  </pre>
+                </aside>
+                <h3>Anforderung</h3>
+                <p class="requirement">Die Angabe der Ressourcen- bzw. Datensatzidentifikatoren MUSS im Extensionbereich des Capabilities-Dokumentes erfolgen.</p>
+                  <aside class="example" title="Angabe der Datensatzidentifikatoren">
+                    <pre>
+                      ...
+                      &lt;ows:ExtendedCapabilities&gt;
+                        &lt;inspire_dls:ExtendedCapabilities&gt;
+                          ...
+                          &lt;inspire_dls:SpatialDataSetIdentifier&gt;
+                            &lt;inspire_common:Code&gt;30cc0a9a-cbad-66e3-68a5-7b75544814d8&lt;/inspire_common:Code&gt;
+                            &lt;inspire_common:Namespace&gt;https://registry.gdi-de.org/id/de.rp.vermkv/&lt;/inspire_common:Namespace&gt;
+                          &lt;/inspire_dls:SpatialDataSetIdentifier&gt;
+                          &lt;inspire_dls:SpatialDataSetIdentifier&gt;
+                            &lt;inspire_common:Code&gt;5e410c1e-8f71-c62c-2cd4-4344e790e623&lt;/inspire_common:Code&gt;
+                            &lt;inspire_common:Namespace&gt;https://registry.gdi-de.org/id/de.rp.vermkv/&lt;/inspire_common:Namespace&gt;
+                          &lt;/inspire_dls:SpatialDataSetIdentifier&gt;
+                          ...
+                        &lt;/inspire_dls:ExtendedCapabilities&gt;
+                      &lt;/ows:ExtendedCapabilities&gt;
+                      ...
+                    </pre>
+                  </aside>
+              <h3>Empfehlung</h3>
+              <p class="recommendation">Stellt ein Downloaddienst Daten bereit, für die noch keine
+                  standardisierten Metadaten existieren, so sollen diese erstellt und über das Internet
+                  verfügbar gemacht werden.</p>
+              <h3>Anforderung</h3>
+              <p class="requirement">Die zur Umsetzung der Daten-Dienste-Kopplung genutzten MetadataURL-Elemente MÜSSEN entweder auf valide ISO19139-Dokumente
+                oder GetRecordById-Requests von Katalogdiensten verweisen.</p>
+            </section>
+            <section>
+              <h2>Ausgabeformate</h2>
+              <p>Erläuterungen</p>
+              <p>Das Standardausgabeformat bei WFS ist normalerweise GML. Da die meisten Serverkomponenten in der Lage sind weitere Ausgabeformate bereitzustellen,
+                macht es Sinn, auch zusätzliche, insbesondere weit verbreitete, Datenformate anzubieten.
+              </p>
+              <h3>Empfehlung</h3>
+              <p class="recommendation">Neben diversen GML-Varianten SOLLEN Downloaddienste auf Basis von WFS auch in der Lage sein, folgende weitere Datenformate
+                bereitzustellen: <b>GeoJSON</b> [[rfc8142]], <b>GeoPackage</b> [[OGC GeoPackage]] und <b>CSV</b> [[rfc4180]]</p>
+                <p class="ednote" title="Hinweis">
+                  Ggf. MimeTypes ergänzen und Referenzen glattziehen ...
+                </p>
+            </section>
+          </section>
+        </section>
+        <!-- end of wfs part -->
+        <section>
+          <h2>INSPIRE ATOM-Feed</h2>
+          <p class="ednote" title="Bearbeiter">
+            Armin, Ralf, 
+          </p>
+          <section>
+            <h2>Art der Bereitstellung</h2>
+            <p>Erläuterung</p>
+            <p>Der Weg zur Bereitstellung von Geodaten über INSPIRE ATOM-Feeds wurde bei der Umsetzung von INSPIRE als 
+              Möglichkeit für den einfachen Download von vordefinierten Datensätzen (oder vordefinierten Teilen eines Datensatzes) entwickelt.
+              Eine Option zur Abfrage von Dateninhalten oder dem Auswählen von benutzerdefinierten Teilmengen von Datensätzen ist nicht gegeben.</p>
+            <p>Ein Grund für die Verwendung des Atom-Standards [[RFC4287]] war die Möglichkeit der direkten Interpretation der Feeds durch
+              verschiedene Browser. Die Feeds können direkt durch die Nutzer der Daten abonniert werden. Der Nutzer kann sich
+              somit über die Aktualisierung der Daten automatisiert informieren lassen. Das von der damaligen INSPIRE Initial Operating
+              Capability Task Force (IOC-TF) vorgeschlagene Verfahren zur Bereitstellung von Geodaten mittels ATOM-Feeds
+              basiert auf einer zweistufigen Lösung, die die gesetzlichen Anforderungen der Durchführungsbestimmungen zu den Netzdiensten [[INS VO Netzdienste]]
+              erfüllt. 
+            <p>Die INSPIRE-Richtlinie sieht grundsätzlich die
+              Bereitstellung von Geodaten über Downloaddienste vor. Eine für diese Dienste geforderte Operation ist die
+              Beschreibung des Dienstes selbst (Get Download Service Metadata).</p>
+              Im Fall von OGC Diensten, wie beispielsweise WMS oder WFS, handelt es sich dabei um das Capabilities-Dokument.
+              Im Fall des INSPIRE ATOM-Ansatzes ist hierzu die Bereitstellung eines so genannten Service Feeds vorgesehen.
+              Für jeden Datensatz, den einen solchen INSPIRE Atom Download Service zur Verfügung stellt, enthält der
+              Service Feed einen Eintrag (<code>&lt;entry&gt;</code> - Element), welcher auf ein zweites sogenanntes Dataset Feed verlinkt.
+              Für den Aufbau der beiden Feeds gibt das Technical Guidance Dokument [[INS TG Download Services]] konkrete Vorgaben.
+            </p>
+            <p>
+              Da sich die Art und Weise Geodaten über dieses Verfahren bereitzustellen in den letzten Jahren europaweit etabliert hat, und 
+              auch einige Softwareprodukte die ATOM-Feeds automatisch generieren können, macht es Sinn, das Verfahren auch in Deutschland 
+              einzusetzen. Eine Alternative zu INSPIRE ATOM-Feeds bieten in Zukunft möglicherweise STAC [[STAC]] bzw. OGC API Records
+              [[OGC API Records - Part 1: Core]]. 
+            </p>
+            <p>Im Kontext von INSPIRE wird bei der Bereitstellung von ATOM-Feeds eine OpenSearch-Schnittstelle erwartet. Diese kann bei einer Nutzung
+              im rein deutschen Kontext entfallen, da diesbezüglich keine gesetzliche Anforderung existiert.
+            </p>
+            <figure id="abb_structure_atom_feed">
+              <pre class="diagram mermaid">
+                flowchart LR
+                G[ISO 19139 Metadaten für Downloaddienst]
+                H[ISO 19139 Metadaten für Datensatz A]
+                K[ISO 19139 Metadaten für Datensatz B]
+                subgraph I[Service Feed]
+                    direction RL
+                    A[Entry A]
+                    B[Entry B]
+                end
+                I--"/feed/link[@rel='describedby]/@href'"-->G
+                A--"/entry/link[@rel='describedby']/@href"-->H
+                B--"/entry/link[@rel='describedby']/@href"-->K
+                subgraph L[Datensatz Feed A]
+                    C[Entry A]
+                    D[Entry B]
+                end
+                subgraph M[Datensatz Feed B]
+                    E[Entry A]
+                    F[Entry B]
+                    N[Entry C]
+                end
+                O["Datensatz A (GML)"]
+                P["Datensatz A (GML, anderes CRS)"]
+                Q["Datensatz B (ZIP-Archiv)"]
+                R["Datensatz B (Shape)"]
+                S["Datensatz B (Shape, anderes CRS)"]
+                A--"/entry/link[@rel='alternate]/@href'"-->L
+                B--"/entry/link[@rel='alternate]/@href'"-->M
+                C--"/entry/link[@rel='alternate]/@href'"-->O
+                D--"/entry/link[@rel='alternate]/@href'"-->P
+                E--"/entry/link[@rel='alternate]/@href'"-->Q
+                F--"/entry/link[@rel='alternate]/@href'"-->R
+                N--"/entry/link[@rel='alternate]/@href'"-->S
+              </pre> 
+              <figcaption>Aufbau INSPIRE ATOM-Feeds</figcaption>
+            </figure>
+            <section>
+              <h2>ATOM-Feed zum Dienst (Service Feed)</h2>
+              <p>Erläuterung</p>
+              <p>Das Service-Feed-Dokument entspricht dem Capabilities-Dokument eines OGC-Dienstes (siehe auch [[OGC OWS Common]]). Die
+                Identifizierung der Inhalte des ATOM-Feeds kann der nachfolgenden Tabelle entnommen werden. (Die
+                Abkürzungen TG Req. und TG Rec. stehen für die Requirements und Recommendations aus dem Technical
+                Guidance Dokument. Die verpflichtenden Anforderungen sind grau hervorgehoben.)</p>
+                <table id="table-atom-feed-metadata" class="simple">
+                  <thead><tr><th>ATOM Service Feed Elemente</th><th>Level (Feed/Entry)</th><th>Erläuterung</th><th>ISO19139 XPATH</th></tr></thead>
+                  <tbody>
+                  <tr><td class="field_mandatory"><code>/feed/title</code></td><td>Feed</td><td>Titel des Feeds (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#511-download-service-feed-feed-title-element" target="_blank">TG Req. 5</a>)</td><td><code></code></td></tr>
+                  <tr><td><code>/feed/subtitle</code></td><td>Feed</td><td>Kurzbeschreibung für das Feed (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#512-download-service-feed-feed-subtitle-element" target="_blank">TG Rec. 1</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/link[@rel=“describedby“]</code></td><td>Feed</td><td>Link auf den jeweiligen Service-Metadatensatz der über einen Discovery Service veröffentlicht werden muss. Die URL kann als GetRecordById-Request (HTTP/GET) oder als direkter Link auf ein ISO 19139-Metadaten-Dokument angegeben werden. (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#513-download-service-feed-feed-link-element--service-metadata" target="_blank">TG Req. 6</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/link[@rel=“self“]</code></td><td>Feed</td><td>URL auf das Service Feed - Selbstreferenz (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#514-download-service-feed-feed-link-element--self-reference" target="_blank">TG Req. 7</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/id</code></td><td>Feed</td><td>Identisch mit /feed/link[@rel=“self“] (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#518-download-service-feed-feed-id-element" target="_blank">TG Req. 9</a>)</td><td><code></code></td></tr>
+                  <tr><td><code>/feed/link[@rel=“alternate“]</code></td><td>Feed</td><td>URLs zu weiteren Beschreibungen, wenn vorhanden. (z.B. HTML Repräsentation oder andere Sprache) (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#517-download-service-feed-feed-link-element--alternative-representation-formats" target="_blank">TG Rec. 2</a>)</td><td><code></code></td></tr>
+                  <tr><td><code>/feed/link[@rel=“search“]</code></td><td>Feed</td><td>Link auf ein OpenSearch Description Dokument (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#515-download-service-feed-feed-link-element--opensearch-description-document" target="_blank">TG Req. 8</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/rights</code></td><td>Feed</td><td>Informationen zu Nutzungsbedingungen und Zugangsbeschränkungen. Vergleichbar mit accessConstraints / fees. (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#519-download-service-feed-feed-rights-element" target="_blank">TG Req. 10</a>)</td><td><code></code></td></tr>
+                  <tr><td><code>/feed/updated</code></td><td>Feed</td><td>Datum der Erstellung oder letzten Aktualisierung des Feeds (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#5110-download-service-feed-feed-updated-element" target="_blank">TG Req. 11</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/author;/feed/author/name;/feed/author/email</code></td><td>Feed</td><td>Angabe von Kontaktinformationen der für den Dienst verantwortlichen Organisation (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#5111-download-service-feed-feed-author-element" target="_blank">TG Req. 12</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/entry/title</code></td><td>Entry</td><td>Titel des Datensatzes (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#5117-download-service-feed-entry-additional-elements" target="_blank">TG Req. 18</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/entry/inspire_dls:spatial_dataset_identifier_code;/feed/entry/inspire_dls:spatial_dataset_identifier_namespace</code></td><td>Entry</td><td>Angabe des Resourcen-Identifikators des Geodatensatzes. Der Identifikator setzt sich zusammen aus einem Code und dem korrespondierenden Namensraum. (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#5113-download-service-feed-entry-inspire-identifier-elements" target="_blank">TG Req. 13</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/entry/link[@rel=“describedby“]</code></td><td>Entry</td><td>Link auf den jeweiligen Daten-Metadatensatz zum <pre>&lt;entry&gt;</pre> Element. Die URL kann als GetRecordById-Request (HTTP/GET) oder als direkter Link auf ein ISO 19139-Metadaten-Dokument angegeben werden. Vergleichbar mit MetadataURL in OWS Capabilities Dokumenten. (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#5114-download-service-feed-entry-link-to-dataset-metadata-record" target="_blank">TG Req. 14</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/entry/link[@rel=“alternate“]</code></td><td>Entry</td><td>Link auf den Dataset Feed. Attribut „type“ muss „application/atom+xml“ sein. (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#5115-download-service-feed-entry-link-to-dataset-feed" target="_blank">TG Req. 15</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/entry/link[@rel=“related“]</code></td><td>Entry</td><td>Im Fall einer „hybriden“ Implementierung des Direktzugriffs-Downloaddienst muss hier der Link auf den GetCapabilities Aufruf des zugehörigen WFS angegeben werden. Das type-Attribut muss application/xml sein. (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#5116-download-service-feed-entry-link-to-wfs-implementation-only-for-hybrid-implementations" target="_blank">TG Req. 16</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/entry/id</code></td><td>Entry</td><td>Identisch mit /feed/link[@rel=“self“] (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#5117-download-service-feed-entry-additional-elements" target="_blank">TG Req. 17</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/entry/title</code></td><td>Entry</td><td>Titel des Datensatzes (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#5117-download-service-feed-entry-additional-elements" target="_blank">TG Req. 18</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/entry/updated</code></td><td>Entry</td><td>(<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#5117-download-service-feed-entry-additional-elements" target="_blank">TG Req. 19</a>)</td><td><code></code></td></tr>
+                  <tr><td><code>/feed/entry/rights</code></td><td>Entry</td><td>Informationen zu Nutzungsbedingungen und Zugangsbeschränkungen. Vergleichbar mit accessConstraints / fees. (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#5117-download-service-feed-entry-additional-elements" target="_blank">TG Rec. 3</a>). Sofern diese Informationen für alle entries gleich sind reicht der Eintrag auf feed Ebene.</td><td><code></code></td></tr>
+                  <tr><td><code>/feed/entry/author</code></td><td>Entry</td><td>Angabe von Kontaktinformationen der für den Dienst verantwortlichen Organisation (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#5117-download-service-feed-entry-additional-elements" target="_blank">TG Rec. 4</a>). Wird sonst vererbt.</td><td><code></code></td></tr>
+                  <tr><td><code>/feed/entry/summary</code></td><td>Entry</td><td>(<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#5118-download-service-feed-entry-summary-element" target="_blank">TG Rec. 5</a>)</td><td><code></code></td></tr>
+                  <tr><td><code>/feed/entry/georss:polygon|point</code></td><td>Entry</td><td>(<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#5119-download-service-feed-entry-georss-element" target="_blank">TG Rec. 6, 7</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/entry/category</code></td><td>Entry</td><td>(<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#5120-download-service-feed-entry-category-element--crss" target="_blank">TG Req. 20</a>)</td><td><code></code></td></tr>
+                  <tr><td><code>/feed/|/feed/entry/link[rel=“self“]/@hreflang</code></td><td>Entry</td><td>(<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#53-language-requirements-for-atom-implementation" target="_blank">TG Req. 36, 37, 38</a>)</td><td><code></code></td></tr>
+                  </tbody>
+                </table>
+              <p class="ednote" title="Die Tabelle ist Bestandteil der TG">
+                Lassen wir drin, da wir nicht wissen, was bei INSPIRE noch alles geändert wird ;-)
+              </p>
+            </section>
+            <section>
+              <h2>ATOM-Feed zum Datensatz (Dataset Feed)</h2>
+              <p>Erläuterung</p>
+              <p>Das Dataset-Feed-Konzept erlaubt es, mehrere <code>&lt;entry&gt;</code> Elemente anzugeben. Damit können auch verschiedene
+                Repräsentationen eines Datensatzes direkt zur Verfügung gestellt werden (unterschiedliche CRS, Datenformate).
+                Ferner kann z. B. ein besonders großer Datensatz in verschiedene Einzelteile aufgesplittet bereitgestellt werden. Die
+                verschiedenen Repräsentationen der Datensätze werden als eigene <entry> Elemente modelliert. Der direkte Zugriff
+                auf die Datensätze erfolgt über URLs, die über eine Liste von <link> Elementen abgebildet werden. Die
+                Repräsentationen und Teile müssen für diesen Zweck über URLs erreichbar sein (siehe auch <a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#52-atom-dataset-feed-containing-download-links-to-a-pre-defined-dataset" target="_blank">TG Req. 26 und 27</a>).</p>
+                <table id="table-atom-feed-metadata-dataset" class="simple">
+                  <thead><tr><th>ATOM Dataset Feed Elemente</th><th>Level (Feed/Entry)</th><th>Erläuterung</th><th>ISO19139 XPATH</th></tr></thead>
+                  <tbody>
+                  <tr><td class="field_mandatory"><code>/feed/title</code></td><td>Feed</td><td>Titel des Feeds (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#52-atom-dataset-feed-containing-download-links-to-a-pre-defined-dataset" target="_blank">TG Req. 21</a>)</td><td><code></code></td></tr>
+                  <tr><td><code>/feed/subtitle</code></td><td>Feed</td><td>Kurzbeschreibung für das Feed (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#52-atom-dataset-feed-containing-download-links-to-a-pre-defined-dataset" target="_blank">TG Rec. 8)</a></td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/link[@rel=“describedby“]</code></td><td>Feed</td><td>Über diesen Link soll eine Beschreibung der Datensätze verfügbar gemacht werden. Für INSPIRE konforme Datensätze soll die INSPIRE Registry verlinkt werden (Beispiel im TG vorhanden). (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#521-dataset-feed-link-element-link-to-spatial-object-descriptions" target="_blank">TG Req. 28</a>)</td><td><code></code></td></tr>
+                  <tr><td><code>/feed/link[@rel=“up“]</code></td><td>Feed</td><td>URL auf das zugehörige Service Feed - soll Rückwärtsnavigation ermöglichen. (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#522-dataset-feed-optional-link-element-link-to-download-feed" target="_blank">TG Rec. 9</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/id</code></td><td>Feed</td><td>Identisch mit /feed/link[@rel=“self“] (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#52-atom-dataset-feed-containing-download-links-to-a-pre-defined-dataset" target="_blank">TG Req. 22</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/rights</code></td><td>Feed</td><td>Informationen zu Nutzungsbedingungen und Zugangsbeschränkungen. Vergleichbar mit accessConstraints / fees. (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#52-atom-dataset-feed-containing-download-links-to-a-pre-defined-dataset" target="_blank">TG Req. 23</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/updated</code></td><td>Feed</td><td>Datum der Erstellung oder letzten Aktualisierung des Feeds (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#52-atom-dataset-feed-containing-download-links-to-a-pre-defined-dataset" target="_blank">TG Req. 24</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/author;/feed/author/name;/feed/author/email</code></td><td>Feed</td><td>Angabe von Kontaktinformationen der für den Dienst verantwortlichen Organisation (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#52-atom-dataset-feed-containing-download-links-to-a-pre-defined-dataset" target="_blank">TG Req. 25</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/entry/title</code></td><td>Entry</td><td>Titel der Repräsentation des Datensatzes - wie beim Service Feed (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#5117-download-service-feed-entry-additional-elements" target="_blank">TG Req. 18</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/entry/link[@rel=“alternate“|@rel=“section“]</code></td><td>Entry</td><td>Fall der Bereitstellung eines Datensatzes über einen einzelnen Link hat das Attribut rel den Wert „alternate“. Im Falle der Bereitstellung über Teile wird der Wert„section“ vorgegeben. Weitere Vorgaben für Attribute (optional, mandatory, conditional): 1. (o) - „length“ - wenn möglich soll die Dateigröße mit angegeben werden (in 8bits ~1 byte), 2. (m) -„type“ - valider Medientype gemäß INSPIRE media-type register - http://inspire.ec.europa.eu/media-types (siehe <a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#525-dataset-feed-guidance-on-media-types" target="_blank">TG Req. 34</a>). Ansonsten Anwendung von http://www.ietf.org/rfc/rfc2046.txt?number=2046 - IANA media-types, 3. (m) - „hreflang“ - Angabe des Codes für die Sprache des Datensatzes, 4. (o) - bbox - gem. georss:box, 5. (o) - time - Zeitangabe gem. ISO8601 (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#523-dataset-feed-entry-link-element-link-to-pre-defined-dataset" target="_blank">TG Req. 29, 30, 31</a>; <a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#524-dataset-feed-guidance-for-datasets-which-contain-multiple-files" target="_blank">TG Req. 32, TG Rec. 10, TG Rec. 11</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>1. /feed/entry/content oder 2. /feed/entry/link[@rel=“alternate“]</code></td><td>Entry</td><td>Wenn mehrere physikalische Dateien bereitgestellt werden, soll eine zusätzliche Beschreibung angegeben werden. Die Beschreibung kann intern (1.) oder extern (2.) erfolgen (siehe Beispiel). (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#523-dataset-feed-entry-link-element-link-to-pre-defined-dataset" target="_blank">TG Req. 33</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/entry/id</code></td><td>Entry</td><td>Identisch mit /feed/link[@rel=“self“] (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#5117-download-service-feed-entry-additional-elements" target="_blank">TG Req. 17</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/entry/updated</code></td><td>Entry</td><td>(<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#5117-download-service-feed-entry-additional-elements" target="_blank">TG Req. 19</a>)</td><td><code></code></td></tr>
+                  <tr><td><code>/feed/entry/georss:polygon|point</code></td><td>Entry</td><td>Alle Vorgaben des Service Feeds gelten auch für das Dataset Feed</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/entry/category</code></td><td>Entry</td><td>Jedes entry Element soll ein category Element beinhalten das die Angabe des Koordinatenreferenzsystems enthält. (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#527-dataset-feed-entry-category-element" target="_blank">TG Req. 35</a>)</td><td><code></code></td></tr>
+                  </tbody>
+                </table>
+              <p class="ednote" title="Die Tabelle ist Bestandteil der TG">
+                Lassen wir drin, da wir nicht wissen, was bei INSPIRE noch alles geändert wird ;-)
+              </p>
+            </section>
+            <!--<figure class="konvention"><figcaption><b>Konvention <bdi class="figno">01</bdi>:</b> <span class="fig-title">Kontaktinformationen MÜSSEN mindestens Angaben zur Email (<code>vcard:hasEmail</code>) oder einen Link zum Kontaktformular oder Chatbot (<code>vcard:hasURL</code>) enthalten.</span></figcaption></figure>-->
+          </section>
+          <section>
+            <h2>Multi-Part Datensätze</h2>
+            <p>Erläuterung</p>
+            <p>
+              Datensätze können bei Bedarf auch in mehreren Einzelteilen bereitgestellt werden. 
+            </p>
+            <h3>Anforderung</h3>
+              <p class="requirement"> Werden Datensätze in mehreren einzelnen Teilen über ein ATOM Dataset Feed abgegeben, so MÜSSEN
+                die Referenzen als <code>href</code> Attribute in <code>&lt;link&gt;</code> Elementen angegeben werden. Die Elemente werden durch das Attribut <code>rel="section"</code>
+                identifiziert und haben ein weiteres Attribut <code>bbox</code> mit der Angabe ihres geographischen Extents im Format "min_lat min_lon max_lat max_lon".  
+              </p>
+            <aside class="example" title="Multi-Part Datensätze">
+              <p>Beispiel aus RLP</p>
+              <pre>
+                &lt;entry&gt;
+                  &lt;title&gt;Bundesstraßen - Objektart: Bundesstrassen (Bundesstrassen) - generiert über WFS GetFeature Aufrufe im CRS EPSG:31466 und Format text/csv&lt;/title&gt;
+                  &lt;content&gt;Datensatz wird in  in 7 einzelnen Teilen ausgeliefert.&lt;/content&gt;
+                  &lt;link rel="section" href="http://lbm-geo.rlp.de/cgi-bin/mapserv?map=/home/planer/wfs/strassennetz_wfs.map&SERVICE=WFS&REQUEST=GetFeature&VERSION=1.1.0&typeName=Bundesstrassen&srsName=urn:ogc:def:crs:epsg::31466&outputFormat=application%2Fjson%3B%20subtype%3Dgeojson&FILTER=%3Cogc%3AFilter%20xmlns%3Aogc%3D%22http%3A%2F%2Fwww.opengis.net%2Fogc%22%3E%3Cogc%3ABBOX%3E%3Cogc%3APropertyName%3EmsGeometry%3C%2Fogc%3APropertyName%3E%3Cgml%3ABox%20xmlns%3Agml%3D%22http%3A%2F%2Fwww.opengis.net%2Fgml%22%20srsName%3D%22urn%3Aogc%3Adef%3Acrs%3Aepsg%3A%3A31466%22%3E%3Cgml%3Acoordinates%20decimal%3D%22.%22%20cs%3D%22%2C%22%20ts%3D%22%20%22%3E5419265.5199201%2C2405521.4580193%205551446.9215807%2C2537702.8596798%3C%2Fgml%3Acoordinates%3E%3C%2Fgml%3ABox%3E%3C%2Fogc%3ABBOX%3E%3C%2Fogc%3AFilter%3E" type="application/json; subtype=geojson" hreflang="de" title="Bundesstraßen im CRS EPSG:31466 - application/json; subtype=geojson - Teil 1 von 7" bbox="48.90459999999996 4.679502114180341 50.098045318348355 6.526327776534865"/&gt;
+                  &lt;link rel="section" href="http://lbm-geo.rlp.de/cgi-bin/mapserv?map=/home/planer/wfs/strassennetz_wfs.map&SERVICE=WFS&REQUEST=GetFeature&VERSION=1.1.0&typeName=Bundesstrassen&srsName=urn:ogc:def:crs:epsg::31466&outputFormat=application%2Fjson%3B%20subtype%3Dgeojson&FILTER=%3Cogc%3AFilter%20xmlns%3Aogc%3D%22http%3A%2F%2Fwww.opengis.net%2Fogc%22%3E%3Cogc%3ABBOX%3E%3Cogc%3APropertyName%3EmsGeometry%3C%2Fogc%3APropertyName%3E%3Cgml%3ABox%20xmlns%3Agml%3D%22http%3A%2F%2Fwww.opengis.net%2Fgml%22%20srsName%3D%22urn%3Aogc%3Adef%3Acrs%3Aepsg%3A%3A31466%22%3E%3Cgml%3Acoordinates%20decimal%3D%22.%22%20cs%3D%22%2C%22%20ts%3D%22%20%22%3E5419265.5199201%2C2537702.8596798%205551446.9215807%2C2603793.5605101%3C%2Fgml%3Acoordinates%3E%3C%2Fgml%3ABox%3E%3C%2Fogc%3ABBOX%3E%3C%2Fogc%3AFilter%3E" type="application/json; subtype=geojson" hreflang="de" title="Bundesstraßen im CRS EPSG:31466 - application/json; subtype=geojson - Teil 2 von 7" bbox="48.90207350291952 6.513727703473426 50.098045318348355 7.449823760682087"/&gt;
+                  &lt;link rel="section" href="http://lbm-geo.rlp.de/cgi-bin/mapserv?map=/home/planer/wfs/strassennetz_wfs.map&SERVICE=WFS&REQUEST=GetFeature&VERSION=1.1.0&typeName=Bundesstrassen&srsName=urn:ogc:def:crs:epsg::31466&outputFormat=application%2Fjson%3B%20subtype%3Dgeojson&FILTER=%3Cogc%3AFilter%20xmlns%3Aogc%3D%22http%3A%2F%2Fwww.opengis.net%2Fogc%22%3E%3Cogc%3ABBOX%3E%3Cogc%3APropertyName%3EmsGeometry%3C%2Fogc%3APropertyName%3E%3Cgml%3ABox%20xmlns%3Agml%3D%22http%3A%2F%2Fwww.opengis.net%2Fgml%22%20srsName%3D%22urn%3Aogc%3Adef%3Acrs%3Aepsg%3A%3A31466%22%3E%3Cgml%3Acoordinates%20decimal%3D%22.%22%20cs%3D%22%2C%22%20ts%3D%22%20%22%3E5419265.5199201%2C2603793.5605101%205551446.9215807%2C2669884.2613404%3C%2Fgml%3Acoordinates%3E%3C%2Fgml%3ABox%3E%3C%2Fogc%3ABBOX%3E%3C%2Fogc%3AFilter%3E" type="application/json; subtype=geojson" hreflang="de" title="Bundesstraßen im CRS EPSG:31466 - application/json; subtype=geojson - Teil 3 von 7" bbox="48.88749349222104 7.415131906672896 50.09018257715106 8.372718740846835"/&gt;
+                  &lt;link rel="section" href="http://lbm-geo.rlp.de/cgi-bin/mapserv?map=/home/planer/wfs/strassennetz_wfs.map&SERVICE=WFS&REQUEST=GetFeature&VERSION=1.1.0&typeName=Bundesstrassen&srsName=urn:ogc:def:crs:epsg::31466&outputFormat=application%2Fjson%3B%20subtype%3Dgeojson&FILTER=%3Cogc%3AFilter%20xmlns%3Aogc%3D%22http%3A%2F%2Fwww.opengis.net%2Fogc%22%3E%3Cogc%3ABBOX%3E%3Cogc%3APropertyName%3EmsGeometry%3C%2Fogc%3APropertyName%3E%3Cgml%3ABox%20xmlns%3Agml%3D%22http%3A%2F%2Fwww.opengis.net%2Fgml%22%20srsName%3D%22urn%3Aogc%3Adef%3Acrs%3Aepsg%3A%3A31466%22%3E%3Cgml%3Acoordinates%20decimal%3D%22.%22%20cs%3D%22%2C%22%20ts%3D%22%20%22%3E5419265.5199201%2C2669884.2613404%205551446.9215807%2C2802065.663001%3C%2Fgml%3Acoordinates%3E%3C%2Fgml%3ABox%3E%3C%2Fogc%3ABBOX%3E%3C%2Fogc%3AFilter%3E" type="application/json; subtype=geojson" hreflang="de" title="Bundesstraßen im CRS EPSG:31466 - application/json; subtype=geojson - Teil 4 von 7" bbox="48.837277741226494 8.315987349279524 50.07497972846856 10.21519501492375"/&gt;
+                  &lt;link rel="section" href="http://lbm-geo.rlp.de/cgi-bin/mapserv?map=/home/planer/wfs/strassennetz_wfs.map&SERVICE=WFS&REQUEST=GetFeature&VERSION=1.1.0&typeName=Bundesstrassen&srsName=urn:ogc:def:crs:epsg::31466&outputFormat=application%2Fjson%3B%20subtype%3Dgeojson&FILTER=%3Cogc%3AFilter%20xmlns%3Aogc%3D%22http%3A%2F%2Fwww.opengis.net%2Fogc%22%3E%3Cogc%3ABBOX%3E%3Cogc%3APropertyName%3EmsGeometry%3C%2Fogc%3APropertyName%3E%3Cgml%3ABox%20xmlns%3Agml%3D%22http%3A%2F%2Fwww.opengis.net%2Fgml%22%20srsName%3D%22urn%3Aogc%3Adef%3Acrs%3Aepsg%3A%3A31466%22%3E%3Cgml%3Acoordinates%20decimal%3D%22.%22%20cs%3D%22%2C%22%20ts%3D%22%20%22%3E5551446.9215807%2C2405521.4580193%205683628.3232413%2C2537702.8596798%3C%2Fgml%3Acoordinates%3E%3C%2Fgml%3ABox%3E%3C%2Fogc%3ABBOX%3E%3C%2Fogc%3AFilter%3E" type="application/json; subtype=geojson" hreflang="de" title="Bundesstraßen im CRS EPSG:31466 - application/json; subtype=geojson - Teil 5 von 7" bbox="50.09290068964073 4.645720851508509 51.286232284788866 6.53980657512176"/&gt;
+                  &lt;link rel="section" href="http://lbm-geo.rlp.de/cgi-bin/mapserv?map=/home/planer/wfs/strassennetz_wfs.map&SERVICE=WFS&REQUEST=GetFeature&VERSION=1.1.0&typeName=Bundesstrassen&srsName=urn:ogc:def:crs:epsg::31466&outputFormat=application%2Fjson%3B%20subtype%3Dgeojson&FILTER=%3Cogc%3AFilter%20xmlns%3Aogc%3D%22http%3A%2F%2Fwww.opengis.net%2Fogc%22%3E%3Cogc%3ABBOX%3E%3Cogc%3APropertyName%3EmsGeometry%3C%2Fogc%3APropertyName%3E%3Cgml%3ABox%20xmlns%3Agml%3D%22http%3A%2F%2Fwww.opengis.net%2Fgml%22%20srsName%3D%22urn%3Aogc%3Adef%3Acrs%3Aepsg%3A%3A31466%22%3E%3Cgml%3Acoordinates%20decimal%3D%22.%22%20cs%3D%22%2C%22%20ts%3D%22%20%22%3E5551446.9215807%2C2537702.8596798%205683628.3232413%2C2603793.5605101%3C%2Fgml%3Acoordinates%3E%3C%2Fgml%3ABox%3E%3C%2Fogc%3ABBOX%3E%3C%2Fogc%3AFilter%3E" type="application/json; subtype=geojson" hreflang="de" title="Bundesstraßen im CRS EPSG:31466 - application/json; subtype=geojson - Teil 6 von 7" bbox="50.09018257715106 6.526327776534865 51.286232284788866 7.486916483587668"/&gt;
+                  &lt;link rel="section" href="http://lbm-geo.rlp.de/cgi-bin/mapserv?map=/home/planer/wfs/strassennetz_wfs.map&SERVICE=WFS&REQUEST=GetFeature&VERSION=1.1.0&typeName=Bundesstrassen&srsName=urn:ogc:def:crs:epsg::31466&outputFormat=application%2Fjson%3B%20subtype%3Dgeojson&FILTER=%3Cogc%3AFilter%20xmlns%3Aogc%3D%22http%3A%2F%2Fwww.opengis.net%2Fogc%22%3E%3Cogc%3ABBOX%3E%3Cogc%3APropertyName%3EmsGeometry%3C%2Fogc%3APropertyName%3E%3Cgml%3ABox%20xmlns%3Agml%3D%22http%3A%2F%2Fwww.opengis.net%2Fgml%22%20srsName%3D%22urn%3Aogc%3Adef%3Acrs%3Aepsg%3A%3A31466%22%3E%3Cgml%3Acoordinates%20decimal%3D%22.%22%20cs%3D%22%2C%22%20ts%3D%22%20%22%3E5551446.9215807%2C2603793.5605101%205683628.3232413%2C2669884.2613404%3C%2Fgml%3Acoordinates%3E%3C%2Fgml%3ABox%3E%3C%2Fogc%3ABBOX%3E%3C%2Fogc%3AFilter%3E" type="application/json; subtype=geojson" hreflang="de" title="Bundesstraßen im CRS EPSG:31466 - application/json; subtype=geojson - Teil 7 von 7" bbox="50.07497972846856 7.449823760682087 51.278028899322734 8.433371039462045"/&gt;
+                  &lt;id&gt;https://www.geoportal.rlp.de/mapbender/php/mod_inspireDownloadFeed.php?id=d4e949a9-d7a2-2050-e018-41ca97bdf11f&amp;type=DATASET&amp;generateFrom=wfs&amp;wfsid=226&amp;featuretypeid=2219&lt;/id&gt;
+                  &lt;rights&gt;none&lt;/rights&gt;
+                  &lt;updated&gt;2024-05-22T09:26:07+02:00&lt;/updated&gt;
+                  &lt;georss:polygon&gt;48.9046 4.7111 51.0212 4.7111 51.0212 9.80596 48.9046 9.80596 48.9046 4.7111&lt;/georss:polygon&gt;
+                &lt;category term="http://www.opengis.net/def/crs/EPSG/31466" label="EPSG/0/31466"/&gt;
+                &lt;/entry&gt;
+              </pre>
+            </aside>
+          </section>
+        </section>
+        <section>
+          <h2>OGC API-Features</h2>
+          <p class="ednote" title="Bearbeiter">
+          Armin, Antje 
+          </p>
+          <section>
+            <h2>Art der Bereitstellung</h2>
+            <p>Erläuterung</p>
+            <p>In den [[OGC Web API Guidelines]] sind grundsätzliche Leitfäden für die Umsetzung schnittstellenorientierter
+              Geodatendienste beschrieben. Aus einer ganzen Reihe an OGC APIs wurde der [[OGC API-Features-Part 1]] im
+              November 2019 veröffentlicht. Dabei handelt es sich um eine komplette Überarbeitung des OGC Web Feature
+              Service (WFS), weshalb dieser zunächst auch unter der Bezeichnung „WFS 3.0“ bekannt war. OGC API Features setzt
+              auf die Nutzung gängiger Web-Standards wie bspw. REST (Representational State Transfer) mit dem Ziel, den Zugriff
+              auf Vektordaten zu vereinfachen und diese in beliebige Webanwendungen zu integrieren.</p>
+            <p>Anders als der WFS, ist ein Downloaddienst auf OGC API – Feature Basis nicht an starre XML-Strukturen gebunden,
+              da für diesen kein Encoding verpflichtend ist (HTML und GeoJSON werden lediglich empfohlen). Zudem lassen sich
+              Datensätze durch HTTP content negotiation in verschiedenen Repräsentationen/Rückgabeformaten abfragen und
+              mittels „Paging“ seitenweise anzeigen, ohne diesen in einen GIS-Client einzubinden.</p>
+            <p>Die Bereitstellung der Daten erfolgt über eine vorgegebene Pfadstruktur. Das API-Wurzelelement, die „Landing
+              Page“, muss Verlinkungen zu mindestens den Konformitätsangaben (<code>/conformance</code>), Objektgruppierungen
+              (<code>/collections</code>) und einer API Definition (<code>/api</code>) aufweisen.</p>
+            <p>Ein technischer Ansatz für die Umsetzung der in den INSPIRE-Durchführungsbestimmungen für Netzdienste [[INS
+              VO Netzdienste]] festgelegten Anforderungen auf der Grundlage des OGC-Standards API - Features ist unter [[INS GP OGC API - Features]] beschrieben.</p>
+            <figure>
+              <pre class="diagram mermaid">
+                  graph TD
+                    A(Landing Page)---|/conformance|B(Konformitätsangaben)
+                    A(Landing Page)---|/api|C(API Definition)
+                    A(Landing Page)---|/collections|D(Datensätze)
+                    D(Datensätze)---|/collectionid|E(Datensatz)
+                    E(Datensatz)---|/items|F(Features)
+                    F(Features)---|/id|G(Feature)
+              </pre> 
+              <figcaption>OGC API-Features URLs</figcaption>
+            </figure>
+          </section>
+          <section>
+            <h2>Persistenz / Identität</h2>
+            <p>Erläuterung</p>
+            <p>Grundsätzlich verfolgen die OGC API-Standards einen modernisierten RESTful Ansatz, sodass mit OGC API -
+              Features Vektordaten direkt über eine URL abgefragt werden können. Der Zugriff auf Geodaten erfolgt mittels der 
+	      o.g. Pfadhierarchie. Somit sind Objektsammlungen (<code>collections</code>) und deren Features (<code>items</code>) referenzierbar, solange
+              Sie den Pfad und die ID der Ressource kennen.</p>
+          </section>
+          <section>
+            <h2>Koordinatenreferenzsysteme</h2>
+            <p>Erläuterung</p>
+            <p>Wird ein Downloaddienst über OGC API – Features bereitgestellt, ist zu beachten, dass der Standard [[OGC API-Features-Part 1]] die Unterstützung für die zwei folgenden Referenzsysteme definiert:</p>
+             <ul>
+		 <li><a href="http://www.opengis.net/def/crs/OGC/1.3/CRS84" target="_blank">WGS 84 longitude, latitude</a></li> 
+             	 <li><a href="http://www.opengis.net/def/crs/OGC/0/CRS84h" target="_blank">WGS 84 longitude, latitude, ellipsoidal height</a></li>
+	     </ul>
+	    <p>Es werden keine zusätzlichen Anforderungen und Empfehlungen für Koordinatenreferenzsysteme eingeführt, die über die bereits im [[OGC API-Features-Part 1]] und [[OGC API-Features-Part 2]] festgelegten Standards hinausgehen.</p>
+          </section>
+          <section>
+            <h2>Objektartennamen / Identifikatoren</h2>
+            <p>Erläuterung</p>
+            <p>Damit Ressourcen direkt über eine URL abgerufen werden können, setzt dies Identifikatoren voraus, die sowohl für
+              die Datensätze (<code>collections</code>) als auch deren Einzelobjekte (<code>items</code>) eindeutig sind. Requests erfolgen über folgenden
+              Pfad: <code>/collections/{collectionId}/items/{featureId}</code>.</p>
+              <p>Nachfolgend wird dies am API-Beispiel <a href="https://ogc-api.geobasis-bb.de/datasets/vg" target="_blank">Verwaltungsgrenzen in Brandenburg und Berlin</a> veranschaulicht. Mit dem Beispiel-Request sollen die Verwaltungsgrenzen des Kreises Potsdam abgefragt werden. Hierzu wird zuerst aus den Datensätzen (<code>collections</code>) die entsprechende eindeutige ID (<code>collectionId</code>) für die Kreise ("krs") und im Weiteren dann aus den Einzelobjekten der Kreise (<code>items</code>) die eindeutige ID (<code>featureId</code>) der Stadt Potsdam ("krs_417") referenziert.</p>
+	    <aside class="example" title="Beispiel-Request bis auf Feature-Ebene">
+              <p></p>
+              <pre>
+		<code>https://ogc-api.geobasis-bb.de/datasets/vg/collections/krs/items/krs_417</code>
+              </pre>
+            </aside>
+          </section>
+          <section>
+            <h2>Metadaten</h2>
+            <p class="ednote" title="Zur Diskussion">
+              Umsetzung RLP/HE/SL Prototyp: 
+              Definition der Kopplung auf Capabilities-Ebene - d.h. collections im format json:
+              <a href="https://www.geoportal.rlp.de/spatial-objects/519?f=json" target="_blank">Beispiel RP ALKIS vereinfacht</a>
+              Weitere Diskussion in der MIG-T: <a href="https://github.com/INSPIRE-MIF/gp-ogc-api-features/issues/93" target="_blank">Github Ticket 93</a>
+            </p>
+            <p>Erläuterung</p>
+            <p>Grundsätzlich gibt es im OGC Standard keine Vorgaben für die Kopplung einzelner Ressourcen mit
+              Metadatenbeschreibungen, d.h. diese stellen lediglich eine Empfehlung dar. Im Zuge des Good-Practice-Projektes "INSPIRE download services based on OGC API - Features" [[INS GP OGC API - Features]] wurde die Empfehlung schließlich als Anforderung durchgesetzt. 
+	      Dementsprechend müssen Feature Collections bei INSPIRE-Umsetzungen einen Link zum
+              Metadatensatz für den Datensatz enthalten. Metadatenangaben für Feature Collections sollen laut Spezifikation im
+              Link-Parameter <code>rel</code> als <code>describedby</code> angegeben werden. Außerdem soll ein weiterer Link-Parameter <code>type</code> als <code>application/xml</code> gesetzt werden. </p>
+            <aside class="example" title="Angabe der Metadaten">
+              <p></p>
+              <pre>
+                {
+                  "links": [
+                    {
+                      "rel": "describedby",
+                      "type": "application/xml",
+                      "title": "Metadaten zum Datensatz",
+                      "href": "https://apps.geoportal.nrw.de/csw/service?Service=CSW&Version=2.0.2&Request=GetRecordById&ElementSetName=full&outputSchema=http://www.isotc211.org/2005/gmd&Id=407373a2-422c-469c-a7e9-06a62b4d7d9a"
+                    }
+                  ]
+                }
+              </pre>
+            </aside>
+          </section>
+        </section>
+        <!-- end of ogc api features -->
+        <section>
+          <h2>Web Coverage Service (<abbr title="Web Coverage Service">WCS</abbr>)</h2>
+          <p class="ednote" title="Bearbeiter:">
+          Angelika, Dirk, Aljosa
+          </p>
+          <section>
+            <h2>Allgemeines</h2>
+            <p>Erläuterung</p>
+            <p>Mit dem OGC Web Coverage Service (WCS) wird ein Standard definiert, um Coverage Daten (z.B. Satellitenbilder
+              oder digitale Geländemodelle) webbasiert zugänglich zu machen. Im Gegensatz zu anderen OGC-Webdiensten, wie
+              dem Web Mapping Service (WMS), ermöglicht ein WCS Zugriff zu Coverage-Daten in Formen, die für die client-seitige Verarbeitung nutzbar sind. Es werden also keine gerenderten Kartenbilder bereitgestellt, sondern die
+              originären Daten inklusive detaillierten Beschreibungen.</p>
+            <p>Im WCS-Standard ist eine reiche Syntax für Anfragen auf multidimensionale Daten und deren Metadaten definiert.
+              Damit können Clients spezifische Bereiche von räumlichen/multidimensionalen Daten anfordern, die als "Coverage"
+              bezeichnet werden. Ein Coverage kann eine zweidimensionale oder mehrdimensionale Abbildung eines Gebiets sein.</p>
+          </section>
+          <section>
+            <h2>Versionen</h2>
+            <h3>Version 2.0.1</h3>
+            <p>Erläuterung</p>
+            <p>Der WCS 2.0.1 besteht aus einer Core-Spezifikation und weiteren zum Teil verpflichtenden bzw. optionalen
+              Erweiterungen:</p>
+            <figure>
+              <pre class="diagram mermaid">
+flowchart BT
+    subgraph service
+    direction BT
+
+
+    subgraph Extensions service
+    direction BT
+
+    I1[WCS-T] --> J(Service Model)
+    I2[Processing] --> J(Service Model)
+    I3[Range Subsetting] --> J(Service Model)
+    I4[Scaling] --> J(Service Model)
+    I5[CRS] --> J(Service Model)
+    I6[Interpolation] --> J(Service Model)
+    I7[WQS] --> J(Service Model)
+
+    K1[GET-KVP] --> L(Protocol Binding)
+    K2[POST-XML] --> L(Protocol Binding)
+    K3[SOAP] --> L(Protocol Binding)
+    K4[OAPI?] --> L(Protocol Binding)
+
+    end
+
+    subgraph Core service
+    direction BT
+    J[Service Model] --> M(WCS Core)
+    L[Protocol Binding] --> M(WCS Core)
+    end
+
+    subgraph Application Profiles
+    direction BT
+    I11[EO-WCS]
+    I12[MetOcean-WCS]
+    end
+    
+    end
+
+    M(WCS Core) --> N(OWS Common)
+    M(WCS Core) --> E(Coverage Implementation Schema)
+              </pre> 
+              <figcaption>WCS Core + Extensions - Service</figcaption>
+            </figure>
+                                    <figure>
+              <pre class="diagram mermaid">
+flowchart BT
+    subgraph data
+    direction BT
+
+    subgraph Extensions data
+    direction BT
+ 
+    A1[GeoTIFF] --> B(Format Encoding)
+    A2[netCDF] --> B(Format Encoding)
+    A3[JPEG2000] --> B(Format Encoding)
+    A4[GMLJP2] --> B(Format Encoding)
+    A5[JPIP] --> B(Format Encoding)
+    A6[GRIB2] --> B(Format Encoding)
+    C[Referenceable Grid] --> D(Data Model)
+    end
+
+    subgraph Core data
+    direction BT
+    D[Data Model] --> E(Coverage Implementation Schema)
+    B[Format Encoding] --> E(Coverage Implementation Schema)
+
+    end
+    
+
+    E[Coverage Implementation Schema] --> F(GML)
+    E[Coverage Implementation Schema] --> G(SWE Common)
+	
+    end
+    E[Coverage Implementation Schema] --> M(WCS Core)
+              </pre> 
+              <figcaption>WCS Core + Extensions - Daten</figcaption>
+            </figure>
+            <h4>Anforderung</h4>
+            <p class="requirement">Der Web Coverage Service muss mindestens WCS 2.0.1 Core mit KVP-Binding unterstützen. [INS TG Web Coverage Services,Anforderungen 1-2]</p>
+            <aside class="example" title="XML-Ausschnitt">
+              <p></p>
+              <pre>
+                &lt;ows:Profil&gt;http://www.opengis.net/spec/WCS/2.0/conf/core&lt;/ows:Profil&gt;
+                &lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_protocol-binding_get-kvp/1.0.1&lt;/ows:Profil&gt;
+              </pre>
+            </aside>
+            <h3>Version 2.1</h3>
+            <p>Erläuterung</p>
+            <p>Für Web Coverage Services (WCS) gibt es gegenwärtig Inkonsistenzen zu Anforderungen aus OGC und INSPIRE:</p>
+            <p>Während die OGC WCS 2.0.1 Spezifikation für den Geodatendienst an sich umgesetzt werden kann, fehlen für die
+              Ausgabedatei (GML Coverage oder GeoTIFF) die Möglichkeiten für das Unterbringen und Übermitteln von Elementen
+              aus den INSPIRE-Datenmodellen aus Annex II (Orthophotos und Höhe). Vorschläge zur Auflösung dieser
+              Inkonsistenzen finden sich bei [WCS Baumann 2019].
+              Die MIG des JRC hat diesen Vorschlag als Best Practice anerkannt, eine abschließende Regelung seitens INSPIRE 
+              steht jedoch noch aus.</p>
+            <p>Ungeachtet dessen besteht Regelungsbedarf um die Interoperabilität von WCS-Diensten in
+              Deutschland zur gewährleisten:</p>
+            <p>WCS 2.1 beschreibt die Unterstützung von CIS 1.1 (OGC Coverage Implementation Schema). Für die Implementierung eines WCS nach INSPIRE-TG-WCS
+              (https://inspire.ec.europa.eu/id/document/tg/download-wcs) wäre ein WCS 2.0.0 oder 2.0.1 ausreichend. Die
+              Konformität zur INSPIRE TG ist jedoch nur mit einem WCS 2.1 gegeben, der CIS spezifiziert. Derzeit ist die
+              serverseitige Implementierung von WCS 2.1 noch unzureichend unterstützt.</p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Der Web Coverage Service SOLL WCS 2.1 Core mit KVP-Binding unterstützen.</p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Aufgrund der geringen Unterstützung des WCS 2.0.1 durch gängige Clients, SOLL für
+              zweidimensionale Coverages mit maximal drei Farbkanälen auch ein WCS der Version 1.0.0
+              angeboten werden.</p>
+          </section>
+          <section>
+            <h2>Extensions</h2>
+            <p>Erläuterung</p>
+            <p>Der WCS 2.0.1 beinhaltet eine große Anzahl an verpflichtenden bzw. optionalen
+              Erweiterungen (vgl. Abb:</p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Aus Gründen der OGC-Konformität sollen weiterhin folgende Extensions unterstützt werden:</p>
+              <aside class="example" title="Unterstütze Extensions">
+                <pre>
+                  &lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_crs/1.0/conf/crs&lt;/ows:Profil&gt;
+                  &lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_crs/1.0/conf/crs-gridded-coverage&lt;/ows:Profile&gt;
+                  &lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_scaling/1.0/conf/scaling&lt;/ows:Profil&gt;
+                  &lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_interpolation/1.0/conf/interpolation&lt;/ows:Profile&gt;
+                  &lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_range-subsetting/1.0/conf/record-subsetting&lt;/ows:Profil&gt;
+                </pre>
+              </aside>
+          </section>
+          <section>
+            <h2>Daten-Service-Kopplung</h2>
+            <h3>Empfehlung</h3>
+            <p class="requirement">Im Capabilities-Dokument sollen ein Dienst- und alle verwendeten Datensatz-Metadatensätze
+              verlinkt werden. Die Verlinkung soll entsprechend der INSPIRE-Vorgaben erfolgen.</p>
+            <aside class="example" title="Die Verlinkung zum Dienst-Metadatensatz sowie die Angabe der SpatialDataSetIdentifier erfolgt im ows:ExtendedCapabilities Element">
+              <pre>
+                ...
+                &lt;ows:ExtendedCapabilities&gt;
+                  &lt;inspire_dls:ExtendedCapabilities
+                  xmlns:inspire_dls="http://inspire.ec.europa.eu/schemas/inspire_dls/1.0"&gt;
+                    &lt;inspire_common:MetadataUrl&gt;
+                    &lt;inspire_common:URL&gt;https://metadaten.geoportal-
+                    bw.de/geonetwork/srv/ger/csw?Service=CSW&amp;Request=GetRecordById&amp;Version=2.0.2&a
+                    mp;id=938b32b1-ea44-4890-b2d7-
+                    09a6bd6df811&amp;outputSchema=http://www.isotc211.org/2005/gmd&amp;elementSetName=full
+                    &lt;/inspire_common:URL&gt;
+                    &lt;/inspire_common:MetadataUrl&gt;
+                    &lt;inspire_common:SupportedLanguages&gt;
+                    &lt;inspire_common:DefaultLanguage&gt;
+                    &lt;inspire_common:Language&gt;ger&lt;/inspire_common:Language&gt;
+                    &lt;/inspire_common:DefaultLanguage&gt;
+                    &lt;/inspire_common:SupportedLanguages&gt;
+                    &lt;inspire_common:ResponseLanguage&gt;
+                    &lt;inspire_common:Language&gt;ger&lt;/inspire_common:Language&gt;
+                    &lt;/inspire_common:ResponseLanguage&gt;
+                    &lt;inspire_dls:SpatialDataSetIdentifier&gt;
+                    &lt;inspire_common:Code&gt;http://www.lgl-bw.de/dce8d89b-a38b-471a-9167-
+                    95bb9d20b1c6&lt;/inspire_common:Code&gt;
+                    &lt;inspire_common:Namespace&gt;http://lgl-bw.de&lt;/inspire_common:Namespace&gt;
+                    &lt;/inspire_dls:SpatialDataSetIdentifier&gt;
+                  &lt;/inspire_dls:ExtendedCapabilities&gt;
+                &lt;/ows:ExtendedCapabilities&gt;
+                ...
+              </pre>
+            </aside>
+            <aside class="example" title="Die Verlinkung zu den Datensatz-Metadatensätzen erfolgt im ows:Metadata-Element der jeweiligen Coverages">
+              <p></p>
+              <pre>
+                ...
+                &lt;ows:Metadata xlink:href="https://metadaten.geoportal-bw.de/geonetwork/srv/ger/csw?Service=CSW&amp;Request=GetRecordById&amp;Version=2.0.2&amp;id=f035ebe1-68ce-390b-c20a-3acbd13e8436&amp;outputSchema=http://www.isotc211.org/2005/gmd&amp;elementSetName=full"/&gt;
+                ...
+              </pre>
+            </aside>
+          </section>
+ <section>
+    <h2>Schlüsselwörter</h2>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Im Capabilities-Dokument sollen folgende Schlüsselwörter enthalten sein:</p>
+            <aside class="example" title="Keywords">
+              <p></p>
+              <pre>
+                &lt;Keyword&gt;WCS 2.0&lt;/Keyword&gt;
+                &lt;Keyword&gt;download&lt;/Keyword&gt;
+                &lt;Keyword&gt;Downloadservice&lt;/Keyword&gt;
+                &lt;Keyword&gt;infoCoverageAccessService&lt;/Keyword&gt;
+                &lt;Keyword&gt;inspireidentifiziert&lt;/Keyword&gt;
+              </pre>
+            </aside>
+           </section>
+          <section>
+            <h2>Ausgabeformate</h2>
+            <p>Erläuterung</p>
+            <p>In den INSPIRE-TG-WCS werden keine konkreten Spezifizierungen bzgl. Ausgabeformate gemacht. GML ist bereits
+              als Teil des WCS-Core inkludiert. Sofern kein Output-Format bei der GetCoverage-Anfrage spezifiziert wird, wird das
+              Range-Set als XML ausgeliefert. Dies ist insbesondere für sehr große Datensätze ineffizient und nicht sinnvoll. In den
+              konkreten INSPIRE Daten-Spezifikationen oder Profilen werden z.T. weitere Conformance-Requirements bzgl.
+              Ausgabeformate definiert.</p>
+            <h3>Anforderung</h3>
+            <p class="requirement">Als Ausgabeformat MUSS der WCS mindestens das Format GeoTIFF (image/tiff) ausliefern.</p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Für das Format GeoTIFF DARF zusätzlich die Erweiterungen GEOTIFF:COMPRESSION=compression sowie
+              GEOTIFF:JPEG_QUALITY=1-100 angeboten werden.</p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Das native Format der Datengrundlage, die über den WCS angeboten wird, KANN in der DescribeCoverage-Datei
+              angegeben werden.</p>
+            <p class="ednote" title="Referenzen prüfen">
+              keine Hinweise auf andere Sub-Profile ;-) 
+            </p>
+          </section>
+          <section>
+            <h2>Koordinatenreferenzsysteme</h2>
+            <h3>Anforderung</h3>
+            <p class="requirement">Angaben zu den unterstützten Koordinatenreferenzsystemen MÜSSEN in der
+              opengis.net-Notation angegeben werden.</p>
+            <aside class="example" title="Angabe der Koordinatenreferenzsysteme">
+              <p></p>
+              <pre>
+                http://www.opengis.net/def/crs/EPSG/0/4326
+                http://www.opengis.net/def/crs/EPSG/0/25832
+                http://www.opengis.net/def/crs/EPSG/0/3857
+              </pre>
+            </aside>
+          </section>
+          <section>
+            <h2>Coverage ID</h2>
+            <p>Erläuterung</p>
+            <p>Die CoverageID beim WCS ist ein Identifikator, der grundsätzlich von Software genutzt wird (Maschine-Maschine-Kommunikation). Um Fehler beim Auslesen eines Capabilities-Dokumentes auszuschließen, sollten sich diese
+              Identifikatoren nur aus Zeichen zusammensetzen, deren Verwendung in unterschiedlichen Programmiersprachen
+              unbedenklich ist. Außerdem sollte die Zahl der verwendeten Zeichen nicht zu groß sein, da es sonst bei Clients, die
+              Kartenanfragen nur über HTTP GET umsetzen, zu Fehlern bei der Übertragung der Anfragen kommen kann [1].</p>
+            <p>Innerhalb eines Dienstes darf die gleiche CoverageID nicht mehrfach vorkommen, da diese ansonsten vom Client
+              nicht mehr unterschieden werden kann. Die CoverageID muss einen W3C konformen NCName aufweisen. Das bedeutet konkret, dass die CoverageID nicht mit einer Zahl beginnen darf, sondern mit einem Namespacenamen oder zumindest mit einem Underscore.
+Der Namespacename wird durch Underscore _ oder Doppelpunkt : vom eigentlichen Coverage-Namen abgetrennt.</p>
+            <h3>Anforderung</h3>
+            <p class="requirement">CoverageIDs müssen innerhalb eines Dienstes eindeutig sein und folgendem regulären Ausdruck
+              entsprechen: [a-zA-Z][0-9a-zA-Z\.\-_:+]*.</p>
+             <h3>Anforderung</h3>
+             <p class="requirement">CoverageIDs der WCS-Version 2.0.1 müssen einen W3C konformen NCName aufweisen.</p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Die Länge der Zeichenkette des CoverageID SOLL so kurz wie möglich sein.</p>
+          </section>
+          <section>
+            <h2>Coverage Subtype</h2>
+            <h3>Anforderung</h3>
+            <p class="requirement">Der WCS MUSS mindestens den CoverageSubtype RectifiedGridCoverage unterstützen.</p>
+          </section>
+          <section>
+            <h2>Sonstiges</h2>
+            <section>
+              <h2>Interpolationsmethoden</h2>
+              <h3>Empfehlung</h3>
+              <p class="recommendation">Bei der Skalierung von Rasterdaten SOLLEN folgende Interpolationsmethoden angeboten
+                werden:
+                <ul class="recommendation">
+                  <li>http://www.opengis.net/def/interpolation/OGC/1/nearest-neighbor</li>
+                  <li>http://www.opengis.net/def/interpolation/OGC/1/linear</li>
+                  <li>http://www.opengis.net/def/interpolation/OGC/1/cubic</li>
+                </ul></p>
+            </section>
+            <section>
+              <h2>Räumliche Aufteilung</h2>
+              <h3>Empfehlung</h3>
+              <p class="recommendation">Besteht ein Datensatz aus mehreren Einzeldateien (z.B. GeoTIFFs/Kacheln) sollten diese in einem
+                virtuellen Coverage (RectifiedGridCoverage) bereitgestellt werden.</p>
+            </section>
+          </section>
+          <p class="note" title="Übergreifende Bereiche">
+            Die Abfrage übergreifender Bereiche ist nur möglich, wenn alle Einzeldateien über ein Coverage abgegeben werden.
+            Hierfür können Methoden wie z.B. Image Mosaic oder Virtual Raster Tables (VRT) als Datengrundlage für den Dienst
+            verwendet werden.
+          </p>
+        </section>
+        <section>
+          <h2>SensorThings API</h2>
+          <p class="ednote" title="Bearbeiter">
+          Mathias
+          </p>
+          <section>
+            <h2>Art der Bereitstellung</h2>
+            <p>Erläuterung</p>
+            <p>
+              Durch das OGC wurde die SensorThings API (STA) Spezifikation in den Versionen 1.0 und 1.1 veröffentlicht.
+              Die Spezifikation besteht aus zwei Teilen: einem zu "Sensing" (Version 1.1 und 1.0), in dem Methoden zum Verwalten
+              und Abrufen von Observations (Beobachtungen) sowie Metadaten beschrieben sind, und einem zu "Tasking" (bisher nur Version 1.0),
+              in dem Methoden für die Parametrierung von IoT-Geräten standardisiert werden.
+            </p>
+            <p>
+              Der "Sensing"-Teil wurde auf der Grundlage des OGC/ISO "Observation and Measurement" (O&M) Modells entwickelt. Der Schlüssel
+              zu diesem Modell ist, dass eine "Observation" als eine Handlung modelliert wird, die ein Ergebnis ("result") erzeugt, dessen Wert eine Schätzung 
+              einer Eigenschaft des Beobachtungsziels oder "FeatureOfInterest" ist. Eine "Observation"-Instanz wird durch ihren Ereigniszeitpunkt
+              (z. B. "resultTime" und "phenonmenonTime"), "FeatureOfInterest", "ObservedProperty" und das verwendete Verfahren (häufig ein "Sensor") klassifiziert.
+              Darüber hinaus werden "Things" auch in der SensorThings-API modelliert, und ihre Definition folgt der ITU-T-Definition:
+              „ein Objekt der physischen Welt (physische Dinge) oder der Informationswelt (virtuelle Dinge), das identifiziert 
+              und in Kommunikationsnetze integriert werden kann“.
+            </p>
+              <figure>
+                <pre class="diagram mermaid">
+                  classDiagram
+                    Datastream -- Thing
+                    Datastream -- ObservedProperty
+                    Datastream -- Sensor
+                    Observation -- Datastream
+                    Observation -- FeatureOfInterest
+                    Thing -- Location
+                    HistoricalLocation -- Thing
+                    Location -- HistoricalLocation
+                    class Datastream{
+                      +name: CharacterString
+                      +description: CharacterString
+                      +observationType: ValueCode
+                      +unitOfMeasurement: JSON_Object
+                      +observedArea: GM_Envelope
+                      +phenomenonTime: TM_Period
+                      +resultTime: TM_Period
+                      +properties: JSON_Object
+                    }
+                    class Thing{
+                      +name: CharacterString
+                      +description: CharacterString
+                      +properties: JSON_Object
+                    }
+                    class ObservedProperty{
+                      +name: CharacterString
+                      +definition: URI
+                      +description: CharacterString
+                      +properties: JSON_Object
+                    }
+                    class Sensor{
+                      +name: CharacterString
+                      +description: CharacterString
+                      +encodingType: ValueCode
+                      +metadata: Any
+                      +properties: JSON_Object
+                    }
+                    class Location{
+                      +name: CharacterString
+                      +description: CharacterString
+                      +encodingType: ValueCode
+                      +location: Any
+                      +properties: JSON_Object
+                    }
+                    class HistoricalLocation{
+                      +time: TM_Instant
+                    }
+                    class Observation{
+                      +phenomenonTime: TM_Object
+                      +resultTime: TM_Instant
+                      +result: Any
+                      +resultQuality: DQ_Element
+                      +validTime: TM_Period
+                      +parameters: JSON_Object
+                    }
+                    class FeatureOfInterest{
+                      +name: CharacterString
+                      +description: CharacterString
+                    }
+                    class ValueCode{
+                    }
+                </pre> 
+                <figcaption>Sensing Entitäten</figcaption>
+              </figure>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Die STA SOLL die Version 1.1 unterstützen. Eine wichtige Neuerung ist die Möglichkeit, für jede Entität ein properties
+              Objekt zu definieren, in dem weitere Informationen, wie z.B. Links auf Metadaten, hinterlegt werden können.
+              In der Version 1.0 ist dies nur für die Entität Thing möglich.</p>
+          </section>
+          <section>
+            <h2>Persistenz / Identität</h2>
+            <p>Erläuterung</p>
+            <p>Wie bereits in Abschnitt 5.2.2 beschrieben, ist es in einer Geodateninfrastruktur (GDI) systemrelevant, dass die Datenquellen
+              dauerhaft referenzierbar sind. Im Falle der STA handelt es sich um einen RESTful Ansatz, d.h. alle Entitäten sind über eine
+              URI referenzierbar und aufrufbar. Die eindeutige Referenzierung erfolgt dabei durch eine Kombination der URI der entsprechenden
+              Entität (z.B. Datastream) mit der @iot.id des jeweiligen Objekts. Beispiel: https://sta.host.de/v1.1/Datastreams({@iot.id})</p>
+              <p class="note" title="Referenzen prüfen">
+               wir sollten dafür ids setzen
+              </p>
+          </section>
+          <section>
+            <h2>Koordinatenreferenzsysteme</h2>
+            <p>Erläuterung</p>
+            <p>Bei der Bereitstellung der STA ist zu beachten, dass sich der Standard (OGC SensorThings API Part 1: Sensing Version 1.1) bei
+              der Angabe von Koordinaten nur auf das verwendete Encoding (hier GeoJSON) bezieht. Die GeoJSON Spezifikation (The GeoJSON Format)
+              wiederum erlaubt nur die Verwendung von WGS84/urn:ogc:def:crs:OGC::CRS84 (Länge/Breite) Koordinaten.</p>
+          </section>
+          <section>
+            <h2>Objektartennamen / Identifikatoren</h2>
+            <p>Erläuterung</p>
+            <p>Alle Entitäten besitzen das Attribut @iot.id, das vom Typ Integer oder UUID sein kann und als primärer Identifikator verwendet
+              wird. Zusätzlich besitzt jede Entität ein Attribut name, das jedoch eher die Funktion eines Titels hat. Da der name über
+              Filterabfragen verwendet werden kann, sollten hier keine Sonderzeichen verwendet werden, die zu Problemen bei der URL-Auflösung
+              führen. Für den Betrieb und die Funktionsfähigkeit einer GDI ist die Persistenz dieser Identifikatoren von großer Bedeutung.</p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Das Attribut name SOLL innerhalb der API eindeutig sein und folgendem regulären Ausdruck entsprechen: [0-9a-zA-Z\.\-_: ].</p>
+            </section>
+          <section>
+            <h2>Metadaten (properties Objekt)</h2>
+            <p>Erläuterung</p>
+            <p>Weder über den OGC Standard noch aus INSPIRE-Spezifikationen gibt es Vorgaben zur Kopplung einzelner Entitäten mit
+              Metadatenbeschreibungen. Die folgenden Empfehlungen bieten Vorschläge, wie Metadaten im Datenmodell integriert werden können.
+              Die STA ab Version 1.1 bietet die Möglichkeit, für alle Entitäten ein frei konfigurierbares properties Objekt zu definieren.
+              Es kann verwendet werden, um Links zu Metadaten in einem Metadatenkatalog bereitzustellen, OpenData-Kategorien zu benennen
+              oder Informationen über den Zeitpunkt der letzten Aktualisierung zu transportieren. Auch Informationen über Datenaggregationen
+              können hier abgelegt werden. Beispiel (https://iot.hamburg.de/v1.0/Datastreams(15864)):</p>
+            <aside class="example" title="Angabe von weiteren Informationen im properties Objekt">
+              <p></p>
+              <pre>
+                "properties": {
+                  "topic": "Transport und Verkehr",
+                  "metadata": "https://registry.gdi-de.org/id/de.hh/03957ed9-5fc4-48a5-997e-e46c8c207c8f",
+                  "layerName": "Anzahl_Kfz_Zaehlstelle_1-Tag",
+                  "ownerData": "Freie und Hansestadt Hamburg",
+                  "serviceName": "HH_STA_AutomatisierteVerkehrsmengenerfassung",
+                  "resultNature": "processed",
+                  "infoLastUpdate": "2021-09-16T07:40:44.566Z",
+                  "mediaMonitored": "transport",
+                  "statisticalUnit": "count",
+                  "aggregateDuration": "P1D",
+                  "aggregateSource.Datastream@iot.id": 15794,
+                  "aggregateSource.Datastream@iot.navigationLink": "https://iot.hamburg.de/v1.1/Datastreams(15794)"
+                }
+              </pre>
+            </aside>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Über das Attribut topic SOLLEN Kategorien (z.B. OpenData) zugeordnet werden.</p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Das Attribut metadata SOLL den Aufruf eines API ISO Metadatendokumentes einer Datensatzbeschreibung enthalten.</p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Über die Attribute layerName und serviceName KÖNNEN weitere Untergliederungen definiert werden.</p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Im Attribut resultNature SOLL angegeben werden, ob es sich um Primärdaten, prozessierte Daten oder simulierte Daten handelt.
+              Hierfür sind folgende Schlagworte vorgesehen: primary, processed, simulated.</p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Im Attribut infoLastUpdate SOLL der Zeitpunkt der letzten Aktualisierung dieser Entität in Form eines ISO 8601:2004
+              Zeitstempels - CCYY-MM-DDThh:mm:ss.sssZ - angegeben werden.</p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Wenn es sich bei den Daten um Aggregate handelt, KÖNNEN über die Attribute aggregateDuration (Aggregationszeitraum) 
+              aggregateSource.Datastream@iot.id (ID des Datastreams der Quelldaten) sowie aggregateSource.Datastream@iot.navigationLink
+              (Link auf den Datastream der Quelldaten) weitere Angaben hierzu hinterlegt werden.</p>
+          </section>
+        </section>
+      </section>
+      <section class="informative">
+        <h2>Erläuterungen und Hinweise</h2>
+        <h3>Allgemein</h3>
+        <section>
+          <h4>Architektur und Dienste des OGC</h4>
+          <p>
+            Geodateninfrastrukturen basieren zum großen Teil auf den Standards des OGC. Um einen ersten Einblick in die Funktionsweise dieser Standards 
+            und der zugehörigen Architektur zu erhalten, hat das OGC im Jahr 2024 eine e-Learning Plattform [[OGC E-Learning]] eingerichtet. Dort werden alle Diensttypen, bis 
+            auf die speziell für Europa entwickelten INSPIRE ATOM-Feeds, eingehend beschrieben:
+            <ul>
+              <li><a href="http://opengeospatial.github.io/e-learning/wfs/text/basic-index.html" target="_blank">Web Feature Service</a></li>
+              <li><a href="http://opengeospatial.github.io/e-learning/ogcapi-features/text/basic-index.html" target="_blank">OGC API-Features</a></li>
+              <li><a href="http://opengeospatial.github.io/e-learning/wcs/text/basic-index.html" target="_blank">Web Coverage Service</li>
+              <li><a href="http://opengeospatial.github.io/e-learning/sos/text/index.html" target="_blank">Sensor Observation Service</a></li>
+              <li><a href="http://opengeospatial.github.io/e-learning/sta/text/index.html" target="_blank">OGC Sensor Things API</a></li>
+            </ul> 
+          </p>
+        </section> 
+        <h3>Web Feature Service</h3>
+        Die WFS Version 2.0.0 beinhaltet einige Ungenauigkeiten, die im Zusammenspiel zwischen 
+        Server und Client manchmal zu einem schwer nachvollziehbaren Verhalten führen. ... fehler konkreter angeben typename/typenames, StoredQuery GetFeatureById
+        <h3>INSPIRE ATOM-Feeds</h3>
+        <section>
+          <h4>Persistenz / Identität</h4>
+          <p>
+            Bei dem Einsatz von Atom-Feeds erfolgt der Zugriff auf die Daten durch die im Atom-Feed bereit gestellten
+            Verweise. Der Atom-Feed selbst muss nicht persistent sein. Die Adresse sollte aus einem INSPIRE Suchdienst z.B.
+            über eine CSW-Schnittstelle ermittelt werden können.
+          </p>
+        </section>
+        <section>
+          <h4>Objektartennamen / Identifikatoren</h4>
+          <p>
+            Dataset-Feeds können auf Datensätze aus vielen Objektarten verweisen. Folglich ist keine direkte Identifikation
+            einer Objektart aus Dataset-Feeds möglich.
+          </p>
+        </section>
+        <section>
+          <h4>Programmatische Erstellung von ATOM-Feeds</h4>
+          <section>
+            <h5>Auf Basis von ISO-Metadaten</h5>
+            <p>
+              Für die Bereitstellung von Downloaddiensten über das ATOM Verfahren werden mindestens zwei Feeds, ein Service-
+              Metadatensatz sowie direkte Links auf im Web verfügbare Datenquellen benötigt. Die
+              Dokumente können entweder manuell erzeugt oder mit Hilfe von Software erstellt werden. Die
+              benötigte Information ist grundsätzlich Bestandteil der Metadaten zum Datensatz. Aus diesem
+              Grund bietet es sich an, die XML-Dokumente dynamisch aus den Informationen des
+              Metadatensatzes erzeugen zu lassen. Bei einer Änderung der Metadaten müssen jedoch die
+              Feeds sowie der Service-Metadatensatz angepasst werden. Es ist sinnvoll diese Arbeitsschritte
+              durch Skripte o. Ä. zu automatisieren.
+            </p>
+          </section>
+          <section>
+            <h5>Auf Basis bestehender Dienste (WMS/WFS) und Metadaten</h5>
+            <p>
+              Verfügt man über Infrastrukturen, in denen die Informationen zur Daten-Dienste-Metadatenkopplung
+              schon vorliegen, kann man bestehende WMS und WFS nutzen, um die Downloadlinks in den
+              ATOM-Feeds dynamisch zu erzeugen. Die beschreibenden Elemente der Feeds erhält man aus
+              dem - an die Layer und Featuretypes gekoppelten - Metadatensatz und die Downloadlinks kann
+              man anhand der Service-Metadaten generieren. Die Vorteile dieses Verfahrens sind, dass
+              bestehende Service-Infrastrukturen (z. B. einfache WMS und WFS) für die Abgabe der
+              Daten verwendet werden können und dass es überflüssig wird Kopien von
+              Datensätzen auf Webservern abzulegen. Für den Endnutzer ist es egal, ob er einen Downloadlink
+              zu einem statisch auf einem Webserver abgelegten Datensatz oder einen GetFeature bzw.
+              GetMap Request erhält.
+            </p>
+          </section>
+        </section>
+        <section>  
+          <h4>Bereitstellen einer HTML-Darstellung für die Anzeige im Browser</h4>
+          <p>
+            Wird der ATOM-Feed in einem Feed-Reader dargestellt, so erfolgt die Darstellung auf Basis der
+            Einstellungen des Feed-Readers. Wenn der ATOM-Feed in einem Web Browser angezeigt werden
+            soll, so ist hilfreich eine HTML-Darstellung zu erzeugen. Diese kann über die Referenzierung
+            eines XSL-Stylesheets in der XML-Datei erzeugt werden. Das Referenzierte Stylesheet beinhaltet
+            die Logik zur Erzeugung der HTML-Darstellung.
+          </p>
+          <aside class="example" title="Beispiel aus BGR Atom Service Feed">
+            <p></p>
+            <pre>
+              &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+              &lt;?xml-stylesheet type="text/xsl" href="./gdi_bgr_atomservice.xsl"?&gt;
+              &lt;feed ...&gt;
+                &lt;!-- ... --&gt;
+              &lt;/feed&gt;
+            </pre>
+          </aside>
+          <aside class="example" title="Beispiel aus referenziertem XSL-Dokument">
+            <p></p>
+            <pre>
+              &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+              &lt;!DOCTYPE catelog [&lt;!ATTLIST xsl:stylesheet id ID #REQUIRED&gt;]&gt;
+              &lt;xsl:stylesheet id="stylesheet" version="1.0"
+              xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+              xmlns:atom="http://www.w3.org/2005/Atom" exclude-result-
+              prefixes="atom"&gt;
+                &lt;xsl:template match="/"&gt;
+                  &lt;html&gt;
+                    &lt;!-- --&gt;
+                  &lt;/html&gt;
+                &lt;/xsl:template&gt;
+              &lt;/xsl:stylesheet&gt;
+            </pre>
+          </aside>
+        </section> 
+        <h3>OGC API Features</h3>
+          <section>
+            <h4>Hinweise auf "Benutzerfreundliche ..." ?</h4>
+            <p>Was man alles cooles mit html tun kann ;-)
+            </p>
+          </section>
+      </section>
+    <!--<section id='conformance'>-->
+      <!-- This section is filled automatically by ReSpec. -->
+    <!--</section> -->
+        
+      </section>
+  </body>
+</html>
