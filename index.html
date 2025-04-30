@@ -409,6 +409,14 @@
                 "publisher":"OGC",
                 "date": "2011"
             },
+            "OGC-API Common - Part 1: Core": {
+                "href": "https://www.ogc.org/publications/standard/common/",
+                "title": "OGC_API Common - Part 1: Core",
+                "authors": ["OGC"],
+                "status": "OGC Standard",
+                "publisher":"OGC",
+                "date": "2023"
+            },
             "OGC E-Learning": {
                 "href": "http://opengeospatial.github.io/e-learning/index.html",
                 "title": "OGC E-Learning platform",
@@ -574,17 +582,18 @@
             Das vorliegende Dokument beinhaltet Anforderungen und Empfehlungen, die für eine interoperable
             Bereitstellung von Downloaddiensten innerhalb Deutschlands notwendig sind bzw. eine solche verbessern.
             Dabei wird eine größtmögliche Interoperabilität mit INSPIRE gewährleistet. Viele der hier definierten Vorgaben basieren
-            auf den im Rahmen der Umsetzung von INSPIRE gesammelten Erfahrungen der vergangenen Jahre.
+            auf den, insbesondere im Rahmen der Umsetzung von INSPIRE, gesammelten Erfahrungen der vergangenen Jahre.
             Um eine nahtlose Integration von INSPIRE und GDI-DE zu ermöglichen, gelten die hier aufgeführten
-            Anforderungen und Empfehlungen auch für die INSPIRE-Downloaddienste. Sie bauen auf den internationalen
-            Standards und Normen des <abbr title="World Wide Web Consortium">W3C</abbr>, des <abbr title="Open Geospatial Consortium">OGC</abbr> sowie der <abbr title="International Organization for Standardization">ISO<abbr> auf. Anforderungen aus diesen 
+            Anforderungen und Empfehlungen auch für die INSPIRE-Downloaddienste.<br>
+            Sie bauen auf den internationalen Standards und Normen des <abbr title="World Wide Web Consortium">W3C</abbr>, des <abbr title="Open Geospatial Consortium">OGC</abbr>,
+            sowie der <abbr title="International Organization for Standardization">ISO</abbr> auf. Anforderungen aus diesen 
             Standards und Normen, die für alle Downloaddienste ohnehin verpflichtend sind, werden im vorliegenden
             Dokument nicht wiederholt aufgeführt.
         </p>
         <p class="note" title="Abgrenzung zu den INSPIRE-Downloadiensten">
-          Für Downloaddienste, die unter die INSPIRE-Richtlinie fallen,
-          ergeben sich in der Regel zusätzliche Anforderungen aus INSPIRE-Durchführungsbestimmungen, die ebenfalls
-          nicht Bestandteil des vorliegenden Dokumentes sind.
+          Für INSPIRE-Downloaddienste gelten in der Regel zusätzliche Anforderungen aus INSPIRE-Durchführungsbestimmungen,
+          die nicht Bestandteil des vorliegenden Dokumentes sind. GDI-DE Downloadienste sind zwar kompatibel zu INSPIRE,
+          müssen aber nicht alle Anforderungen der EU-Gesetzgebung erfüllen. 
         </p>
       </section>
       <section>
@@ -598,7 +607,8 @@
             in Form von Abstract Test Suites (ATS) ergänzt. ATS dienen als Grundlage für die Entwicklung
             automatisierter Überprüfungen von Vorgaben aus diesem Dokument.
             <p class="ednote" title="Nicht vergessen">
-              Falls ATS nicht ins Dokument einfließen - Satz rausnehmen. 
+              Falls ATS nicht ins Dokument einfließen - Satz rausnehmen - eine Testsuite lässt sich im Dokument verlinken.
+              <a href="https://respec.org/docs/#testSuiteURI" target="_blank">https://respec.org/docs/#testSuiteURI</a>
             </p>
           </p>
       </section>
@@ -623,8 +633,8 @@
           <h2>Hinweise zu den Funktionsprinzipien</h2>
           <section>
             <h2>WxS</h2>
-            <p>WxS steht stellvertretend für die allgemein bekannten und weit verbreiteten OGC-Spezifikationen, die einen Austausch von Geodaten ermöglichen. 
-              Die Entwicklung dieser Spezifikationen begann schon Mitte der 90er Jahre und sie bilden auch heute noch die Basis für den 
+            <p>WxS steht stellvertretend für die allgemein bekannten und weltweit verbreiteten OGC-Spezifikationen für den Austausch von und Zugriff auf Geodaten. 
+              Die Entwicklung dieser Spezifikationen begann schon Mitte der 90er Jahre und sie bilden heute noch die Basis für den 
               Betrieb der meisten Geodateninfrastrukturen. Prinzipiell handelt es sich um spezielle Webservices mit XML-Binding. Eine Verallgemeinerung
               der maschinenlesbaren Service-Beschreibung findet sich in der OWS Common Spezifikation [[OGC OWS Common]]. 
               Bei der Nutzung dieser Dienste wird grundsätzlich zunächst ein s.g. OGC-Capabilities-Dokument abgefragt.
@@ -635,7 +645,7 @@
           </section>
           <section>
             <h2>INSPIRE</h2>
-            <p>Bei der Erarbeitung der EU INSPIRE-Richtlinie hat man die Standards OGC Architektur für den Aufbau von Geodateninfrastrukturen als
+            <p>Bei der Erarbeitung der EU INSPIRE-Richtlinie hat man die Standard OGC Architektur für den Aufbau von Geodateninfrastrukturen als
               Vorbild verwendet. Die Richtlinie selbst und die zugehörigen Rechtsverordnungen referenzieren jedoch nicht direkt konkrete OGC-Spezifikationen,
               sondern sprechen von s.g. Download- und Darstellungsdiensten. Es wird gefordert, dass Geodaten über Downloaddienste herunterladbar sein müssen.
               Die Downloaddienste müssen dabei mindestens folgende Operationen unterstützen, um den Anforderungen der EU zu genügen:
@@ -647,20 +657,18 @@
               </ul>
               Grundsätzlich entsprechen diese abstrakten Operationen konkret definierten Funktionen spezieller WxS.
               In den europaweit abgestimmten s.g. Technical Guidance Dokumenten sind Informationen publiziert, wie man INSPIRE-konforme 
-              Downloaddienste mithilfe von WxS bzw. anderer Technologien umsetzen kann.
-              In diesem Kontext haben sich europaweit in den letzten zwölf Jahren, neben den WxS, die s.g. INSPIRE ATOM-Feeds etabliert.
+              Downloaddienste mithilfe von WxS bzw. anderen Technologien umsetzen kann.
+              In diesem Kontext haben sich in den letzten zwölf Jahren, neben den WxS, die s.g. INSPIRE ATOM-Feeds etabliert.
             </p>
           </section>
           <section>
             <h2>OGC API</h2>
             <p>
-              Das OGC hat Ende 2019 begonnen seine Architektur neu auszurichten. Die sehr speziellen WxS mit ihrem XML-Binding waren nicht mehr zeitgemäß
-              und sollen sukzessive durch moderne REST APIs ersetzt werden. Die erste Spezifikation aus dieser neuen Reihe ist die im Jahr 2020 publizierte ISO19168:1.
-              Sie definiert ein REST-Interface für den Zugriff auf Vektordaten und bietet eine moderne Alternative zu der WFS-Schnittstelle. 
+              Das OGC hat Ende 2019 begonnen seine Architektur neu auszurichten. Die speziellen WxS mit ihrem XML-Binding wurden als nicht mehr zeitgemäß
+              erachtet und sollen sukzessive durch moderne REST APIs ersetzt werden. Die erste Spezifikation aus dieser neuen Reihe ist die im Jahr 2020 publizierte ISO19168:1.
+              Sie definiert ein REST-Interface für den Zugriff auf Vektordaten und bietet eine moderne Alternative zur WFS-Schnittstelle. 
+              Allgemeine Anforderungen für diese REST-Interfaces sind in der OGC-API Common Spezifikation [[OGC-API Common - Part 1: Core]] definiert.
             </p>
-            <p class="ednote" title="OGC API Commons">
-              ...Auf OGC API Common verweisen...
-          </p>
           </section>
         </section>
         <section>
@@ -671,13 +679,17 @@
               In einer Geodateninfrastruktur verfügen Dienste in der Regel über eine Selbstbeschreibung der möglichen Operationen, sowie
               des zur Verfügung gestellten Contents (Daten). Um beispielsweise Downloaddienste nutzen zu können, benötigt man die URL 
               auf die Selbstbeschreibung des jeweiligen Dienstes. 
-              Die aktuelle GDI-Architektur basiert darauf, dass sowohl die Daten als auch die Dienste jeweils mit standardisierten
-              Metadaten beschrieben sind. Diese werden in Katalogen gesammelt und bis auf die europäische Ebene aggregiert. Der
+              Die aktuelle GDI-Architektur basiert darauf, dass sowohl die Daten, als auch die Dienste jeweils mit standardisierten
+              Metadaten (aktuelles Encoding [[ISO 19139:2007]]) beschrieben sind. Diese werden in Katalogen gesammelt und bis auf die europäische Ebene aggregiert. Der
               Zugriff auf die Kataloge der verschiedenen Verwaltungsebenen erfolgt über eine einheitliche Schnittstelle, 
               den OGC Catalog Service [[OGC CAT 2.0.2]].   
               Der typische Prozess, um die Zugriffsadresse eines Dienstes zu erhalten, geht in der Regel von den Datensatz-Metadaten aus.
-              Jeder Datensatz wird über eine möglichst persistente URI identifiziert (Datensatzidentifikator). Diese URI wird vom Datenanbieter festgelegt 
+              Jeder Datensatz wird dabei über eine möglichst persistente URI identifiziert (Datensatzidentifikator). Diese URI wird vom Datenanbieter festgelegt 
               und ist Bestandteil der Metadaten zum Datensatz. 
+              <p class="ednote" title="Erläuterungen der Begriffe">
+                Vielleicht noch sowas wie einen Glossar einfügen? Oder auch die Möglichkeit nutzen synonyme Begriffe zu nutzen
+                <a href="https://respec.org/docs/#aliases-and-synonyms" target="_blank">https://respec.org/docs/#aliases-and-synonyms</a>
+              </p>
               <figure>
                 <pre class="diagram mermaid">
                       sequenceDiagram
@@ -1319,7 +1331,8 @@
                 verschiedenen Repräsentationen der Datensätze werden als eigene <entry> Elemente modelliert. Der direkte Zugriff
                 auf die Datensätze erfolgt über URLs, die über eine Liste von <link> Elementen abgebildet werden. Die
                 Repräsentationen und Teile müssen für diesen Zweck über URLs erreichbar sein (siehe auch <a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#52-atom-dataset-feed-containing-download-links-to-a-pre-defined-dataset" target="_blank">TG Req. 26 und 27</a>).</p>
-                <table id="table-atom-feed-metadata-dataset" class="simple">
+                <table id="table-atom-feed-metadata-dataset" class="simple numbered">
+                  <!--<caption>test</caption>-->
                   <thead><tr><th>ATOM Dataset Feed Elemente</th><th>Level (Feed/Entry)</th><th>Erläuterung</th><th>ISO19139 XPATH</th></tr></thead>
                   <tbody>
                   <tr><td class="field_mandatory"><code>/feed/title</code></td><td>Feed</td><td>Titel des Feeds (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#52-atom-dataset-feed-containing-download-links-to-a-pre-defined-dataset" target="_blank">TG Req. 21</a>)</td><td><code></code></td></tr>
