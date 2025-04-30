@@ -7,16 +7,15 @@ body:
     attributes:
       value: |
         Bitte vergib weitere Labels, damit wir den Kommentar besser einschätzen können. Eine Auswahl findest du unterhalb des Formulars.
-  - type: textarea
+  - type: markdown
     id: description
     attributes:
       label: Referenz / Fehlerbeschreibung
       description: In welchem Abschnitt ist das Problem aufgefallen? Was ist das konkrete Problem?
       placeholder: Die Anforderung geht über das Ziel hinaus
       value: |
-      "**Absatz:** https://gdi-de.github.io/arch-gdi-de-vg-dls/#anwendungsbereich"
-      ""
-      "**Zweiter Satz:**  **... größtmöglich ...**  passt semantisch nicht"
+      **Absatz:** https://gdi-de.github.io/arch-gdi-de-vg-dls/#anwendungsbereich
+      **Zweiter Satz:**  **... größtmöglich ...**  passt semantisch nicht
     validations:
       required: true
   - type: textarea
