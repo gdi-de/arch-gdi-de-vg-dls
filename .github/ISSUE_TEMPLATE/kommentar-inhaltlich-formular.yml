@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         Bitte vergib weitere Labels, damit wir den Kommentar besser einschätzen können. Eine Auswahl findest du unterhalb des Formulars.
-  - type: markdown
+  - type: textarea
     id: description
     attributes:
       label: Referenz / Fehlerbeschreibung
