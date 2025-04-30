@@ -1,0 +1,38 @@
+name: Redaktionelle Anmerkung
+description: Kommentar ist redaktionell.
+title: "https://gdi-de.github.io/arch-gdi-de-vg-dls/#anwendungsbereich"
+labels: ["Typ: Redaktionell"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Bitte vergib weitere Labels, damit wir den Kommentar besser einschätzen können. Eine Auswahl findest du unterhalb des Formulars.
+  - type: textarea
+    id: description
+    attributes:
+      label: Referenz / Fehlerbeschreibung
+      description: In welchem Abschnitt ist das Problem aufgefallen? Was ist das konkrete Problem?
+      placeholder: Die Anforderung geht über das Ziel hinaus
+      value: |
+        * Referenz: https://gdi-de.github.io/arch-gdi-de-vg-dls/#anwendungsbereich
+
+        * Fehlerbeschreibung: Satz 2: **... größtmöglich ...**  ist falsch geschrieben
+    validations:
+      required: true
+  - type: textarea
+    id: change-suggestion
+    attributes:
+      label: Änderungsvorschlag
+      description: Was soll geändert werden?
+      placeholder: Was sollte deiner Mainung nach verbessert werden?
+      value: "Bitte durch **... grösstmöglich ersetzen ...** ersetzen"
+    validations:
+      required: true   
+  - type: input
+    id: contact
+    attributes:
+      label: Kontakt / Organisation
+      description: Wie können wir dich kontaktieren, wenn wir weitere Infos brauchen?
+      placeholder: z.B. email@example.com, Bundesamt für Kartographie und Geodäsie
+    validations:
+      required: false
