@@ -22,7 +22,7 @@ Sie wird automatisch durch eine [github-action](https://github.com/gdi-de/arch-g
 
 ## Erster Review (GDI-DE intern)
 
-* Geplanter Zeitraum: Mai 2025 - Juni 2025
+* Geplanter Zeitraum: Mitte Mai 2025 - Ende Juni 2025
 
 * Beteiligte Organisationen
 
