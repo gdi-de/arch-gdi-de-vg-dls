@@ -6,8 +6,11 @@ body:
   - type: markdown
     attributes:
       value: |
-        Als Titel bietet sich eine Referenz auf einen Abschnitt im Dokument an.
-        Bitte vergib weitere Labels, damit wir den Kommentar besser einschätzen können. Eine Auswahl findest du unterhalb des Formulars.
+        Als Titel bietet sich eine Referenz auf einen Abschnitt im Dokument an, 
+        dann lassen sich die Tickets besser sortieren.
+
+        Bitte vergib auch weitere Labels, damit wir den Kommentar besser einschätzen können. 
+        Eine Auswahl findest du unterhalb des Formulars.
   - type: textarea
     id: description
     attributes:
