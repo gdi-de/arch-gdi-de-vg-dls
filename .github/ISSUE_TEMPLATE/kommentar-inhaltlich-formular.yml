@@ -1,6 +1,5 @@
 name: Inhaltliche Anmerkung
 description: Kommentar bezieht sich auf inhaltliche Festlegungen.
-label: "Bitte gib einen Titel ein - am besten die Referenz auf einen Abschnitt im Dokument"
 title: "https://gdi-de.github.io/arch-gdi-de-vg-dls/#anwendungsbereich"
 labels: ["Typ: Inhaltlich"]
 body:
@@ -11,10 +10,13 @@ body:
   - type: textarea
     id: description
     attributes:
-      label: Fehlerbeschreibung
-      description: Was ist das konkrete Problem?
+      label: Referenz / Fehlerbeschreibung
+      description: In welchem Abschnitt ist das Problem aufgefallen? Was ist das konkrete Problem?
       placeholder: Die Anforderung geht über das Ziel hinaus
-      value: "Zweiter Satz:  **... größtmöglich ...**  passt semantisch nicht"
+      value: |
+      "**Absatz:** https://gdi-de.github.io/arch-gdi-de-vg-dls/#anwendungsbereich"
+      ""
+      "**Zweiter Satz:**  **... größtmöglich ...**  passt semantisch nicht"
     validations:
       required: true
   - type: textarea
