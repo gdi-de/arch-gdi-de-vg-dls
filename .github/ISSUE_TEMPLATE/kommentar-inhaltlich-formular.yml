@@ -1,12 +1,13 @@
 name: Inhaltliche Anmerkung
 description: Kommentar bezieht sich auf inhaltliche Festlegungen.
+label: "Bitte gib einen Titel ein - am besten die Referenz auf einen Abschnitt im Dokument"
 title: "https://gdi-de.github.io/arch-gdi-de-vg-dls/#anwendungsbereich"
 labels: ["Typ: Inhaltlich"]
 body:
   - type: markdown
     attributes:
       value: |
-        Bitte vergib zunächst Labels, damit wir den Kommentar besser einschätzen können. Eine Auswahl findest du unterhalb des Formulars.
+        Bitte vergib weitere Labels, damit wir den Kommentar besser einschätzen können. Eine Auswahl findest du unterhalb des Formulars.
   - type: textarea
     id: description
     attributes:
