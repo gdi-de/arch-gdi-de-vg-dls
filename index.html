@@ -1433,12 +1433,11 @@
           <section>
             <h2>Koordinatenreferenzsysteme</h2>
             <p>Erläuterung</p>
-            <p>Wird ein Downloaddienst über OGC API - Features bereitgestellt, ist zu beachten, dass der Standard [[OGC API - Features-Part 1]] die Unterstützung für die zwei folgenden Referenzsysteme definiert:</p>
+            <p>Wird ein Downloaddienst über OGC API - Features bereitgestellt, ist zu beachten, dass der Standard [[OGC API - Features-Part 1]] bereits die Unterstützung für die zwei folgenden Referenzsysteme definiert:</p>
              <ul>
-		 <li><a href="http://www.opengis.net/def/crs/OGC/1.3/CRS84" target="_blank">WGS 84 longitude, latitude</a></li> 
-             	 <li><a href="http://www.opengis.net/def/crs/OGC/0/CRS84h" target="_blank">WGS 84 longitude, latitude, ellipsoidal height</a></li>
-	     </ul>
-	    <p>Es werden keine zusätzlichen Anforderungen und Empfehlungen für Koordinatenreferenzsysteme eingeführt, die über die bereits im [[OGC API - Features-Part 1]] und [[OGC API - Features-Part 2]] festgelegten Standards hinausgehen.</p>
+		          <li><a href="http://www.opengis.net/def/crs/OGC/1.3/CRS84" target="_blank">WGS 84 longitude, latitude</a></li> 
+             	<li><a href="http://www.opengis.net/def/crs/OGC/0/CRS84h" target="_blank">WGS 84 longitude, latitude, ellipsoidal height</a></li>
+	          </ul>
           </section>
           <section>
             <h2>Objektartennamen / Identifikatoren</h2>
@@ -1447,12 +1446,12 @@
               die Datensätze (<code>collections</code>) als auch deren Einzelobjekte (<code>items</code>) eindeutig sind. Requests erfolgen über folgenden
               Pfad: <code>/collections/{collectionId}/items/{featureId}</code>.</p>
               <p>Nachfolgend wird dies am API-Beispiel <a href="https://ogc-api.geobasis-bb.de/datasets/vg" target="_blank">Verwaltungsgrenzen in Brandenburg und Berlin</a> veranschaulicht. Mit dem Beispiel-Request sollen die Verwaltungsgrenzen des Kreises Potsdam abgefragt werden. Hierzu wird zuerst aus den Datensätzen (<code>collections</code>) die entsprechende eindeutige ID (<code>collectionId</code>) für die Kreise ("krs") und im Weiteren dann aus den Einzelobjekten der Kreise (<code>items</code>) die eindeutige ID (<code>featureId</code>) der Stadt Potsdam ("krs_417") referenziert.</p>
-	    <aside class="example" title="Beispiel-Request bis auf Feature-Ebene">
-              <p></p>
-              <pre>
-		<code>https://ogc-api.geobasis-bb.de/datasets/vg/collections/krs/items/krs_417</code>
-              </pre>
-            </aside>
+	            <aside class="example" title="Beispiel-Request bis auf Feature-Ebene">
+                <p></p>
+                <pre>
+		              <code>https://ogc-api.geobasis-bb.de/datasets/vg/collections/krs/items/krs_417</code>
+                </pre>
+              </aside>
           </section>
           <section>
             <h2>Metadaten</h2>
