@@ -1411,12 +1411,13 @@
             <figure>
               <pre class="diagram mermaid">
                   graph TD
-                    A(Landing Page)---|/conformance|B(Konformitätsangaben)
-                    A(Landing Page)---|/api|C(API Definition)
-                    A(Landing Page)---|/collections|D(Datensätze)
-                    D(Datensätze)---|/collectionid|E(Datensatz)
-                    E(Datensatz)---|/items|F(Features)
-                    F(Features)---|/id|G(Feature)
+                    A("Landing Page") ~~~ B("Konformitätsangaben")
+                    A("Landing Page")--- |"/conformance"| B("Konformitätsangaben")
+                    A--- |"/api"| C(API Definition)
+                    A--- |"/collections"| D(Datensätze)
+                    D--- |"/collectionid"| E(Datensatz)
+                    E--- |"/items"| F(Features)
+                    F--- |"/id"| G(Feature)
               </pre> 
               <figcaption>OGC API - Features URLs</figcaption>
             </figure>
