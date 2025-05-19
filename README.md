@@ -22,8 +22,12 @@ Sie wird automatisch durch eine [github-action](https://github.com/gdi-de/arch-g
 
 # Reviewprozess
 
-Das Dokument wird einem zweistufigen Review-Prozess unterzogen. Dabei sollen die Kommentare und Änderungswünsche jeweils über das Ticketsystem von github eingebracht werden. Dieses Verfahren erleichtert die Wertung und Bearbeitung der einzelnen Anmerkungen und macht das Verfahren transparent. Insbesondere sollen doppelte Hinweise vermieden werden.  
-Für die Prozesse wurden zwei verschiedene Ticketvorlagen erstellt. Die kommentierende Stelle selektiert zunächst, ob es sich um eine inhaltliche oder eine redaktionelle Anmerkung handelt. Die jeweiligen Vorlagen sind mit Beispielen versehen.
+Das Dokument wird einem zweistufigen Review-Prozess unterzogen. Dabei sollen die Kommentare und Änderungswünsche jeweils über das **Ticketsystem** von github eingebracht werden. Diese Vorgehendsweise erleichtert die Wertung und Bearbeitung der einzelnen Anmerkungen und macht das Verfahren transparent. Insbesondere sollen doppelte Hinweise vermieden werden. Bevor ein Ticket angelegt wird, sollte also zunächst überprüft werden, ob nicht schon ein Ticket zu diesem Thema existiert. 
+Falls schon ein Ticket zum Thema existiert, sollen weitere Anmerkungen einfach als Kommentar an das vorhandene Ticket angefügt werden.
+
+Um es den Kommentatoren etwas leichter zu machen, wurden zwei verschiedene Ticketvorlagen erstellt (Inhaltlich/Redaktionell). Die Vorlagen sind jeweils mit Beispielen versehen.
+
+* [Hilfe-Video zur Erstellung von Tickets](https://gdi-de.github.io/arch-gdi-de-vg-dls/media/create_ticket.mp4) 
 
 ## Erster Review (GDI-DE intern)
 
