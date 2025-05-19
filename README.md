@@ -20,6 +20,11 @@ Ziel ist es die Standards der GDI-DE durch den IT-Planungsrat verbindlich beschl
 Die Arbeitsversion des Standards findet sich unter https://gdi-de.github.io/arch-gdi-de-vg-dls/ .
 Sie wird automatisch durch eine [github-action](https://github.com/gdi-de/arch-gdi-de-vg-dls/blob/main/.github/workflows/static.yml) nach einem commit aus dem main branch erstellt.
 
+# Reviewprozess
+
+Das Dokument wird einem zweistufigen Review-Prozess unterzogen. Dabei sollen die Kommentare und Änderungswünsche jeweils über das Ticketsystem von github eingebracht werden. Dieses Verfahren erleichtert die Wertung und Bearbeitung der einzelnen Anmerkungen und macht das Verfahren transparent. Insbesondere sollen doppelte Hinweise vermieden werden.  
+Für die Prozesse wurden zwei verschiedene Ticketvorlagen erstellt. Die kommentierende Stelle selektiert zunächst, ob es sich um eine inhaltliche oder eine redaktionelle Anmerkung handelt. Die jeweiligen Vorlagen sind mit Beispielen versehen.
+
 ## Erster Review (GDI-DE intern)
 
 * Geplanter Zeitraum: Mitte Mai 2025 - Ende Juni 2025
@@ -41,6 +46,6 @@ Sie wird automatisch durch eine [github-action](https://github.com/gdi-de/arch-g
     * so weit wie möglich streuen
 
 
-## Offizielle Publikation
+# Offizielle Publikation
 
 Das Dokument ist noch nicht offiziell publiziert. 
