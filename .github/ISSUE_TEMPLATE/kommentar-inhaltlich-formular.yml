@@ -11,6 +11,9 @@ body:
 
         Bitte vergib auch weitere Labels, damit wir den Kommentar besser einschätzen können. 
         Eine Auswahl findest du unterhalb des Formulars.
+
+        Bitte weise dein Ticket dem Milestone "Interner Review" zu. Auch die Möglichkeit findest du 
+        unterhalb des Formulars.
   - type: textarea
     id: description
     attributes:
