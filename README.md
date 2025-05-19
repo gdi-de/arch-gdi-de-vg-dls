@@ -29,7 +29,7 @@ Um es den Kommentatoren etwas leichter zu machen, wurden zwei verschiedene Ticke
 
 * [Hilfe-Video zur Erstellung von Tickets](https://gdi-de.github.io/arch-gdi-de-vg-dls/media/create_ticket.mp4) 
 
-Um sich am Review zu beteiligen, benötiget man zwingend einen github-Account. Anonyme Meldungen sind leider nicht möglich.
+Um sich am Review zu beteiligen, benötigt man zwingend einen github-Account. Anonyme Meldungen sind leider nicht möglich.
 
 ## Erster Review (GDI-DE intern)
 
