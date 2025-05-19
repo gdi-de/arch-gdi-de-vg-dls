@@ -22,16 +22,18 @@ Sie wird automatisch durch eine [github-action](https://github.com/gdi-de/arch-g
 
 # Reviewprozess
 
-Das Dokument wird einem zweistufigen Review-Prozess unterzogen. Dabei sollen die Kommentare und Änderungswünsche jeweils über das **Ticketsystem** von github eingebracht werden. Diese Vorgehendsweise erleichtert die Wertung und Bearbeitung der einzelnen Anmerkungen und macht das Verfahren transparent. Insbesondere sollen doppelte Hinweise vermieden werden. Bevor ein Ticket angelegt wird, sollte also zunächst überprüft werden, ob nicht schon ein Ticket zu diesem Thema existiert. 
+Das Dokument wird einem zweistufigen Review-Prozess unterzogen. Dabei sollen die Kommentare und Änderungswünsche jeweils über das [Ticketsystem](https://github.com/gdi-de/arch-gdi-de-vg-dls/issues) von github eingebracht werden. Diese Vorgehensweise erleichtert die Wertung und Bearbeitung der einzelnen Anmerkungen und macht das Verfahren transparent. Insbesondere sollen doppelte Hinweise vermieden werden. Bevor ein Ticket angelegt wird, sollte also zunächst überprüft werden, ob nicht schon ein Ticket zu diesem Thema existiert. 
 Falls schon ein Ticket zum Thema existiert, sollen weitere Anmerkungen einfach als Kommentar an das vorhandene Ticket angefügt werden.
 
 Um es den Kommentatoren etwas leichter zu machen, wurden zwei verschiedene Ticketvorlagen erstellt (Inhaltlich/Redaktionell). Die Vorlagen sind jeweils mit Beispielen versehen.
 
 * [Hilfe-Video zur Erstellung von Tickets](https://gdi-de.github.io/arch-gdi-de-vg-dls/media/create_ticket.mp4) 
 
+Um sich am Review zu beteiligen, benötiget man zwingend einen github-Account. Anonyme Meldungen sind leider nicht möglich.
+
 ## Erster Review (GDI-DE intern)
 
-* Geplanter Zeitraum: Mitte Mai 2025 - Ende Juni 2025
+* Geplanter Zeitraum: Mitte Mai 2025 - Anfang Juli 2025
 
 * Beteiligte Organisationen
 
