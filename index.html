@@ -602,14 +602,11 @@
             Das vorliegende Dokument ist in ein Kapitel zu Anforderungen an die Bereitstellung von Downloaddiensten
             und ein Kapitel mit Erläuterungen und Hintergrundinformationen untergliedert. Diese Aufteilung dient
             dazu, einerseits einen prägnanten Überblick über Implementierungsanforderungen zu geben und
-            andererseits Hintergrundinformationen und Begründungen für Interessierte vorzuhalten. Bei der
-            Fortschreibung wird das Anforderungskapitel auch um Verweise auf zugehörige Testfallbeschreibungen
-            in Form von Abstract Test Suites (ATS) ergänzt. ATS dienen als Grundlage für die Entwicklung
-            automatisierter Überprüfungen von Vorgaben aus diesem Dokument.
-            <p class="ednote" title="Nicht vergessen">
+            andererseits Hintergrundinformationen und Begründungen für Interessierte vorzuhalten.
+            <!--<p class="ednote" title="Nicht vergessen">
               Falls ATS nicht ins Dokument einfließen - Satz rausnehmen - eine Testsuite lässt sich im Dokument verlinken.
               <a href="https://respec.org/docs/#testSuiteURI" target="_blank">https://respec.org/docs/#testSuiteURI</a>
-            </p>
+            </p>-->
           </p>
       </section>
       <section>
@@ -658,7 +655,7 @@
               Grundsätzlich entsprechen diese abstrakten Operationen konkret definierten Funktionen spezieller WxS.
               In den europaweit abgestimmten sogenannten Technical Guidance Dokumenten sind Informationen publiziert, wie man INSPIRE-konforme 
               Downloaddienste mithilfe von WxS bzw. anderen Technologien umsetzen kann.
-              In diesem Kontext haben sich in den letzten zwölf Jahren, neben den WxS, die sogennanten INSPIRE ATOM-Feeds etabliert.
+              In diesem Kontext haben sich in den letzten zwölf Jahren, neben den WxS, die sogenannten INSPIRE ATOM-Feeds etabliert.
             </p>
           </section>
           <section>
@@ -686,10 +683,10 @@
               Der typische Prozess, um die Zugriffsadresse eines Dienstes zu erhalten, geht in der Regel von den Datensatz-Metadaten aus.
               Jeder Datensatz wird dabei über eine möglichst persistente URI identifiziert (Datensatzidentifikator). Diese URI wird vom Datenanbieter festgelegt 
               und ist Bestandteil der Metadaten zum Datensatz. 
-              <p class="ednote" title="Erläuterungen der Begriffe">
+              <!--<p class="ednote" title="Erläuterungen der Begriffe">
                 Vielleicht noch sowas wie einen Glossar einfügen? Oder auch die Möglichkeit nutzen synonyme Begriffe zu nutzen
                 <a href="https://respec.org/docs/#aliases-and-synonyms" target="_blank">https://respec.org/docs/#aliases-and-synonyms</a>
-              </p>
+              </p>-->
               <figure>
                 <pre class="diagram mermaid">
                       sequenceDiagram
@@ -810,8 +807,8 @@
                 deutscher Sprache ausgegeben. Sollen weitere Sprachen bereitgestellt werden, ist der von INSPIRE vorgesehene,
                 zusätzliche Parameter LANGUAGE zu nutzen.</p>
               <h3>Anforderung</h3>
-              <p class="requirement">Die Inhalte von Rückgaben in der Antwort auf die Anfragen an die Downloaddienste MÜSSEN in
-                deutscher Sprache ausgegeben werden.</p>
+              <p class="requirement">In den Responses auf die Anfragen an die Downloaddienste MUSS Deutsch
+                verwendet werden, wenn die Spezifikation nichts anderes fordert.</p>
               <h3>Empfehlung</h3>
               <p class="recommendation">Werden weitere Sprachen angeboten, so SOLL dies analog zu
                 den Handlungsempfehlungen für INSPIRE-Downloaddienste [[?GDI-DE HE INS
@@ -856,8 +853,9 @@
             <h3>Empfehlung</h3>
             <p class="recommendation">Zur Einhaltung internationaler Interoperabilität SOLLEN Download-Dienste Anfragen im folgenden Koordinatenreferenzsystem
               unterstützen: EPSG:4326.</p>
-            <p class="ednote" title="GEOJSON CRS">
-                Hinweis auf umgekehrte Achsreihenfolge bei GeoJSON - epsg vs. ogc ...
+            <p class="note" title="CRS bei GeoJSON Ausgaben">
+                Bei Ausgabe des Formats GeoJSON ist zu beachten, dass die GeoJSON-Spezifikation [[RFC7946]] eine spezielles Koordinatenreferenzsystem (<a href="https://spatialreference.org/ref/ogc/CRS84/" target="_blank">CRS84</a>) vorgibt.
+                Das sich dieses System nur in der Achsreihenfolge vom EPSG:4326 unterscheidet, wird es hier nicht explizit aufgeführt.
             </p>
             <h3>Empfehlung</h3>
             <p class="recommendation">Download-Dienste, die Daten für einen deutschlandweiten Kontext bereitstellen, SOLLEN zusätzlich die
@@ -908,9 +906,9 @@
         <!-- special services -->
         <section>
           <h2>Web Feature Service (<abbr title="Web Feature Service">WFS</abbr>)</h2>
-          <p class="ednote" title="Bearbeiter">
+          <!--<p class="ednote" title="Bearbeiter">
             Armin, ...
-          </p>
+          </p>-->
           <section>
             <h2>Art der Bereitstellung</h2>
             <p>Erläuterung</p>
@@ -935,7 +933,7 @@
               eingebunden werden. Die Anwendung kommuniziert selbständig über das Netzwerk mit der jeweiligen Datenquelle
               und erhält als Antwort die benötigten Informationen bzw. Objekte.</p>
             <p>Die eindeutige Referenzierung des Contents (FeatureType) erfolgt dabei durch eine Kombination der URL des
-              Servers mit dem <Name> Element des jeweiligen FeatureType. Dienst-URL und <Name> von FeatureTypes sollen
+              Servers mit dem <code>&lt;Name&gt;</code> - Element des jeweiligen FeatureType. Dienst-URL und <code>&lt;Name&gt;</code> von FeatureTypes sollen
               nach Veröffentlichung eines Dienstes nicht mehr verändert werden. Die Änderung des Wertes hätte zur Folge, dass
               alle abhängigen Prozesse und Applikationen angepasst werden müssten. Für den Betrieb und die Funktionsfähigkeit
               einer Geodateninfrastruktur (GDI) ist die Persistenz dieser Identifikatoren von hoher Bedeutung.</p>
@@ -952,7 +950,7 @@
           <section>
             <h2>Objektartennamen / Identifikatoren</h2>
             <p>Erläuterung</p>
-            <p>Das FeatureType <Name> Element beim WFS ist ein Identifikator, der grundsätzlich von Software genutzt wird
+            <p>Das FeatureType <code>&lt;Name&gt;</code> - Element beim WFS ist ein Identifikator, der grundsätzlich von Software genutzt wird
               (Maschine-Maschine-Kommunikation). Um Fehler beim Auslesen eines Capabilities-Dokumentes auszuschließen,
               sollten sich diese Identifikatoren nur aus Zeichen zusammensetzen, deren Verwendung in unterschiedlichen
               Programmiersprachen unbedenklich ist. Außerdem sollte die Zahl der verwendeten Zeichen nicht zu groß sein, da es
@@ -961,9 +959,9 @@
             <h3>Anforderung</h3>
             <p class="requirement">FeatureType-Namen MÜSSEN innerhalb eines Dienstes eindeutig sein und
               folgendem regulären Ausdruck entsprechen: [0-9a-zA-Z\.\-_:+]</p>
-            <p class="ednote" title="Hinweis">
+            <!--<p class="ednote" title="Hinweis">
               Der reguläre Ausdruck stimmt nicht für alle Versionen von WFS - außerdem darf der String nicht mit einer Zahl beginnen.
-            </p>
+            </p>-->
             <h3>Empfehlung</h3>
             <p class="recommendation">Die Länge der Zeichenkette des FeatureType-Namens bzw. -Identifikators SOLL möglichst kurz sein.</p>
             </p>
@@ -977,8 +975,8 @@
             <p>Zur Vermeidung von Überlastungen von Client und Server soll die maximal auslieferbare Zahl von Objekten mit einem Request beschränkt werden. Die Obergrenze 
               ist dabei abhängig von der Leistungsfähigkeit des Servers und der Komplexität der Objekte.
             </p>
-            <p class="ednote" title="Hinweis">
-              Bei einfachen Objekten, wie z.B. Flurstücken, sind 100.0000 Objekte pro Request meist kein Problem.
+            <p class="note" title="Hinweis">
+              Bei einfachen Objekten, wie z.B. Flurstücken, sind 100.0000 Objekte pro Request in der Regel kein Problem.
             </p>
             <h3>Empfehlung</h3>
             <p class="recommendation">Die Information über die maximale Zahl der abfragbaren Objekte eines WFS SOLL im 
@@ -1066,9 +1064,9 @@
                   <tr><td><code>/wfs:WFS_Capabilities/ows:ServiceProvider/ows:ServiceContact/ows:ContactInfo/ows:Phone/ows:Facsimile</code></td><td>Faxnummer der Kontaktorganisation</td><td><code></code></td></tr>
                   </tbody>
                   </table>
-                <p class="ednote" title="Tabelle prüfen">
+                <!--<p class="ednote" title="Tabelle prüfen">
                   ...
-                </p>
+                </p>-->
             </section>
             <section>
               <h2>Verlinkung des Dienst-Metadatensatzes im Capabilities-Dokument</h2>
@@ -1116,9 +1114,9 @@
                 <table id="table-wfs-capabilities-content-metadata" class="simple">
                   <thead><tr><th>WFS (1.1.0 / 2.0.0)</th><th>Erläuterung</th></tr></thead>
                   <tbody>
-                  <tr><td class="field_mandatory"><code>/wfs:WFS_Capabilities/FeatureTypeList/FeatureType/Title</code></td><td>Titel des Featuretypes</td></tr>
-                  <tr><td class="field_mandatory"><code>/wfs:WFS_Capabilities/FeatureTypeList/FeatureType/Abstract</code></td><td>Beschreibung des Featuretypes</td></tr> 
-                  <tr><td class="field_mandatory"><code>/wfs:WFS_Capabilities/FeatureTypeList/FeatureType/MetadataURL/@xlink:href</code></td><td>Link zu einem ISO19139-kodierten Metadatensatz der Datengrundlage dieses Featuretypes. (Hinweis: Die genaue Umsetzung der Daten-Dienste-Kopplung wird in einem eigenen Abschnitt erläutert.) </td></tr> 
+                  <tr><td class="field_mandatory"><code>/wfs:WFS_Capabilities/FeatureTypeList/FeatureType/Title</code></td><td>Titel des FeatureTypes</td></tr>
+                  <tr><td class="field_mandatory"><code>/wfs:WFS_Capabilities/FeatureTypeList/FeatureType/Abstract</code></td><td>Beschreibung des FeatureTypes</td></tr> 
+                  <tr><td class="field_mandatory"><code>/wfs:WFS_Capabilities/FeatureTypeList/FeatureType/MetadataURL/@xlink:href</code></td><td>Link zu einem ISO19139-kodierten Metadatensatz der Datengrundlage dieses FeatureTypes. (Hinweis: Die genaue Umsetzung der Daten-Dienste-Kopplung wird in einem eigenen Abschnitt erläutert.) </td></tr> 
                   </tbody>
                 </table>
             </section>
@@ -1127,12 +1125,11 @@
               <p>Erläuterungen</p>
               <p>
                   Die Daten-Dienste-Kopplung erfolgt in den Capabilities-Dokumenten über die Angabe eines oder
-                  mehrerer MetadataURL-Einträge je Featuretype. Jeder MetadataURL-Eintrag verlinkt auf die Metadaten des
+                  mehrerer MetadataURL-Einträge je FeatureType. Jeder MetadataURL-Eintrag verlinkt auf die Metadaten des
                   zugehörigen Datensatzes, der durch den jeweiligen FeatureType bereitgestellt wird.
-                  Um den Nutzern das „Information Retrieval“ aus den Katalogen der jeweiligen
-                  Geodateninfrastrukturen zu erleichtern, soll des Weiteren der von INSPIRE vorgesehene Ansatz
-                  Verwendung finden (siehe [[GDI-DE HE INS Downloaddienste]]). Dieser legt fest, dass für jeden
-                  FeatureType des WFS in den Capabilities-Dokumenten zusätzlich die
+                  Um den Nutzern das „Information Retrieval“ über die Kataloge der Geodateninfrastrukturen zu erleichtern,
+                  soll des Weiteren der von INSPIRE vorgesehene Ansatz Verwendung finden (siehe [[GDI-DE HE INS Downloaddienste]]). 
+                  Dieser legt fest, dass für jeden FeatureType des WFS in den Capabilities-Dokumenten zusätzlich die
                   Ressourcenidentifikatoren der Datensätze angegeben werden. Im Gegensatz zum WMS erfolgt die Angabe der
                   Identifikatoren nicht am FeatureType, sondern im Extensionbereich für den Dienst. Die Angabe der Identifikatoren 
                   erfolgt getrennt nach Namensraum (Codespace) und Code.
@@ -1140,9 +1137,9 @@
                   Identifier (URI) des Geodatensatzes, der über die jeweiligen FeatureTypes bereitgestellt wird (siehe auch [[INS TG
                   Metadata 2.0.1]]).
               </p>
-              <p class="ednote" title="Hinweis">
+              <!--<p class="ednote" title="Hinweis">
                 Formulierung prüfen und Begriffe vereinheitlichen...
-              </p>
+              </p>-->
               <h3>Anforderung</h3>
               <p class="requirement">Stellt ein Downloaddienst Daten bereit, für die über das Internet
                 erreichbare, standardisierte Metadatensätze existieren, so MÜSSEN diese über eine
@@ -1200,10 +1197,11 @@
               </p>
               <h3>Empfehlung</h3>
               <p class="recommendation">Neben diversen GML-Varianten SOLLEN Downloaddienste auf Basis von WFS auch in der Lage sein, folgende weitere Datenformate
-                bereitzustellen: <b>GeoJSON</b> [[rfc8142]], <b>GeoPackage</b> [[OGC GeoPackage]] und <b>CSV</b> [[rfc4180]]</p>
-                <p class="ednote" title="Hinweis">
-                  Ggf. MimeTypes ergänzen und Referenzen glattziehen ...
-                </p>
+                bereitzustellen:
+                <ul>
+                  <li><b>GeoJSON</b> [[RFC7946]], Mimetype <a href="https://www.iana.org/assignments/media-types/application/geo+json" target="_blank">application/geo+json</a></li>
+                  <li><b>GeoPackage</b> [[OGC GeoPackage]], Mimetype <a href="https://www.iana.org/assignments/media-types/application/geopackage+sqlite3" target="_blank">application/geo+json</a></li>
+                  <li><b>CSV</b> [[rfc4180]], Mimetype <a href="https://www.iana.org/assignments/media-types/text/csv" target="_blank">text/csv</a></li>
             </section>
           </section>
         </section>
@@ -1314,18 +1312,15 @@
                   <tr><td><code>/feed/|/feed/entry/link[rel=“self“]/@hreflang</code></td><td>Entry</td><td>(<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#53-language-requirements-for-atom-implementation" target="_blank">TG Req. 36, 37, 38</a>)</td><td><code></code></td></tr>
                   </tbody>
                 </table>
-              <p class="ednote" title="Die Tabelle ist Bestandteil der TG">
-                Lassen wir drin, da wir nicht wissen, was bei INSPIRE noch alles geändert wird ;-)
-              </p>
             </section>
             <section>
               <h2>ATOM-Feed zum Datensatz (Dataset Feed)</h2>
               <p>Erläuterung</p>
-              <p>Das Dataset-Feed-Konzept erlaubt es, mehrere <code>&lt;entry&gt;</code> Elemente anzugeben. Damit können auch verschiedene
+              <p>Das Dataset-Feed-Konzept erlaubt es, mehrere <code>&lt;entry&gt;</code> - Elemente anzugeben. Damit können auch verschiedene
                 Repräsentationen eines Datensatzes direkt zur Verfügung gestellt werden (unterschiedliche CRS, Datenformate).
                 Ferner kann z. B. ein besonders großer Datensatz in verschiedene Einzelteile aufgesplittet bereitgestellt werden. Die
-                verschiedenen Repräsentationen der Datensätze werden als eigene <entry> Elemente modelliert. Der direkte Zugriff
-                auf die Datensätze erfolgt über URLs, die über eine Liste von <link> Elementen abgebildet werden. Die
+                verschiedenen Repräsentationen der Datensätze werden als eigene <code>&lt;entry&gt;</code> - Elemente modelliert. Der direkte Zugriff
+                auf die Datensätze erfolgt über URLs, die über eine Liste von <code>&lt;link&gt;</code> - Elementen abgebildet werden. Die
                 Repräsentationen und Teile müssen für diesen Zweck über URLs erreichbar sein (siehe auch <a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#52-atom-dataset-feed-containing-download-links-to-a-pre-defined-dataset" target="_blank">TG Req. 26 und 27</a>).</p>
                 <table id="table-atom-feed-metadata-dataset" class="simple numbered">
                   <!--<caption>test</caption>-->
@@ -1345,12 +1340,9 @@
                   <tr><td class="field_mandatory"><code>/feed/entry/id</code></td><td>Entry</td><td>Identisch mit /feed/link[@rel=“self“] (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#5117-download-service-feed-entry-additional-elements" target="_blank">TG Req. 17</a>)</td><td><code></code></td></tr>
                   <tr><td class="field_mandatory"><code>/feed/entry/updated</code></td><td>Entry</td><td>(<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#5117-download-service-feed-entry-additional-elements" target="_blank">TG Req. 19</a>)</td><td><code></code></td></tr>
                   <tr><td><code>/feed/entry/georss:polygon|point</code></td><td>Entry</td><td>Alle Vorgaben des Service Feeds gelten auch für das Dataset Feed</td><td><code></code></td></tr>
-                  <tr><td class="field_mandatory"><code>/feed/entry/category</code></td><td>Entry</td><td>Jedes entry Element soll ein category Element beinhalten das die Angabe des Koordinatenreferenzsystems enthält. (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#527-dataset-feed-entry-category-element" target="_blank">TG Req. 35</a>)</td><td><code></code></td></tr>
+                  <tr><td class="field_mandatory"><code>/feed/entry/category</code></td><td>Entry</td><td>Jedes <code>&lt;entry&gt;</code> - Element soll ein <code>&lt;Category&gt;</code> - Element beinhalten das die Angabe des Koordinatenreferenzsystems enthält. (<a href="https://github.com/INSPIRE-MIF/technical-guidelines/blob/main/services/download-atom-wfs/DownloadServices.adoc#527-dataset-feed-entry-category-element" target="_blank">TG Req. 35</a>)</td><td><code></code></td></tr>
                   </tbody>
                 </table>
-              <p class="ednote" title="Die Tabelle ist Bestandteil der TG">
-                Lassen wir drin, da wir nicht wissen, was bei INSPIRE noch alles geändert wird ;-)
-              </p>
             </section>
             <!--<figure class="konvention"><figcaption><b>Konvention <bdi class="figno">01</bdi>:</b> <span class="fig-title">Kontaktinformationen MÜSSEN mindestens Angaben zur Email (<code>vcard:hasEmail</code>) oder einen Link zum Kontaktformular oder Chatbot (<code>vcard:hasURL</code>) enthalten.</span></figcaption></figure>-->
           </section>
@@ -1362,7 +1354,7 @@
             </p>
             <h3>Anforderung</h3>
               <p class="requirement"> Werden Datensätze in mehreren einzelnen Teilen über ein ATOM Dataset Feed abgegeben, so MÜSSEN
-                die Referenzen als <code>href</code> Attribute in <code>&lt;link&gt;</code> Elementen angegeben werden. Die Elemente werden durch das Attribut <code>rel="section"</code>
+                die Referenzen als <code>href</code> Attribute in <code>&lt;link&gt;</code> - Elementen angegeben werden. Die Elemente werden durch das Attribut <code>rel="section"</code>
                 identifiziert und haben ein weiteres Attribut <code>bbox</code> mit der Angabe ihres geographischen Extents im Format "min_lat min_lon max_lat max_lon".  
               </p>
             <aside class="example" title="Multi-Part Datensätze">
@@ -1427,7 +1419,7 @@
             <p>Erläuterung</p>
             <p>Grundsätzlich verfolgen die OGC API-Standards einen modernisierten RESTful Ansatz, sodass mit OGC API -
               Features Vektordaten direkt über eine URL abgefragt werden können. Der Zugriff auf Geodaten erfolgt mittels der 
-	            oeben gennante Pfadhierarchie. Somit sind Objektsammlungen (<code>collections</code>) und deren Features (<code>items</code>) referenzierbar, solange
+	            oben genannte Pfadhierarchie. Somit sind Objektsammlungen (<code>collections</code>) und deren Features (<code>items</code>) referenzierbar, solange
               Sie den Pfad und die ID der Ressource kennen.</p>
           </section>
           <section>
@@ -1455,17 +1447,12 @@
           </section>
           <section>
             <h2>Metadaten</h2>
-            <p class="ednote" title="Zur Diskussion">
-              Umsetzung RLP/HE/SL Prototyp: 
-              Definition der Kopplung auf Capabilities-Ebene - d.h. collections im format json:
-              <a href="https://www.geoportal.rlp.de/spatial-objects/519?f=json" target="_blank">Beispiel RP ALKIS vereinfacht</a>
-              Weitere Diskussion in der MIG-T: <a href="https://github.com/INSPIRE-MIF/gp-ogc-api-features/issues/93" target="_blank">Github Ticket 93</a>
-            </p>
             <p>Erläuterung</p>
             <p>Grundsätzlich gibt es im OGC Standard keine Vorgaben für die Kopplung einzelner Ressourcen mit
-              Metadatenbeschreibungen, das heißt diese stellen lediglich eine Empfehlung dar. Im Zuge des Good-Practice-Projektes "INSPIRE download services based on OGC API - Features" [[INS GP OGC API - Features]] wurde die Empfehlung schließlich als Anforderung durchgesetzt. 
-	      Dementsprechend müssen Feature Collections bei INSPIRE-Umsetzungen einen Link zum
-              Metadatensatz für den Datensatz enthalten. Metadatenangaben für Feature Collections sollen laut Spezifikation im
+              Metadatenbeschreibungen, das heißt diese stellen lediglich eine Empfehlung dar. Im Zuge des Good-Practice-Projektes
+              "INSPIRE download services based on OGC API - Features" [[INS GP OGC API - Features]]
+              wurde die Empfehlung schließlich als Anforderung formuliert. Dementsprechend müssen Feature Collections bei INSPIRE-Umsetzungen
+              einen Link zum Metadatensatz für den Datensatz enthalten. Metadatenangaben für Feature Collections sollen laut Spezifikation im
               Link-Parameter <code>rel</code> als <code>describedby</code> angegeben werden. Außerdem soll ein weiterer Link-Parameter <code>type</code> als <code>application/xml</code> gesetzt werden. </p>
             <aside class="example" title="Angabe der Metadaten">
               <p></p>
@@ -1481,15 +1468,71 @@
                   ]
                 }
               </pre>
+            </aside> 
+            <p>Bei diesem vereinfachten Ansatz ergeben sich unter anderem folgende Probleme:
+              <ul>
+                <li>Datensatz-Metadaten lassen sich nur auf der Ebene der <b>collections</b> verknüpfen - einzelne Objektarten bzw. FeatureTypes sind nicht aufgelösbar.</li>
+                <li>Der Wert des Attributes <b>rel</b> - <b>describedby</b> ist mehrdeutig besetzt. Grundsätzlich sieht der Standard hierüber eine Verlinkung des Datenmodells vor.</li>
+              </ul>
+            Eine Umsetzung des von der INSPIRE-Arbeitsgruppe vorgeschlagenen technischen Ansatzes ist nicht kompatibel zu den Vorgaben bei den anderen
+            Downloaddiensten. Für Deutschland wird daher eine eigene Lösung vorgeschlagen, die auch in die Diskussion auf europäischer Ebene eingebracht wird
+            (<a href="https://github.com/INSPIRE-MIF/gp-ogc-api-features/issues/93" target="_blank">INSPIRE-MIF OAF - Github Ticket 93</a>).
+            <h2>Service Level Metadaten</h2>
+            <p>Erläuterung</p>
+            <p>Bei den WxS wird der Service-Metadatensatz im Capabilities-Dokument verlinkt. Bei der OGC API Features Schnittstelle gibt es kein einzelnes Capabilities-Dokument,
+              vielmehr sind die Informationen auf zwei verschiedene Endpunkte verteilt (<b>Landing page</b> und <b>collections</b>).</p>
+            <h3>Anforderung</h3>
+            <p class="requirement">Die json-Variante der Landing page eines OGC API Features Dienstes, MUSS einen Link auf einen entprechenden ISO19139 Dienst-Metadatensatz
+              enthalten. Die Angabe des Links erfolgt dabei entsprechend des nachfolgenden Beispiels, wobei das Attribut <b>title</b> frei wählbar ist.
+              <aside class="example" title="JSON-Ausschnitt">
+              <p></p>
+              <pre>
+                {
+                  "links": [
+                    {
+                      "rel": "service-desc",
+                      "type": "application/vnd.iso.19139+xml",
+                      "title": "ISO19139 Service Metadata for API",
+                      "href": "https://www.geoportal.rlp.de/mapbender/php/mod_featuretypeISOMetadata.php?SERVICETYPE=ogcapifeatures_wfs&SERVICE=WFS&outputFormat=iso19139&Id=519"
+                    }
+                  ]
+                }
+              </pre>
             </aside>
+            </p>
+            <h2>Dataset Level Metadaten</h2>
+            <p>Erläuterung</p>
+            <p>Bei den WxS werden die Datensatz-Metadaten ebenfalls im Capabilities-Dokument auf Ebene der jeweiligen Ressourcen (FeatureType/Coverage) verlinkt. Bei der OGC API Features Schnittstelle entpricht
+              diese Informationsebene weitestgehend Response für den Pfad <b>collections</b>. In der json-Variante gibt es ein Array collections das der FeatureType- bzw. Coverage-List
+              der WxS entspricht.
+            </p>
+            <h3>Anforderung</h3>
+            <p class="requirement">Die json-Variante der Response auf den <b>collections</b>-Pfad eines OGC API Features Dienstes, MUSS einen oder mehrere Links auf verknüpfte ISO19139 Daten-Metadatensätze
+              enthalten. Die Angabe der Links erfolgt dabei entsprechend des nachfolgenden Beispiels, wobei das Attribut <b>title</b> frei wählbar ist.
+              <aside class="example" title="JSON-Ausschnitt">
+              <p></p>
+              <pre>
+                {
+                  "links": [
+                    {
+                      "rel": "data-desc",
+                      "type": "application/vnd.iso.19139+xml",
+                      "title": "Coupled dataset metadata for featuretype *Flurstueck*",
+                      "href": "https://www.geoportal.rlp.de/mapbender/php/mod_dataISOMetadata.php?outputFormat=iso19139&id=5e410c1e-8f71-c62c-2cd4-4344e790e623"
+                    }
+                  ]
+                }
+              </pre>
+            </aside>
+            </p>
           </section>
         </section>
         <!-- end of ogc api features -->
         <section>
           <h2>Web Coverage Service (<abbr title="Web Coverage Service">WCS</abbr>)</h2>
-          <p class="ednote" title="Bearbeiter:">
+          <!--<p class="ednote" title="Bearbeiter:">
           Angelika, Dirk, Aljosa
-          </p>
+          </p>-->
           <section>
             <h2>Allgemeines</h2>
             <p>Erläuterung</p>
@@ -1507,7 +1550,7 @@
             <p>Erläuterung</p>
             <p>Der WCS 2.0.1 besteht aus einer Core-Spezifikation und weiteren zum Teil verpflichtenden bzw. optionalen
               Erweiterungen:</p>
-            <figure>
+            <figure id="wcs_fig_1">
               <pre class="diagram mermaid">
 flowchart BT
     subgraph service
@@ -1551,7 +1594,7 @@ flowchart BT
               </pre> 
               <figcaption>WCS Core + Extensions - Service</figcaption>
             </figure>
-                                    <figure>
+                                    <figure id="wcs_fig_2">
               <pre class="diagram mermaid">
 flowchart BT
     subgraph data
@@ -1586,7 +1629,7 @@ flowchart BT
               <figcaption>WCS Core + Extensions - Daten</figcaption>
             </figure>
             <h4>Anforderung</h4>
-            <p class="requirement">Der Web Coverage Service muss mindestens WCS 2.0.1 Core mit KVP-Binding unterstützen. [INS TG Web Coverage Services,Anforderungen 1-2]</p>
+            <p class="requirement">Der Web Coverage Service muss mindestens WCS 2.0.1 Core mit KVP-Binding unterstützen. [[INS TG Web Coverage Services]] (Anforderungen 1-2)</p>
             <aside class="example" title="XML-Ausschnitt">
               <p></p>
               <pre>
@@ -1605,8 +1648,8 @@ flowchart BT
               steht jedoch noch aus.</p>
             <p>Ungeachtet dessen besteht Regelungsbedarf um die Interoperabilität von WCS-Diensten in
               Deutschland zur gewährleisten:</p>
-            <p>WCS 2.1 beschreibt die Unterstützung von CIS 1.1 (OGC Coverage Implementation Schema). Für die Implementierung eines WCS nach INSPIRE-TG-WCS
-              (https://inspire.ec.europa.eu/id/document/tg/download-wcs) wäre ein WCS 2.0.0 oder 2.0.1 ausreichend. Die
+            <p>WCS 2.1 beschreibt die Unterstützung von CIS 1.1 (OGC Coverage Implementation Schema). Für die Implementierung eines WCS nach [[INS TG Web Coverage Services]]
+              wäre ein WCS 2.0.0 oder 2.0.1 ausreichend. Die
               Konformität zur INSPIRE TG ist jedoch nur mit einem WCS 2.1 gegeben, der CIS spezifiziert. Derzeit ist die
               serverseitige Implementierung von WCS 2.1 noch unzureichend unterstützt.</p>
             <h3>Empfehlung</h3>
@@ -1620,7 +1663,7 @@ flowchart BT
             <h2>Extensions</h2>
             <p>Erläuterung</p>
             <p>Der WCS 2.0.1 beinhaltet eine große Anzahl an verpflichtenden bzw. optionalen
-              Erweiterungen (vgl. Abbildung 7 und 8)</p>
+              Erweiterungen (vgl. <a href='#wcs_fig_1'></a> und <a href='#wcs_fig_2'></a>)</p>
             <h3>Empfehlung</h3>
             <p class="recommendation">Aus Gründen der OGC-Konformität SOLLEN weiterhin folgende Extensions unterstützt werden:</p>
               <aside class="example" title="Unterstütze Extensions">
@@ -1730,7 +1773,7 @@ flowchart BT
             <p>Die CoverageID beim WCS ist ein Identifikator, der grundsätzlich von Software genutzt wird (Maschine-Maschine-Kommunikation). Um Fehler beim Auslesen eines Capabilities-Dokumentes auszuschließen, sollten sich diese
               Identifikatoren nur aus Zeichen zusammensetzen, deren Verwendung in unterschiedlichen Programmiersprachen
               unbedenklich ist. Außerdem sollte die Zahl der verwendeten Zeichen nicht zu groß sein, da es sonst bei Clients, die
-              Kartenanfragen nur über HTTP GET umsetzen, zu Fehlern bei der Übertragung der Anfragen kommen kann [1].</p>
+              Kartenanfragen nur über HTTP GET umsetzen, zu Fehlern bei der Übertragung der Anfragen kommen kann.</p>
             <p>Innerhalb eines Dienstes darf die gleiche CoverageID nicht mehrfach vorkommen, da diese ansonsten vom Client
               nicht mehr unterschieden werden kann. Die CoverageID muss einen W3C konformen NCName aufweisen. Das bedeutet konkret, dass die CoverageID nicht mit einer Zahl beginnen darf, sondern mit einem Namespacenamen oder zumindest mit einem Underscore.
 Der Namespacename wird durch Underscore _ oder Doppelpunkt : vom eigentlichen Coverage-Namen abgetrennt.</p>
@@ -1775,9 +1818,6 @@ Der Namespacename wird durch Underscore _ oder Doppelpunkt : vom eigentlichen Co
         </section>
         <section>
           <h2>SensorThings API</h2>
-          <p class="ednote" title="Bearbeiter">
-          Mathias
-          </p>
           <section>
             <h2>Art der Bereitstellung</h2>
             <p>Erläuterung</p>
@@ -1870,13 +1910,10 @@ Der Namespacename wird durch Underscore _ oder Doppelpunkt : vom eigentlichen Co
           <section>
             <h2>Persistenz / Identität</h2>
             <p>Erläuterung</p>
-            <p>Wie bereits in Abschnitt 4.2.2 ***TODO: referenz einfügen, keinen text*** beschrieben, ist es in einer Geodateninfrastruktur (GDI) systemrelevant, dass die Datenquellen
+            <p>Wie zuvor schon an verschiedenen Stellen erläutert, ist es in einer Geodateninfrastruktur (GDI) systemrelevant, dass die Datenquellen
               dauerhaft referenzierbar sind. Im Falle der STA handelt es sich um einen RESTful Ansatz, d.h. alle Entitäten sind über eine
               URI referenzierbar und aufrufbar. Die eindeutige Referenzierung erfolgt dabei durch eine Kombination der URI der entsprechenden
               Entität (z.B. Datastream) mit der @iot.id des jeweiligen Objekts. Beispiel: https://sta.host.de/v1.1/Datastreams({@iot.id})</p>
-              <p class="note" title="Referenzen prüfen">
-               wir sollten dafür ids setzen
-              </p>
           </section>
           <section>
             <h2>Koordinatenreferenzsysteme</h2>
@@ -1961,8 +1998,13 @@ Der Namespacename wird durch Underscore _ oder Doppelpunkt : vom eigentlichen Co
           </p>
         </section> 
         <h3>Web Feature Service</h3>
-        Die WFS Version 2.0.0 beinhaltet einige Ungenauigkeiten, die im Zusammenspiel zwischen 
-        Server und Client manchmal zu einem schwer nachvollziehbaren Verhalten führen. ... fehler konkreter angeben typename/typenames, StoredQuery GetFeatureById
+        WFS ist schon seit vielen Jahren etabliert. In manchen Fällen, kann es jedoch zu Problemen kommen, wenn Client und Server die Spezifikation 
+        unterschiedlich interpretieren (nicht abschließend):
+        <ul>
+          <li><b>WFS 2.0.0:</b> Teilweiser Wechsel des Parameternamens von <i>typename</i> zu <i>typenames</i></li>
+          <li><b>WFS 2.0.0:</b> StoredQuery GetFeatureById - typenames-Parameter nicht vorgesehen</li>
+          <li><b>verschiedene WFS-Versionen:</b> Unterschiedliche Interpretation der Achsreihenfolge bei ausgewählten CRS (<a href="https://portal.ogc.org/files/?artifact_id=76024" target="_blank">Weitere Informationen</a>)</li>
+        </ul>
         <h3>INSPIRE ATOM-Feeds</h3>
         <section>
           <h4>Persistenz / Identität</h4>
@@ -2000,7 +2042,7 @@ Der Namespacename wird durch Underscore _ oder Doppelpunkt : vom eigentlichen Co
               Verfügt man über Infrastrukturen, in denen die Informationen zur Daten-Dienste-Metadatenkopplung
               schon vorliegen, kann man bestehende WMS und WFS nutzen, um die Downloadlinks in den
               ATOM-Feeds dynamisch zu erzeugen. Die beschreibenden Elemente der Feeds erhält man aus
-              dem - an die Layer und Featuretypes gekoppelten - Metadatensatz und die Downloadlinks kann
+              dem - an die Layer und FeatureTypes gekoppelten - Metadatensatz und die Downloadlinks kann
               man anhand der Service-Metadaten generieren. Die Vorteile dieses Verfahrens sind, dass
               bestehende Service-Infrastrukturen (z. B. einfache WMS und WFS) für die Abgabe der
               Daten verwendet werden können und dass es überflüssig wird Kopien von
@@ -2049,8 +2091,17 @@ Der Namespacename wird durch Underscore _ oder Doppelpunkt : vom eigentlichen Co
         </section> 
         <h3>OGC API Features</h3>
           <section>
-            <h4>Hinweise auf "Benutzerfreundliche ..." ?</h4>
-            <p>Was man alles cooles mit html tun kann ;-)
+            <h4>Ausgestaltung der HTML-Varianten</h4>
+            <p>Für die Gestaltung der HTML-Varianten von OGC API Features Endpunkten, gibt es in der Spezifikation selbst keine Vorgaben.
+              Manche Softwareprodukte, die OGC API Features Schnittstellen anbieten, erlauben eine - meist sehr beschränkte - Konfigurations dieser Seiten.
+              Um den Umfang dieses Dokumentes nicht zu sprengen, veweisen wir auf das <a href="https://apitestbed.geonovum.nl/" target="_blank">OGC API Features Testbed</a> von Geonovum.
+              Dort stehen verschiedene OpenSource Softwarekomponenten zur Bereitstellung von OGC API Features Schnittstellen zur Verfügung und können miteinader verglichen werden.
+            </p>
+            <p>Geonovum hat auch eine Übersichtsseite erstellt, die die Konfigurationsmöglichkeiten für die HTML-Oberflächen der im Testbed eingestellten Serverkomponenten 
+              dokumentiert: <a href="https://apitestdocs.geonovum.nl/cases/skinning/" target="_blank">Hinweise zu Konfigurationsmöglichkeiten für die HTML-Oberflächen</a>
+            </p>
+            <p>
+
             </p>
           </section>
       </section>
