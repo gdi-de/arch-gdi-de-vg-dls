@@ -33,7 +33,7 @@ Um sich am Review zu beteiligen, benötiget man zwingend einen github-Account. A
 
 ## Erster Review (GDI-DE intern)
 
-* Geplanter Zeitraum: Mitte Mai 2025 - Anfang Juli 2025
+* Geplanter Zeitraum: Mitte Mai 2025 - Ende Juni 2025
 
 * Beteiligte Organisationen
 
