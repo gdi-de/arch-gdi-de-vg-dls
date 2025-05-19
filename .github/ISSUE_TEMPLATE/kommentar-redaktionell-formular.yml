@@ -2,7 +2,6 @@ name: Redaktionelle Anmerkung
 description: Kommentar ist redaktionell.
 title: "https://gdi-de.github.io/arch-gdi-de-vg-dls/#anwendungsbereich"
 labels: ["Typ: Redaktionell"]
-milestones: ["Interner Review"]
 body:
   - type: markdown
     attributes:

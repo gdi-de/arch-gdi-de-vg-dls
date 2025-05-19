@@ -2,7 +2,6 @@ name: Inhaltliche Anmerkung
 description: Kommentar bezieht sich auf inhaltliche Festlegungen.
 title: "https://gdi-de.github.io/arch-gdi-de-vg-dls/#anwendungsbereich"
 labels: ["Typ: Inhaltlich"]
-milestones: ["Interner Review"]
 body:
   - type: markdown
     attributes:
