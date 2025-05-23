@@ -31,6 +31,10 @@ Um es den Kommentatoren etwas leichter zu machen, wurden zwei verschiedene Ticke
 
 Um sich am Review zu beteiligen, benötigt man zwingend einen github-Account. Anonyme Meldungen sind leider nicht möglich.
 
+## Hinweise
+
+* Unter Firefox kann es vorkommen, dass die Mermaid-Diagramme nicht dargestellt werden, weil der Download der benötigten Javascript-Bibliothek von jsdelivr.net nicht zugelassen wird. Unter Chrome sollte es funktionieren.
+
 ## Erster Review (GDI-DE intern)
 
 * Geplanter Zeitraum: Mitte Mai 2025 - Ende Juni 2025
