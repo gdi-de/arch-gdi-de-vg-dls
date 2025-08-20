@@ -1585,7 +1585,7 @@ flowchart BT
             </figure>
                                     <figure id="wcs_fig_2">
               <pre class="diagram mermaid">
-flowchart BT
+classDiagram
     subgraph data
     direction BT
 
@@ -1647,14 +1647,23 @@ flowchart BT
             <h3>Empfehlung</h3>
             <p class="recommendation">
 				Um WCS-Daten möglichst flexibel direkt nutzen zu können, SOLLEN weiterhin folgende Extensions unterstützt werden:
-			  	<pre>
-					&lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_crs/1.0/conf/crs&lt;/ows:Profil&gt;
-			  		&lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_crs/1.0/conf/crs-gridded-coverage&lt;/ows:Profile&gt;
-                	&lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_scaling/1.0/conf/scaling&lt;/ows:Profil&gt;
-                	&lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_interpolation/1.0/conf/interpolation&lt;/ows:Profile&gt;
-                	&lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_range-subsetting/1.0/conf/record-subsetting&lt;/ows:Profil&gt;
-			  	</pre>
-		  	</p>
+				<ul>
+					<li>CRS-Erweiterung, Version 1.0.0</li>
+					<li>Skalierungserweiterung, Version 1.0.0</li>
+					<li>Interpolationserweiterung, Version 1.0.0</li>					
+					<li>Erweiterung für Bereichsuntergruppen, Version 1.0.0</li>
+				</ul>
+			</p>
+  		    <aside class="example" title="XML-Ausschnitt">
+              <p></p>
+              <pre>
+				&lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_crs/1.0/conf/crs&lt;/ows:Profil&gt;
+				&lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_crs/1.0/conf/crs-gridded-coverage&lt;/ows:Profile&gt;
+				&lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_scaling/1.0/conf/scaling&lt;/ows:Profil&gt;
+				&lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_interpolation/1.0/conf/interpolation&lt;/ows:Profile&gt;
+				&lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_range-subsetting/1.0/conf/record-subsetting&lt;/ows:Profil&gt;
+			  </pre>
+		  	</aside>
           </section>
           <section>
             <h2>Daten-Service-Kopplung</h2>
