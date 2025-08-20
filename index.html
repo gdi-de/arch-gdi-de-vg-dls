@@ -1585,7 +1585,7 @@ flowchart BT
             </figure>
                                     <figure id="wcs_fig_2">
               <pre class="diagram mermaid">
-classDiagram
+flowchart BT
     subgraph data
     direction BT
 
@@ -1613,7 +1613,7 @@ classDiagram
     E[Coverage Implementation Schema] --> G(SWE Common)
 	
     end
-    E[Coverage Implementation Schema] o-- M(WCS Core)
+    E[Coverage Implementation Schema] -- M(WCS Core)
               </pre> 
               <figcaption>Coverage Datenmodell: Coverage Implementation Schema mit Erweiterungen</figcaption>
             </figure>
@@ -1647,7 +1647,7 @@ classDiagram
             <h3>Empfehlung</h3>
             <p class="recommendation">
 				Um WCS-Daten möglichst flexibel direkt nutzen zu können, SOLLEN weiterhin folgende Extensions unterstützt werden:
-				<ul>
+				<ul class="recommendation">
 					<li>CRS-Erweiterung, Version 1.0.0</li>
 					<li>Skalierungserweiterung, Version 1.0.0</li>
 					<li>Interpolationserweiterung, Version 1.0.0</li>					
@@ -1713,17 +1713,16 @@ classDiagram
  <section>
     <h2>Schlüsselwörter</h2>
             <h3>Empfehlung</h3>
-            <p class="recommendation">Im Capabilities-Dokument SOLLEN folgende Schlüsselwörter enthalten sein:</p>
-            <aside class="example" title="Keywords">
-              <p></p>
-              <pre>
+            <p class="recommendation">
+				Im Capabilities-Dokument SOLLEN folgende Schlüsselwörter enthalten sein:
+				<pre class="recommendation">
                 &lt;Keyword&gt;WCS 2.0&lt;/Keyword&gt;
                 &lt;Keyword&gt;download&lt;/Keyword&gt;
                 &lt;Keyword&gt;Downloadservice&lt;/Keyword&gt;
                 &lt;Keyword&gt;infoCoverageAccessService&lt;/Keyword&gt;
                 &lt;Keyword&gt;inspireidentifiziert&lt;/Keyword&gt;
               </pre>
-            </aside>
+            </p>
            </section>
           <section>
             <h2>Ausgabeformate</h2>
@@ -1746,15 +1745,13 @@ classDiagram
             <h2>Koordinatenreferenzsysteme</h2>
             <h3>Anforderung</h3>
             <p class="requirement">Angaben zu den unterstützten Koordinatenreferenzsystemen MÜSSEN in der
-              opengis.net-Notation angegeben werden.</p>
-            <aside class="example" title="Angabe der Koordinatenreferenzsysteme">
-              <p></p>
-              <pre>
+              opengis.net-Notation angegeben werden.
+              <pre class="requirement">
                 http://www.opengis.net/def/crs/EPSG/0/4326
                 http://www.opengis.net/def/crs/EPSG/0/25832
                 http://www.opengis.net/def/crs/EPSG/0/3857
               </pre>
-            </aside>
+            </p>
           </section>
           <section>
             <h2>CoverageID</h2>
