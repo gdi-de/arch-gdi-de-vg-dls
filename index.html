@@ -1613,9 +1613,9 @@ flowchart BT
     E[Coverage Implementation Schema] --> G(SWE Common)
 	
     end
-    E[Coverage Implementation Schema] --> M(WCS Core)
+    E[Coverage Implementation Schema] o-- M(WCS Core)
               </pre> 
-              <figcaption>WCS Core + Extensions - Daten</figcaption>
+              <figcaption>Coverage Datenmodell: Coverage Implementation Schema mit Erweiterungen</figcaption>
             </figure>
             <h4>Anforderung</h4>
             <p class="requirement">Der Web Coverage Service muss mindestens WCS 2.0.1 Core mit <abbr title="Key-Value-Pair">KVP</abbr>-Binding unterstützen. [[INS TG Web Coverage Services]] (Anforderungen 1-2)</p>
@@ -1628,25 +1628,16 @@ flowchart BT
             </aside>
             <h3>Version 2.1</h3>
             <p>Erläuterung</p>
-            <p>Für Web Coverage Services (WCS) gibt es gegenwärtig Inkonsistenzen zu Anforderungen aus OGC und INSPIRE:</p>
-            <p>Während die OGC WCS 2.0.1 Spezifikation für den Geodatendienst an sich umgesetzt werden kann, fehlen für die
-              Ausgabedatei (GML Coverage oder GeoTIFF) die Möglichkeiten für das Unterbringen und Übermitteln von Elementen
-              aus den INSPIRE-Datenmodellen aus Annex II (Orthophotos und Höhe). Vorschläge zur Auflösung dieser
-              Inkonsistenzen finden sich bei [WCS Baumann 2019].
-              Die MIG des JRC hat diesen Vorschlag als Best Practice anerkannt, eine abschließende Regelung seitens INSPIRE 
-              steht jedoch noch aus.</p>
-            <p>Ungeachtet dessen besteht Regelungsbedarf um die Interoperabilität von WCS-Diensten in
-              Deutschland zur gewährleisten:</p>
-            <p>WCS 2.1 beschreibt die Unterstützung von CIS 1.1 (OGC Coverage Implementation Schema). Für die Implementierung eines WCS nach [[INS TG Web Coverage Services]]
-              wäre ein WCS 2.0.0 oder 2.0.1 ausreichend. Die
-              Konformität zur INSPIRE TG ist jedoch nur mit einem WCS 2.1 gegeben, der CIS spezifiziert. Derzeit ist die
-              serverseitige Implementierung von WCS 2.1 noch unzureichend unterstützt.</p>
+            <p>
+				Die aktuelle WCS-Version in OGC ist 2.1. Sie ist funktional identisch mit der Vorgängerversion 2.0.1, erlaubt 
+				aber zusätzlich die General Grid Coverage, welche in OGC CIS 1.1 eingeführt wurde. 
+			</p>
             <h3>Empfehlung</h3>
             <p class="recommendation">Der Web Coverage Service SOLL WCS 2.1 Core mit KVP-Binding unterstützen.</p>
             <h3>Empfehlung</h3>
-            <p class="recommendation">Aufgrund der geringen Unterstützung des WCS 2.0.1 durch gängige Clients, SOLL für
-              zweidimensionale Coverages mit maximal drei Farbkanälen auch ein WCS der Version 1.0.0
-              angeboten werden.</p>
+            <p class="recommendation">Neben der Unterstützung des WCS 2.0.1, SOLL für
+              zweidimensionale Coverages mit maximal drei Farbkanälen auch ein WCS der Version 1.x.x
+              angeboten werden. Dies erhöht die Interoperabilität zu älteren Clients.</p>
           </section>
           <section>
             <h2>Extensions</h2>
@@ -1654,16 +1645,16 @@ flowchart BT
             <p>Der WCS 2.0.1 beinhaltet eine große Anzahl an verpflichtenden bzw. optionalen
               Erweiterungen (vgl. <a href='#wcs_fig_1'></a> und <a href='#wcs_fig_2'></a>)</p>
             <h3>Empfehlung</h3>
-            <p class="recommendation">Aus Gründen der OGC-Konformität SOLLEN weiterhin folgende Extensions unterstützt werden:</p>
-              <aside class="example" title="Unterstütze Extensions">
-                <pre>
-                  &lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_crs/1.0/conf/crs&lt;/ows:Profil&gt;
-                  &lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_crs/1.0/conf/crs-gridded-coverage&lt;/ows:Profile&gt;
-                  &lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_scaling/1.0/conf/scaling&lt;/ows:Profil&gt;
-                  &lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_interpolation/1.0/conf/interpolation&lt;/ows:Profile&gt;
-                  &lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_range-subsetting/1.0/conf/record-subsetting&lt;/ows:Profil&gt;
-                </pre>
-              </aside>
+            <p class="recommendation">
+				Um WCS-Daten möglichst flexibel direkt nutzen zu können, SOLLEN weiterhin folgende Extensions unterstützt werden:
+			  	<pre>
+					&lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_crs/1.0/conf/crs&lt;/ows:Profil&gt;
+			  		&lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_crs/1.0/conf/crs-gridded-coverage&lt;/ows:Profile&gt;
+                	&lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_scaling/1.0/conf/scaling&lt;/ows:Profil&gt;
+                	&lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_interpolation/1.0/conf/interpolation&lt;/ows:Profile&gt;
+                	&lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_service-extension_range-subsetting/1.0/conf/record-subsetting&lt;/ows:Profil&gt;
+			  	</pre>
+		  	</p>
           </section>
           <section>
             <h2>Daten-Service-Kopplung</h2>
