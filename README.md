@@ -49,7 +49,7 @@ Um sich am Review zu beteiligen, benötigt man zwingend einen github-Account. An
 
 ## Zweiter Review (öffentlich)
 
-* Geplanter Zeitraum: September 2025 - Oktober 2025
+* Geplanter Zeitraum: September 2025
 
 * Beteiligte Organisationen
 
