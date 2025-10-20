@@ -374,12 +374,12 @@
               "date": "2024"
             },
             "OGC API Records - Part 1: Core": {
-              "href": "https://docs.ogc.org/DRAFTS/20-004.html",
+              "href": "https://docs.ogc.org/is/20-004r1/20-004r1.html",
               "title": "OGC API - Records - Part 1: Core",
               "authors": ["OGC"],
-              "status": "Draft IS",
+              "status": "IS",
               "publisher": "OGC",
-              "date": "2024"
+              "date": "2025"
             },
             "OGC OWS Common": {
                 "href": "https://www.ogc.org/publications/standard/common/",
@@ -390,7 +390,7 @@
                 "date": "2011"
             },
             "OGC-API Common - Part 1: Core": {
-                "href": "https://www.ogc.org/publications/standard/common/",
+                "href": "https://www.ogc.org/standards/ogcapi-common/",
                 "title": "OGC_API Common - Part 1: Core",
                 "authors": ["OGC"],
                 "status": "OGC Standard",
@@ -743,13 +743,13 @@
               </figure>
               Es besteht eine wechselseitige Abhängigkeit zwischen den Metadatenquellen: Metadaten zum Dienst finden sich sowohl 
               in den Selbstbeschreibungen der Dienste, als auch in den zugehörigen ISO19139-Dokumenten. Bei der Umsetzung von INSPIRE wird das
-              Problem derart gelöst, dass man entweder den Mindestumfang an Metadaten in den Selbstbeschreibungen ergänzt, oder dort einen Link auf
+              Problem derart gelöst, dass man entweder den Mindestumfang an Metadaten in den Selbstbeschreibungen ergänzt oder dort einen Link auf
               den jeweiligen ISO19139 Dienst-Metadatensatz angibt. 
             </p>
           </section>
         </section>
         <section>
-            <h2>Downloadalternativen für unterschiedlichen Arten von Geodaten</h2>
+            <h2>Downloadalternativen für unterschiedliche Arten von Geodaten</h2>
             <p>
               <figure>
                   <pre class="diagram mermaid">
@@ -877,10 +877,14 @@
               <h3>Empfehlung</h3>
               <p class="recommendation">Der HTTP-Header (serverseitig) SOLL bei den jeweils bereitgestellten Operationen zusätzlich
                 folgenden Eintrag enthalten: Access-Control-Allow-Origin: *</p>
+            </section>
+            <section>
               <h2>HTTP-Methoden</h2>
               <h3>Empfehlung</h3>
               <p class="recommendation">Aufgrund möglicher Längenbeschränkungen der URL bei der Verwendung der HTTP GET
                 Methode, SOLLEN die Serverkomponenten der betroffenen Schnittstellen auch HTTP POST unterstützen.</p>
+            </section>
+            <section> 
               <h2>Absicherung</h2>
               <p>Erläuterung</p>
               <p>Soll ein Downloaddienst nur einem ausgewählten Nutzerkreis zur Verfügung gestellt werden, 
@@ -965,7 +969,7 @@
               ist dabei abhängig von der Leistungsfähigkeit des Servers und der Komplexität der Objekte.
             </p>
             <p class="note" title="Hinweis">
-              Bei einfachen Objekten, wie z.B. Flurstücken, sind 100.0000 Objekte pro Request in der Regel kein Problem.
+              Bei einfachen Objekten, wie z.B. Flurstücken, sind 100.000 Objekte pro Request in der Regel kein Problem.
             </p>
             <h3>Empfehlung</h3>
             <p class="recommendation">Die Information über die maximale Zahl der abfragbaren Objekte eines WFS SOLL im 
@@ -1133,7 +1137,7 @@
               <p class="requirement">Stellt ein Downloaddienst Daten bereit, für die über das Internet
                 erreichbare, standardisierte Metadatensätze existieren, so MÜSSEN diese über eine
                 Daten-Dienste-Kopplung in den jeweiligen FeatureType-Metadaten des Capabilities-Dokuments referenziert werden. Die Kopplung wird über
-                das xlink:href Attribut der MetadataUR-Elemente realisiert.</p>
+                das xlink:href Attribut der MetadataURL-Elemente realisiert.</p>
                 <aside class="example" title="Die Verlinkung zu Daten-Metadatensätzen">
                   <pre>
                     ...
@@ -1182,7 +1186,7 @@
               <h2>Ausgabeformate</h2>
               <p>Erläuterungen</p>
               <p>Das Standardausgabeformat bei WFS ist normalerweise GML. Da die meisten Serverkomponenten in der Lage sind weitere Ausgabeformate bereitzustellen,
-                macht es Sinn, auch zusätzliche, insbesondere weit verbreitete, Datenformate anzubieten.
+                ist es sinnvoll, auch zusätzliche, insbesondere weit verbreitete, Datenformate anzubieten.
               </p>
               <h3>Empfehlung</h3>
               <p class="recommendation">Neben diversen GML-Varianten SOLLEN Downloaddienste auf Basis von WFS auch in der Lage sein, folgende weitere Datenformate
@@ -1220,7 +1224,7 @@
             </p>
             <p>
               Da sich die Art und Weise, Geodaten über dieses Verfahren bereitzustellen, in den letzten Jahren europaweit etabliert hat, und 
-              auch einige Softwareprodukte die ATOM-Feeds automatisch generieren können, macht es Sinn, das Verfahren auch in Deutschland 
+              auch einige Softwareprodukte die ATOM-Feeds automatisch generieren können, ist es sinnvoll, das Verfahren auch in Deutschland 
               einzusetzen. Eine Alternative zu INSPIRE ATOM-Feeds bieten in Zukunft möglicherweise STAC [[STAC]] bzw. OGC API Records
               [[OGC API Records - Part 1: Core]]. 
             </p>
@@ -1734,7 +1738,7 @@ flowchart BT
             <h3>Anforderung</h3>
             <p class="requirement">Als Ausgabeformat MUSS der WCS mindestens das Format GeoTIFF (image/tiff) ausliefern.</p>
             <h3>Empfehlung</h3>
-            <p class="recommendation">Für das Format GeoTIFF DARF zusätzlich die Erweiterungen GEOTIFF:COMPRESSION=compression sowie
+            <p class="recommendation">Für das Format GeoTIFF DÜRFEN zusätzlich die Erweiterungen GEOTIFF:COMPRESSION=compression sowie
               GEOTIFF:JPEG_QUALITY=1-100 angeboten werden.</p>
             <h3>Empfehlung</h3>
             <p class="recommendation">Das native Format der Datengrundlage, die über den WCS angeboten wird, KANN in der DescribeCoverage-Datei
@@ -2079,7 +2083,7 @@ Der Namespacename wird durch Underscore _ oder Doppelpunkt : vom eigentlichen Co
           <section>
             <h4>Ausgestaltung der HTML-Varianten</h4>
             <p>Für die Gestaltung der HTML-Varianten von OGC API Features Endpunkten, gibt es in der Spezifikation selbst keine Vorgaben.
-              Manche Softwareprodukte, die OGC API Features Schnittstellen anbieten, erlauben eine - meist sehr beschränkte - Konfigurations dieser Seiten.
+              Manche Softwareprodukte, die OGC API Features Schnittstellen anbieten, erlauben eine - meist sehr beschränkte - Konfiguration dieser Seiten.
               Um den Umfang dieses Dokumentes nicht zu sprengen, veweisen wir auf das <a href="https://apitestbed.geonovum.nl/" target="_blank">OGC API Features Testbed</a> von Geonovum.
               Dort stehen verschiedene OpenSource Softwarekomponenten zur Bereitstellung von OGC API Features Schnittstellen zur Verfügung und können miteinander verglichen werden.
             </p>
