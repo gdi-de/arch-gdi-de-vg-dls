@@ -113,6 +113,10 @@
             company:    "Landesvermessung und Geobasisinformation Brandenburg",
             companyURL: "https://geobasis-bb.de/lgb/de/"
         },{
+            name:       "Martin Leistner",
+            company:    "Bundesanstalt für Geowissenschaften und Rohstoffe",
+            companyURL: "https://www.bgr.bund.de"
+        },{
             name:       "Mathias Lücker",
             company:    "Landesbetrieb Geoinformation und Vermessung Hamburg",
             companyURL: "https://www.hamburg.de/bsw/landesbetrieb-geoinformation-und-vermessung/"
@@ -896,12 +900,14 @@
               <h2>Absicherung</h2>
               <p>Erläuterung</p>
               <p>Soll ein Downloaddienst nur einem ausgewählten Nutzerkreis zur Verfügung gestellt werden, 
-                so muss dieser zur Übermittlung der Authentifizierungsinformationen mindestens das 
+                so sollte dieser zur Übermittlung der Authentifizierungsinformationen mindestens das 
                 Standardverfahren für HTTP unterstützen.</p>
-              <h3>Anforderung</h3>
-              <p class="requirement">Zur Absicherung von Downloaddiensten MUSS mindestens das Standardverfahren zur Authentifizierung 
-                von HTTP (RFC2617 - HTTP-Authentication) angeboten werden.</p>
-            </section>
+              <h3>Empfehlung</h3>
+              <p class="recommendation">Zur Absicherung von Downloaddiensten SOLL mindestens das Standardverfahren zur Authentifizierung 
+                von HTTP ('Basic' HTTP Authentication Scheme [[rfc7617]] und HTTP Digest Access Authentication [[rfc7616]]) angeboten werden.</p>
+               <h3>Empfehlung</h3>
+              <p class="recommendation">Bei erhöhten Sicherheitsanforderungen SOLL das OAuth 2.0 Authorization Framework [[rfc6749]] verwendet werden.</p>  
+              </section>
           </section>
         </section>
         <!-- special services -->
