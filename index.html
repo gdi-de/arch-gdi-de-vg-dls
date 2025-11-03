@@ -1841,11 +1841,11 @@ Der Namespacename wird durch Underscore _ oder Doppelpunkt : vom eigentlichen Co
               in dem Methoden für die Parametrierung von IoT-Geräten standardisiert werden.
             </p>
             <p>
-              Der "Sensing"-Teil wurde auf der Grundlage des OGC/ISO "Observation and Measurement" (O&M) Modells entwickelt. Der Schlüssel
-              zu diesem Modell ist, dass eine "Observation" als eine Handlung modelliert wird, die ein Ergebnis ("result") erzeugt, dessen Wert eine Schätzung 
-              einer Eigenschaft des Beobachtungsziels oder "FeatureOfInterest" ist. Eine "Observation"-Instanz wird durch ihren Ereigniszeitpunkt
-              (z. B. "resultTime" und "phenonmenonTime"), "FeatureOfInterest", "ObservedProperty" und das verwendete Verfahren (häufig ein "Sensor") klassifiziert.
-              Darüber hinaus werden "Things" auch in der SensorThings-API modelliert, und ihre Definition folgt der ITU-T-Definition:
+              Der "Sensing"-Teil wurde auf der Grundlage des OGC/ISO "Observation and Measurement" (O&M) Modells entwickelt. Der Kern
+              dieses Modells ist eine Beobachtung ("Observation"), die ein Ergebnis ("result") erzeugt, dessen Wert die Schätzung 
+              einer Eigenschaft des Beobachtungsziels ("FeatureOfInterest") ist. Eine "Observation"-Instanz wird durch ihren Ereigniszeitpunkt
+              ("resultTime" und "phenonmenonTime"), "FeatureOfInterest", "ObservedProperty" und das verwendete Verfahren ("Sensor") klassifiziert.
+              Darüber hinaus werden auch "Things" in der SensorThings-API modelliert, die nach der ITU-T-Definition wie folgt beschrieben werden:
               „ein Objekt der physischen Welt (physische Dinge) oder der Informationswelt (virtuelle Dinge), das identifiziert 
               und in Kommunikationsnetze integriert werden kann“.
             </p>
@@ -1974,9 +1974,13 @@ Der Namespacename wird durch Underscore _ oder Doppelpunkt : vom eigentlichen Co
               </pre>
             </aside>
             <h3>Empfehlung</h3>
+            <p class="recommendation">Die folgenden empfohlenen Angaben SOLLEN im properties Objekt eines Datastreams hinterlegt werden.</p>
+            <h3>Empfehlung</h3>
             <p class="recommendation">Über das Attribut topic SOLLEN Kategorien (z.B. OpenData) zugeordnet werden.</p>
             <h3>Empfehlung</h3>
             <p class="recommendation">Das Attribut metadata SOLL den Aufruf eines API ISO Metadatendokumentes einer Datensatzbeschreibung enthalten.</p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Das Attribut license KANN die Angabe einer Lizenz enthalten, die die Nutzung der Daten dieses Datastreams regelt.</p>
             <h3>Empfehlung</h3>
             <p class="recommendation">Über die Attribute layerName und serviceName KÖNNEN weitere Untergliederungen definiert werden.</p>
             <h3>Empfehlung</h3>
@@ -1987,8 +1991,8 @@ Der Namespacename wird durch Underscore _ oder Doppelpunkt : vom eigentlichen Co
               Zeitstempels - CCYY-MM-DDThh:mm:ss.sssZ - angegeben werden.</p>
             <h3>Empfehlung</h3>
             <p class="recommendation">Wenn es sich bei den Daten um Aggregate handelt, KÖNNEN über die Attribute aggregateDuration (Aggregationszeitraum) 
-              aggregateSource.Datastream@iot.id (ID des Datastreams der Quelldaten) sowie aggregateSource.Datastream@iot.navigationLink
-              (Link auf den Datastream der Quelldaten) weitere Angaben hierzu hinterlegt werden.</p>
+              aggregateSource.Datastream@iot.id (ID des Datastreams der Quelldaten), aggregateSource.Datastream@iot.navigationLink
+              (Link auf den Datastream der Quelldaten) sowie aggregationType (Art der Aggregation) weitere Angaben hierzu hinterlegt werden.</p>
           </section>
         </section>
       </section>
