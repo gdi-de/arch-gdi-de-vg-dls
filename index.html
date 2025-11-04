@@ -1658,7 +1658,10 @@ flowchart BT
             <p>
 				Die aktuelle WCS-Version in OGC ist 2.1. Sie ist funktional identisch mit der Vorgängerversion 2.0.1, erlaubt 
 				aber zusätzlich die General Grid Coverage, welche in OGC CIS 1.1 eingeführt wurde. 
-			</p>
+              <p class="ednote" title="TODO">
+                  Näherere Informationen zum aktuellen Umsetzungsstand Server/Client, OGC Compliance/Teamengine ...
+              </p>
+			      </p>
             <h3>Empfehlung</h3>
             <p class="recommendation">Der Web Coverage Service SOLL WCS 2.1 Core mit KVP-Binding unterstützen.</p>
             <h3>Empfehlung</h3>
@@ -1695,8 +1698,8 @@ flowchart BT
           <section>
             <h2>Daten-Service-Kopplung</h2>
             <h3>Anforderung</h3>
-            <p class="requirement">Im Capabilities-Dokument SOLLEN ein Dienst- und alle verwendeten Datensatz-Metadatensätze
-              verlinkt werden. Die Verlinkung SOLL entsprechend der INSPIRE-Vorgaben erfolgen.</p>
+            <p class="requirement">Im Capabilities-Dokument MÜSSEN ein Dienst- und alle verwendeten Datensatz-Metadatensätze
+              verlinkt werden. Die Verlinkung MUSS entsprechend der INSPIRE-Vorgaben erfolgen.</p>
             <aside class="example" title="Die Verlinkung zum Dienst-Metadatensatz sowie die Angabe der SpatialDataSetIdentifier erfolgt im ows:ExtendedCapabilities Element">
               <pre>
                 ...
@@ -1747,7 +1750,6 @@ flowchart BT
                 &lt;Keyword&gt;download&lt;/Keyword&gt;
                 &lt;Keyword&gt;Downloadservice&lt;/Keyword&gt;
                 &lt;Keyword&gt;infoCoverageAccessService&lt;/Keyword&gt;
-                &lt;Keyword&gt;inspireidentifiziert&lt;/Keyword&gt;
               </pre>
             </p>
            </section>
@@ -1773,11 +1775,18 @@ flowchart BT
             <h3>Anforderung</h3>
             <p class="requirement">Angaben zu den unterstützten Koordinatenreferenzsystemen MÜSSEN in der
               opengis.net-Notation angegeben werden.
-              <pre class="requirement">
-                http://www.opengis.net/def/crs/EPSG/0/4326
-                http://www.opengis.net/def/crs/EPSG/0/25832
-                http://www.opengis.net/def/crs/EPSG/0/3857
-              </pre>
+              <aside class="example" title="Angabe der CRS">
+                <p></p>
+                <pre>
+				          <code>
+                    ...
+                    http://www.opengis.net/def/crs/EPSG/0/4326
+                    http://www.opengis.net/def/crs/EPSG/0/25832
+                    http://www.opengis.net/def/crs/EPSG/0/3857
+				                ...
+                  </code>
+			          </pre>
+		  	      </aside>
             </p>
           </section>
           <section>
