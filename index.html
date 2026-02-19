@@ -1560,12 +1560,7 @@
             <p>Im WCS-Standard ist eine reiche Syntax für Anfragen auf multidimensionale Daten und deren Metadaten definiert.
               Damit können Clients spezifische Bereiche von räumlichen/multidimensionalen Daten anfordern, die als "Coverage"
               bezeichnet werden. Ein Coverage kann eine zweidimensionale oder mehrdimensionale Abbildung eines Gebiets sein.</p>
-          </section>
-          <section>
-            <h2>Versionen</h2>
-            <h3>Version 2.0.1</h3>
-            <p>Erläuterung</p>
-            <p>Der WCS 2.0.1 besteht aus einer Core-Spezifikation und weiteren zum Teil verpflichtenden bzw. optionalen
+            <p>Der WCS 2.0.1 besteht aus einer Core-Spezifikation und weiteren optionalen
               Erweiterungen:</p>
             <figure id="wcs_fig_1">
               <pre class="diagram mermaid">
@@ -1644,8 +1639,12 @@ flowchart BT
               </pre> 
               <figcaption>Coverage Datenmodell: Coverage Implementation Schema mit Erweiterungen</figcaption>
             </figure>
-            <h4>Anforderung</h4>
-            <p class="requirement">Der Web Coverage Service muss mindestens WCS 2.0.1 Core mit <abbr title="Key-Value-Pair">KVP</abbr>-Binding unterstützen. [[INS TG Web Coverage Services]] (Anforderungen 1-2)</p>
+            <p>
+				Die aktuelle WCS-Version in OGC ist 2.1. Sie ist funktional identisch mit der Vorgängerversion 2.0.1, erlaubt 
+				aber zusätzlich die General Grid Coverage, welche in OGC CIS 1.1 eingeführt wurde. 
+			      </p>
+            <h3>Anforderung</h3>
+            <p class="requirement">Der Web Coverage Service muss mindestens WCS 2 Core mit <abbr title="Key-Value-Pair">KVP</abbr>-Binding unterstützen. ([[INS TG Web Coverage Services]] Anforderungen 1-2)</p>
             <aside class="example" title="XML-Ausschnitt">
               <p></p>
               <pre>
@@ -1653,26 +1652,17 @@ flowchart BT
                 &lt;ows:Profil&gt;http://www.opengis.net/spec/WCS_protocol-binding_get-kvp/1.0.1&lt;/ows:Profil&gt;
               </pre>
             </aside>
-            <h3>Version 2.1</h3>
-            <p>Erläuterung</p>
-            <p>
-				Die aktuelle WCS-Version in OGC ist 2.1. Sie ist funktional identisch mit der Vorgängerversion 2.0.1, erlaubt 
-				aber zusätzlich die General Grid Coverage, welche in OGC CIS 1.1 eingeführt wurde. 
-              <p class="ednote" title="TODO">
-                  Näherere Informationen zum aktuellen Umsetzungsstand Server/Client, OGC Compliance/Teamengine ...
-              </p>
-			      </p>
             <h3>Empfehlung</h3>
-            <p class="recommendation">Der Web Coverage Service SOLL WCS 2.1 Core mit KVP-Binding unterstützen.</p>
+            <p class="recommendation">Der Web Coverage Service SOLL WCS 2 Core mit KVP-Binding unterstützen.</p>
             <h3>Empfehlung</h3>
-            <p class="recommendation">Neben der Unterstützung des WCS 2.0.1, SOLL für
+            <p class="recommendation">Neben der Unterstützung des WCS 2, SOLL für
               zweidimensionale Coverages mit maximal drei Farbkanälen auch ein WCS der Version 1.x.x
               angeboten werden. Dies erhöht die Interoperabilität zu älteren Clients.</p>
           </section>
           <section>
             <h2>Extensions</h2>
             <p>Erläuterung</p>
-            <p>Der WCS 2.0.1 beinhaltet eine große Anzahl an verpflichtenden bzw. optionalen
+            <p>Der WCS 2.0.1 beinhaltet eine große Anzahl an optionalen
               Erweiterungen (vgl. <a href='#wcs_fig_1'></a> und <a href='#wcs_fig_2'></a>)</p>
             <h3>Empfehlung</h3>
             <p class="recommendation">
@@ -1758,11 +1748,12 @@ flowchart BT
             <p>Erläuterung</p>
             <p>In den INSPIRE-TG-WCS werden keine konkreten Spezifizierungen bzgl. Ausgabeformate gemacht. GML ist bereits
               als Teil des WCS-Core inkludiert. Sofern kein Output-Format bei der GetCoverage-Anfrage spezifiziert wird, wird das
-              Range-Set als XML ausgeliefert. Dies ist insbesondere für sehr große Datensätze ineffizient und nicht sinnvoll. In den
+              Range-Set ausgeliefert. In den
               konkreten INSPIRE Daten-Spezifikationen oder Profilen werden zum Teil weitere Conformance-Requirements bzgl.
-              Ausgabeformate definiert.</p>
-            <h3>Anforderung</h3>
-            <p class="requirement">Als Ausgabeformat MUSS der WCS mindestens das Format GeoTIFF (image/tiff) ausliefern.</p>
+              Ausgabeformate definiert. Das Ausgabeformat, wenn nicht anders spezifiziert, ist das "native Format", also das Format,
+              in dem die Coverages gespeichert ist.</p>
+            <h3>Empfehlung</h3>
+            <p class="recommendation">Als Ausgabeformat SOLL der WCS das Format GeoTIFF (image/tiff) ausliefern, wenn sich die zugrundeliegenden Daten damit abbilden lassen.</p>
             <h3>Empfehlung</h3>
             <p class="recommendation">Für das Format GeoTIFF DÜRFEN zusätzlich die Erweiterungen GEOTIFF:COMPRESSION=compression sowie
               GEOTIFF:JPEG_QUALITY=1-100 angeboten werden.</p>
@@ -1797,13 +1788,12 @@ flowchart BT
               unbedenklich ist. Außerdem sollte die Zahl der verwendeten Zeichen nicht zu groß sein, da es sonst bei Clients, die
               Kartenanfragen nur über HTTP GET umsetzen, zu Fehlern bei der Übertragung der Anfragen kommen kann.</p>
             <p>Innerhalb eines Dienstes darf die gleiche CoverageID nicht mehrfach vorkommen, da diese ansonsten vom Client
-              nicht mehr unterschieden werden kann. Die CoverageID muss einen W3C konformen NCName aufweisen. Das bedeutet konkret, dass die CoverageID nicht mit einer Zahl beginnen darf, sondern mit einem Namespacenamen oder zumindest mit einem Underscore.
-Der Namespacename wird durch Underscore _ oder Doppelpunkt : vom eigentlichen Coverage-Namen abgetrennt.</p>
+              nicht mehr unterschieden werden kann. Der Namespacename wird durch Underscore _ oder Doppelpunkt : vom eigentlichen Coverage-Namen abgetrennt.
+              In der Praxis hat sich gezeigt, dass bei der Nutzung von Identifikatoren, die nicht mit einem Buchstaben beginnen, Probleme auftreten können. 
+            </p>
             <h3>Anforderung</h3>
             <p class="requirement">CoverageIDs MÜSSEN innerhalb eines Dienstes eindeutig sein und folgendem regulären Ausdruck
-              entsprechen: [a-zA-Z][0-9a-zA-Z\.\-_:+]*.</p>
-             <h3>Anforderung</h3>
-             <p class="requirement">CoverageIDs der WCS-Version 2.0.1 MÜSSEN einen W3C konformen NCName aufweisen.</p>
+              entsprechen: [a-zA-Z_][0-9a-zA-Z_\-\.]*</p>
             <h3>Empfehlung</h3>
             <p class="recommendation">Die Länge der Zeichenkette des CoverageID SOLL so kurz wie möglich sein.</p>
           </section>
@@ -1823,6 +1813,7 @@ Der Namespacename wird durch Underscore _ oder Doppelpunkt : vom eigentlichen Co
                   <li>http://www.opengis.net/def/interpolation/OGC/1/nearest-neighbor</li>
                   <li>http://www.opengis.net/def/interpolation/OGC/1/linear</li>
                   <li>http://www.opengis.net/def/interpolation/OGC/1/cubic</li>
+                  <li>http://www.opengis.net/def/interpolation/OGC/1/quadratic</li>
                 </ul></p>
             </section>
             <section>
@@ -2022,6 +2013,11 @@ Der Namespacename wird durch Underscore _ oder Doppelpunkt : vom eigentlichen Co
               <li><a href="https://gdi-de.github.io/e-learning/sos/text/index.html" target="_blank">Sensor Observation Service</a></li>
               <li><a href="https://gdi-de.github.io/e-learning/sta/text/index.html" target="_blank">OGC Sensor Things API</a></li>
             </ul> 
+          </p>
+          <p>
+            Das OGC nutzt zur Versionierung seiner Standards das Schema <b>{major_release_number}.{minor_release_number}.{corrigendum_number}</b>. Standards, die sich nur in der
+            <b>minor_release_number</b> unterscheiden, sollten rückwärts kompatibel sein. Das bedeutet für den WCS, dass der WCS 2.1 kompatibel zu einem WCS 2.0.1 sein muss.
+            Ein Client, der WCS 2.0.1 unterstützt, kann dementsprechend auch einen WCS 2.1 nutzen.
           </p>
         </section> 
         <h3>Web Feature Service</h3>
