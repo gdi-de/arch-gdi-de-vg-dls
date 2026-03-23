@@ -2,6 +2,7 @@
 <html  lang="de-DE">
   <head>
     <meta charset='utf-8'>
+    <title>Architektur der Geodateninfrastruktur Deutschland - Vorgaben der GDI-DE zur Bereitstellung von Downloaddiensten</title>
     <style>
     .recommendation {
       text-align: left;
@@ -55,13 +56,36 @@
         // Working Groups ids at https://respec.org/w3c/groups/
         // group: "webapps", 
         maxTocLevel: 3,
-        license: "cc-by",
-        specStatus: "unofficial",
+        //license: "cc0",
+        //specStatus: "base",
         //specStatus: "ED",
         shortName: "arch-gdi-de-vg-dls",
+        title: "Architektur der Geodateninfrastruktur Deutschland - Vorgaben der GDI-DE zur Bereitstellung von Downloaddiensten",
+        //subtitle: "Vorgaben für Downloaddienste",
         latestVersion: "https://gdi-de.github.io/arch-gdi-de-vg-dls/",
         thisVersion: "https://gdi-de.github.io/arch-gdi-de-vg-dls/",
-        xref: ["vocab-dcat-3"],
+        currentVersion: "1.0",
+        publishDate: "2026-03-23",
+        modificationDate: "2026-03-23",
+        xref: "web-platform",
+        lint: false,
+        specStatus: "base",
+        doJsonLd: true,
+        noRecTrack: true,
+        addSectionLinks: true,
+        copyrightStart: 2020,
+        // Folgende Vorgehensweise ist von DCAT-AP.de übernommen
+        //license: "cc0",
+        license: {
+          name: "CC0",
+          short: "CC0",
+          url: "https://creativecommons.org"
+        },
+        copyright: "GDI-DE <start-end>, lizensiert unter <a rel='license' href='https://creativecommons.org/publicdomain/zero/1.0/' title='Creative Commons 0 Public Domain Dedication'>CC0</a>.",
+        isPreview: false,
+        validate: false,
+        noValidationLint: true,
+        postProcess: [doPostProcessing],
         logos: [{
             src: "https://gdi-de.github.io/arch-gdi-de-vg-dls/media/Logo_GDI-DE.jpg",
             url: "https://www.gdi-de.org",
@@ -562,6 +586,37 @@
         // See https://respec.org/docs/#xref for usage.
         xref: "web-platform",
       };
+      function doPostProcessing() {
+        // alert("Postprocessing startet");
+        // add details
+        let dliH = document.getElementsByTagName("dl")[0].innerHTML;
+        let addDetails = "";
+
+        // ++ Aktuelle Version
+        addDetails += "<dt>Aktuelle Version:</dt><dd>" + respecConfig.currentVersion + "</dd>";
+
+        // ++ Veröffentlichungsdatum
+        let vDate = new Date(respecConfig.publishDate).toLocaleDateString("de-de", {
+            day : 'numeric',
+            month : 'long',
+            year : 'numeric'
+        });
+        addDetails += "<dt>Veröffentlichungsdatum:</dt><dd>" + vDate + "</dd>";
+
+        // ++ Letzte Änderung
+        let laDate = new Date(respecConfig.modificationDate).toLocaleDateString("de-de", {
+            day : 'numeric',
+            month : 'long',
+            year : 'numeric'
+        });
+        addDetails += "<dt>Letzte Änderung:</dt><dd>" + laDate + "</dd>";
+
+        // finalize add details
+        document.getElementsByTagName("dl")[0].innerHTML = addDetails + dliH;
+
+        // passe Copyright an
+        document.getElementsByClassName("copyright")[0].innerHTML = respecConfig.copyright.replace("<start-end>", document.getElementsByClassName("copyright")[0].innerText.substr(12,9));
+      }
     </script>
   </head>
   <body>
